@@ -1,6 +1,6 @@
 import { Text, View, ImageBackground, TextInput, Button, Alert } from 'react-native';
-import EstiloLogin	 from '../Componentes/EstiloLogin';
-import pizza from '../../assets/icon.png';
+import Estilos from '../Componentes/Estilos';
+import pizza from '../../assets/pizza.jpg';
 import React,{useState, useEffect} from 'react';
 const Login = () => {
   const[usuario, setUsuario]=useState(null)
@@ -48,12 +48,12 @@ const Login = () => {
 
 
   return (
-      <View style={EstiloLogin.contenedorPrincipal}>
-        <View style={EstiloLogin.contenedorTitulo}>
+      <View style={Estilos.contenedorPrincipal}>
+        <View style={Estilos.contenedorTitulo}>
           <ImageBackground
             source={pizza}
             resizeMode='stretch'
-            style={EstiloLogin.imagenFondo}
+            style={Estilos.imagenFondo}
           >
             <Text style={Estilos.textoTitulo} >Inicio Sesión</Text>
           </ImageBackground>
