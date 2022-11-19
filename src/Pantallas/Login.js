@@ -55,7 +55,7 @@ const Login = () => {
             resizeMode='stretch'
             style={Estilos.imagenFondo}
           >
-            <Text style={Estilos.textoTitulo} >Inicio Sesión</Text>
+            <Text style={Estilos.textoTitulo} >Come Rico</Text>
           </ImageBackground>
         </View>
         <View style={Estilos.contenedorContenido}>

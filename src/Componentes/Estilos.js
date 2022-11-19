@@ -20,7 +20,7 @@ const Estilos = StyleSheet.create({
       },
     
       textoTitulo:{
-        color:"#fff",
+        color:"#000",
         fontSize:30,
         fontWeight:"900",
         textAlign:"center"
