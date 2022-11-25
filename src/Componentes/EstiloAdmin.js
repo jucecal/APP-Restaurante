@@ -61,7 +61,7 @@ import {
         alignItems: 'center',
       },
       card: {
-        height: 150,
+        height: 170,
         flex:1,
         flexDirection:'row',
         marginHorizontal: 20,
@@ -84,6 +84,8 @@ import {
         marginRight:10,        
       },
       textoCarta:{
+        paddingBottom: 40,
+        padding: 8,
         width:'65%'
       },
       tituloCarta:{
