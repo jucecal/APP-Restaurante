@@ -1,14 +1,10 @@
 
 import {
     Dimensions,
-  
     StyleSheet,
-  
   } from 'react-native';
   
-  
   import COLORS from '../consts/colors';
-  
   
   const {width} = Dimensions.get('screen');
   const cardWidth = width / 2 - 20;
@@ -20,6 +16,7 @@ import {
         justifyContent: 'space-between',
         paddingHorizontal: 20,
       },
+
       inputContainer: {
         flex: 1,
         height: 50,
@@ -29,6 +26,7 @@ import {
         alignItems: 'center',
         paddingHorizontal: 20,
       },
+
       sortBtn: {
         width: 50,
         height: 50,
@@ -38,12 +36,14 @@ import {
         justifyContent: 'center',
         alignItems: 'center',
       },
+
       categoriesListContainer: {
         paddingVertical: 30,
         alignItems: 'center',
         paddingHorizontal: 20,
         
       },
+
       categoryBtn: {
         height: 45,
         width: 120,
@@ -53,6 +53,7 @@ import {
         paddingHorizontal: 5,
         flexDirection: 'row',
       },
+
       categoryBtnImgCon: {
         height: 35,
         width: 35,      
@@ -60,6 +61,7 @@ import {
         justifyContent: 'center',
         alignItems: 'center',
       },
+
       card: {
         height: 170,
         flex:1,
@@ -73,21 +75,24 @@ import {
         alignItems:'center'
         
       },
+
       iconoTipoCarta:{
         width:'20%',
         backgroundColor:COLORS.secondary,
         borderRadius:10,
-        height:'60%',
+        height:'50%',
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'center',
         marginRight:10,        
       },
+
       textoCarta:{
         paddingBottom: 40,
         padding: 8,
         width:'65%'
       },
+
       tituloCarta:{
         fontSize: 18, 
         fontWeight: 'bold'
@@ -97,6 +102,7 @@ import {
         color: COLORS.grey, 
         marginTop: 2
       },
+
       iconoEditar:{
         width:'10%',
         marginLeft:10,
@@ -104,6 +110,7 @@ import {
         alignItems:'center',
         justifyContent:'center'
       },
+      
       addToCartBtn: {
         height: 30,
         width: 30,

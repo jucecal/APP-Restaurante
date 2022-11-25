@@ -13,9 +13,9 @@ export default function App() {
     //<Menu></Menu>
     //<DetalleMenu></DetalleMenu>
     //<Carrito></Carrito>
-    //<Proveedor></Proveedor>
+    <Proveedor></Proveedor>
     //---------------------
     //<EditarProveedor></EditarProveedor>
-    <Cliente></Cliente>
+    //<Cliente></Cliente>
   );
 }
