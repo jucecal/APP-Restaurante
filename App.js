@@ -3,7 +3,9 @@ import Menu from './src/Pantallas/Menu';
 import DetalleMenu from './src/Pantallas/DetalleMenu';
 import Carrito from './src/Pantallas/Carrito';
 import Proveedor from './src/Pantallas/Proveedor';
+//------------------------------------------------------
 import EditarProveedor from './src/Pantallas/EditarProveedor';
+import Cliente from './src/Pantallas/Cliente';
 
 export default function App() {
   return (
@@ -11,7 +13,9 @@ export default function App() {
     //<Menu></Menu>
     //<DetalleMenu></DetalleMenu>
     //<Carrito></Carrito>
-    <Proveedor></Proveedor>
+    //<Proveedor></Proveedor>
+    //---------------------
     //<EditarProveedor></EditarProveedor>
+    <Cliente></Cliente>
   );
 }
