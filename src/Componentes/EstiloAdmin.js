@@ -88,7 +88,7 @@ import {
       },
 
       textoCarta:{
-        paddingBottom: 40,
+        paddingBottom: 10,
         padding: 8,
         width:'65%'
       },
@@ -110,7 +110,7 @@ import {
         alignItems:'center',
         justifyContent:'center'
       },
-      
+
       addToCartBtn: {
         height: 30,
         width: 30,

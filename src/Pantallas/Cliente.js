@@ -87,12 +87,9 @@ const Cliente = () => {
             <Feather name='user' size={28} color={COLORS.dark} />
           </View>
           <View style={EstilosAdmin.textoCarta} >
-            <Text style={EstilosAdmin.tituloCarta}>{cliente.provclienteeedor}</Text>
+            <Text style={EstilosAdmin.tituloCarta}>{cliente.nombre + ' ' + cliente.apellido}</Text>
             <Text style={EstilosAdmin.detallesCarta}>
               Código de Cliente: {cliente.id}
-            </Text>
-            <Text style={EstilosAdmin.detallesCarta}>
-              Cliente: {cliente.nombre + ' ' + cliente.apellido}
             </Text>
             <Text style={EstilosAdmin.detallesCarta}>
               Telefono: {cliente.telefono}
