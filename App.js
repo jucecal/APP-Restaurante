@@ -8,6 +8,7 @@ import EditarProveedor from './src/Pantallas/EditarProveedor';
 import Cliente from './src/Pantallas/Cliente';
 import Colaborador from './src/Pantallas/Colaborador';
 import EditarCliente from './src/Pantallas/EditarCliente';
+import Inventario from './src/Pantallas/Inventario';
 
 export default function App() {
   return (
@@ -18,9 +19,10 @@ export default function App() {
     //<Proveedor></Proveedor>
     //---------------------
     //<EditarProveedor></EditarProveedor>
-    <Cliente></Cliente>
+    //<Cliente></Cliente>
     //<EditarCliente></EditarCliente>
     //<Colaborador></Colaborador>
     //<EditarColaborador></EditarColaborador>
+    <Inventario></Inventario>
   );
 }
