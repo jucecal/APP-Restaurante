@@ -8,19 +8,25 @@ import EditarProveedor from './src/Pantallas/EditarProveedor';
 import Cliente from './src/Pantallas/Cliente';
 import Colaborador from './src/Pantallas/Colaborador';
 import EditarCliente from './src/Pantallas/EditarCliente';
+import EditarColaborador from './src/Pantallas/EditarColaborador';
+import GuardarColaborador from './src/Pantallas/GuardarColaborador';
+import GuardarCliente from './src/Pantallas/GuardarCliente';
+
 
 export default function App() {
   return (
-   //<Login></Login>
-   //<Menu></Menu>
+    //<Login></Login>
+    //<Menu></Menu>
     //<DetalleMenu></DetalleMenu>
     //<Carrito></Carrito>
     //<Proveedor></Proveedor>
-    //---------------------
     //<EditarProveedor></EditarProveedor>
-    <Cliente></Cliente>
+    //---------------------
+    //<Cliente></Cliente>
     //<EditarCliente></EditarCliente>
     //<Colaborador></Colaborador>
     //<EditarColaborador></EditarColaborador>
+    //<GuardarColaborador></GuardarColaborador>
+    <GuardarCliente></GuardarCliente>
   );
 }
