@@ -7,13 +7,13 @@ const EstilosEditar = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginHorizontal: 20,
-        marginTop:20
+        marginTop:30
     },
     contenedorContenido:{
         flex:1,
         flexDirection:'column',
         marginHorizontal:20,
-        marginVertical:10,
+        marginVertical:1,
         padding:10,
         backgroundColor:COLORS.white
     },
@@ -37,7 +37,7 @@ const EstilosEditar = StyleSheet.create({
         fontSize: 18 
     },
     btnContainer: {
-        marginTop:20,
+        marginTop:10,
         backgroundColor: COLORS.primary,
         height: 60,
         borderRadius: 30,

@@ -7,17 +7,20 @@ import Proveedor from './src/Pantallas/Proveedor';
 import EditarProveedor from './src/Pantallas/EditarProveedor';
 import Cliente from './src/Pantallas/Cliente';
 import Colaborador from './src/Pantallas/Colaborador';
+import EditarCliente from './src/Pantallas/EditarCliente';
 
 export default function App() {
   return (
    //<Login></Login>
-    //<Menu></Menu>
+   //<Menu></Menu>
     //<DetalleMenu></DetalleMenu>
     //<Carrito></Carrito>
     //<Proveedor></Proveedor>
     //---------------------
     //<EditarProveedor></EditarProveedor>
-    //<Cliente></Cliente>
-    <Colaborador></Colaborador>
+    <Cliente></Cliente>
+    //<EditarCliente></EditarCliente>
+    //<Colaborador></Colaborador>
+    //<EditarColaborador></EditarColaborador>
   );
 }
