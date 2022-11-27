@@ -90,8 +90,10 @@ const Estilos = StyleSheet.create({
       contenedorBotones:{
         flex: 1,
         alignItems: "stretch",
-        marginTop: 10,
-        marginBottom: 10,
+        borderRadius: 100,
+        padding: 10,
+        marginTop: 20,
+        marginBottom: 20,
       },
 });
 export default Estilos
