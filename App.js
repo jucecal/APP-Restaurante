@@ -15,7 +15,7 @@ import GuardarCliente from './src/Pantallas/GuardarCliente';
 
 export default function App() {
   return (
-    //<Login></Login>
+    <Login></Login>
     //<Menu></Menu>
     //<DetalleMenu></DetalleMenu>
     //<Carrito></Carrito>
@@ -27,6 +27,6 @@ export default function App() {
     //<Colaborador></Colaborador>
     //<EditarColaborador></EditarColaborador>
     //<GuardarColaborador></GuardarColaborador>
-    <GuardarCliente></GuardarCliente>
+    //<GuardarCliente></GuardarCliente>
   );
 }

@@ -10,7 +10,7 @@ const GuardarCliente = () => {
     return (
         <View style={{ backgroundColor: COLORS.white }}>
             <View style={EstilosEditar.header}>
-                <AntDesign name='doubleleft' size={28} />
+                <AntDesign name='left' size={28} />
                 <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Guardar Cliente</Text>
             </View>
             <ScrollView style={{marginTop:0}}>
