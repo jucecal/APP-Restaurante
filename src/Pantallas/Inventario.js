@@ -18,16 +18,25 @@ import {
 import COLORS from '../consts/colors';
 import categories from '../consts/categories';
 import inventarios from '../consts/inventarios';
+import sucursales from '../consts/sucursales';
 import foods from '../consts/foods';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import EstilosAdmin from '../Componentes/EstiloAdmin';
-//import SelectList from 'react-native-dropdown-select-list';
+import ComboBox from 'react-native-combobox';
 const { width } = Dimensions.get('screen');
 
 
 const Inventario = () => {
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
+  const [selectedValue, setSelectedValue] = useState('');
+  const values = [
+   'La Kennedy',
+   'Roble Oeste',
+   'El manatial'
+  ];
+
+ 
 
   const ListCategories = () => {
     return (
@@ -140,6 +149,15 @@ const Inventario = () => {
           <AntDesign name='search1' size={28} color={COLORS.white} />
         </View>
       </View>
+
+      <View style={{ flex: 1, paddingVertical: 80, paddingHorizontal: 40, justifyContent: 'space-between' }}>
+        <ComboBox
+            values={values}
+            onValueSelect={setSelectedValue}
+        />
+        <Text>selected value:          {values[selectedValue]}</Text>
+     </View>
+
     
       <FlatList
         key={'_'}
@@ -149,6 +167,8 @@ const Inventario = () => {
         renderItem={({ item }) => <Card inventario={item} />}
       />
     </View>
+   
+  
   );
 };
 
