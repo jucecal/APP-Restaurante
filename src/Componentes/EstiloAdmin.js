@@ -97,9 +97,16 @@ import {
         fontSize: 18, 
         fontWeight: 'bold'
       },
+
       detallesCarta:{
         fontSize: 14, 
         color: COLORS.grey, 
+        marginTop: 2
+      },
+
+      detallesCarta2:{
+        fontSize: 14, 
+        color: COLORS.dark, 
         marginTop: 2
       },
 

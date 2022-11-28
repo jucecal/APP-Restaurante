@@ -19,7 +19,6 @@ import {
 import COLORS from '../consts/colors';
 import categories from '../consts/categories';
 import proveedores from '../consts/proveedores';
-import foods from '../consts/foods';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import EstilosAdmin from '../Componentes/EstiloAdmin';

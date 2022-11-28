@@ -84,29 +84,27 @@ const Inventario = () => {
   const Card = ({ inventario }) => {
     return (
       <TouchableHighlight
-        underlayColor={COLORS.white}
-        activeOpacity={0.9}
-        onPress={() => Alert.alert('Pressed!', 'info info')}
+        
+        
       >
         <View style={EstilosAdmin.card}>
           
           <View style={EstilosAdmin.iconoTipoCarta}>
             <AntDesign name='barcode' size={28} color={COLORS.dark} />
           </View>
-          <View style={EstilosAdmin.textoCarta} >
-            <Text style={EstilosAdmin.tituloCarta}>dbdbw</Text>
-            <Text style={EstilosAdmin.detallesCarta}>
+          <View style={EstilosAdmin.textoCarta} >            
+            <Text style={EstilosAdmin.detallesCarta2}>
               Stock: {inventario.stock}
             </Text>
-            <Text style={EstilosAdmin.detallesCarta}>
+            <Text style={EstilosAdmin.detallesCarta2}>
               Producto: {inventario.producto}
             </Text>
-            <Text style={EstilosAdmin.detallesCarta}>
+            <Text style={EstilosAdmin.detallesCarta2}>
               Sucursal: {inventario.sucursal}
             </Text>
           </View>  
           <View style={EstilosAdmin.iconoEditar}>
-            <Feather name='edit' size={20} color={COLORS.dark} />
+            <AntDesign name='eye' size={20} color={COLORS.dark} />
           </View>        
         </View>
       </TouchableHighlight>
@@ -142,7 +140,7 @@ const Inventario = () => {
 
           <TextInput
             style={{ flex: 1, fontSize: 18 }}
-            placeholder="Buscar por inventario"
+            placeholder="Buscar por sucursal"
           />
         </View>
         <View style={EstilosAdmin.sortBtn}>
@@ -150,7 +148,7 @@ const Inventario = () => {
         </View>
       </View>
 
-      <View style={{ flex: 1, paddingVertical: 80, paddingHorizontal: 40, justifyContent: 'space-between' }}>
+      <View style={{ flex: 1, paddingBottom:90,paddingTop:30, paddingHorizontal: 40, justifyContent: 'space-between' }}>
         <ComboBox
             values={values}
             onValueSelect={setSelectedValue}
