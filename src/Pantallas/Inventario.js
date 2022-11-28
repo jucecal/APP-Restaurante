@@ -30,6 +30,7 @@ const { width } = Dimensions.get('screen');
 const Inventario = () => {
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [selectedValue, setSelectedValue] = useState('');
+  
   const values = [
    'La Kennedy',
    'Roble Oeste',
@@ -81,6 +82,7 @@ const Inventario = () => {
       </ScrollView>
     );
   };
+
   const Card = ({ inventario }) => {
     return (
       <TouchableHighlight
@@ -112,6 +114,7 @@ const Inventario = () => {
       </TouchableHighlight>
     );
   };
+
   return (
     <View style={{ flex: 1, backgroundColor: COLORS.white }}>
       <View style={EstilosAdmin.header}>
