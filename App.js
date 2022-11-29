@@ -1,18 +1,18 @@
-import Login from './src/Pantallas/Login'
+/* import Login from './src/Pantallas/Login'
 import Menu from './src/Pantallas/Menu';
 import DetalleMenu from './src/Pantallas/DetalleMenu';
 import Carrito from './src/Pantallas/Carrito';
-import Proveedor from './src/Pantallas/Proveedor';
+import Proveedor from './src/Pantallas/Proveedor'; */
 //------------------------------------------------------
-import EditarProveedor from './src/Pantallas/EditarProveedor';
+/* import EditarProveedor from './src/Pantallas/EditarProveedor';
 import Cliente from './src/Pantallas/Cliente';
 import Colaborador from './src/Pantallas/Colaborador';
 import EditarCliente from './src/Pantallas/EditarCliente';
 import Inventario from './src/Pantallas/Inventario';
 import EditarColaborador from './src/Pantallas/EditarColaborador';
 import GuardarColaborador from './src/Pantallas/GuardarColaborador';
-import GuardarCliente from './src/Pantallas/GuardarCliente';
-
+import GuardarCliente from './src/Pantallas/GuardarCliente';  */
+import Navegacion from './src/Componentes/Navegacion';
 
 export default function App() {
   return (
@@ -27,8 +27,12 @@ export default function App() {
     //<Colaborador></Colaborador>
     //<EditarColaborador></EditarColaborador>
     //<GuardarColaborador></GuardarColaborador>
-    <Inventario></Inventario>
+    //<Inventario></Inventario>
     //<GuardarColaborador></GuardarColaborador>
     //<GuardarCliente></GuardarCliente>
+    <Navegacion>
+      
+    </Navegacion>
+    
   );
 }
