@@ -4,7 +4,7 @@ import Estilos from '../Componentes/Estilos';
 import misericordia from '../../assets/pizza.jpg';
 import UsuarioContext from '../contexto/UsuarioContext';
 import Cargando from '../Componentes/Cargando';
-//import { urlImagenesUsuarios } from '../configuracion/Urls';
+import { urlImagenesUsuarios } from '../configuracion/Urls';
 
 const Login = ({ navigation }) => {
     const { usuario, setCerrarSesion } = useContext(UsuarioContext);

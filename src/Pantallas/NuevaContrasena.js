@@ -4,24 +4,28 @@ import Estilos from '../Componentes/Estilos';
 import misericordia from '../../assets/pizza.jpg';
 import UsuarioContext from '../contexto/UsuarioContext';
 import Cargando from '../Componentes/Cargando';
+import Axios from '../Componentes/Axios';
 
-const Login = ({ navigation }) => {
-    const [usuario, setUsuario] = useState(null);
+const NuevaContrasena = ({ navigation, route }) => {
+    const [pin, setPin] = useState(null);
+    const { correo } = route.params;
     const [contrasena, setContrasena] = useState(null);
-    const [validarUsuario, setValidarUsuario] = useState(false);
+    const [confirmarContrasena, setconfirmarContrasena] = useState(null);
+    const [validarPin, setValidarPin] = useState(false);
     const [validarContrasena, setValidarContrasena] = useState(false);
+    const [validarConfirmarContrasena, setValidarConfirmarContrasena] = useState(false);
     const { setLogin } = useContext(UsuarioContext);
     const [espera, setEspera] = useState(false);
-    const titulo='Iniciar Sesion';
+    const titulo = 'Recuperar Contrasena';
     useEffect(() => {
-        if (!usuario) {
-            setValidarUsuario(true);
+        if (!pin) {
+            setValidarPin(true);
         }
-        else if (usuario.length < 3) {
-            setValidarUsuario(true);
+        else if (pin.length < 4) {
+            setValidarPin(true);
         }
         else {
-            setValidarUsuario(false);
+            setValidarPin(false);
         }
         if (!contrasena) {
             setValidarContrasena(true);
@@ -32,22 +36,59 @@ const Login = ({ navigation }) => {
         else {
             setValidarContrasena(false);
         }
-    }, [usuario, contrasena]);
+        if (!confirmarContrasena) {
+            setValidarConfirmarContrasena(true);
+        }
+        else if (confirmarContrasena.length < 6) {
+            setValidarConfirmarContrasena(true);
+        }
+        else if (contrasena != confirmarContrasena) {
+            setValidarConfirmarContrasena(true);
+        }
+        else {
+            setValidarConfirmarContrasena(false);
+        }
+    }, [pin, contrasena, confirmarContrasena]);
     const iniciarSesion = async () => {
-        console.log(usuario);
-        if (!validarUsuario && !validarContrasena) {
+        console.log(correo);
+        if (!validarContrasena && !validarConfirmarContrasena && !validarPin) {
             setEspera(true);
-            await setLogin({ usuario: usuario, contrasena: contrasena });
+            var textoMensaje='';
+            try {
+                await Axios.put('/autenticacion/recuperarcontrasena?usuario=' + correo, {
+                    pin: pin,
+                    contrasena: contrasena
+                })
+                    .then(async (data) => {
+                        const json = data.data;
+                        if (json.errores.length == 0) {
+                            textoMensaje = "Contrasena Actualizada";
+                        }
+                        else {
+                            textoMensaje = '';
+                            json.errores.forEach(element => {
+                                textoMensaje += element.mensaje + '. ';
+                            });
+                        }
+                    })
+                    .catch((error) => {
+                        textoMensaje = "La API no se encuentra activa o no responde";
+                        console.log(error);
+                    });
+            } catch (error) {
+                textoMensaje = "Error en la aplicacion";
+                console.log(error);
+            }
             setEspera(false);
+            Alert.alert(titulo, textoMensaje);
+            if(textoMensaje=='Contrasena Actualizada'){
+               navigation.navigate('Login');
+            }
         }
         else {
             Alert.alert(titulo, 'Debe enviar los datos correctos');
         }
     };
-    const irpin = () =>{
-        console.log("Ir a PIN");
-        navigation.navigate('Pin');
-    }
     return (
         <View style={Estilos.contenedorPrincipal}>
             <View style={Estilos.contenedorTitulo}>
@@ -62,21 +103,22 @@ const Login = ({ navigation }) => {
             <View style={Estilos.contenedorContenido}>
                 {
                     espera ? (
-                        <Cargando texto="Estableciendo conexion con la API"></Cargando>
+                        <Cargando texto="Cargando Datos"></Cargando>
                     ) : (
                         <>
                             <View style={Estilos.contenedorControles}>
-                                <Text style={Estilos.etiqueta}>Usuario</Text>
-                                <TextInput style={validarUsuario ? Estilos.entradaError : Estilos.entrada}
-                                    placeholder='Escriba el correo o usuario'
-                                    value={usuario}
-                                    onChangeText={setUsuario}
+                                <Text style={Estilos.etiqueta}>Pin</Text>
+                                <TextInput style={validarPin ? Estilos.entradaError : Estilos.entrada}
+                                    placeholder='Escriba el pin enviado a su correo'
+                                    value={pin}
+                                    onChangeText={setPin}
+                                    type="number"
                                 >
                                 </TextInput>
                                 {
-                                    validarUsuario ? (
+                                    validarPin ? (
                                         <>
-                                            <Text style={Estilos.etiquetaError}>Dede escribir el usuario</Text>
+                                            <Text style={Estilos.etiquetaError}>Debe escribir el pin enviado a su correo</Text>
                                         </>
 
                                     ) : (
@@ -102,6 +144,23 @@ const Login = ({ navigation }) => {
                                     ) : (<></>)
                                 }
                             </View>
+                            <View style={Estilos.contenedorControles}>
+                                <Text style={Estilos.etiqueta}>Comfirmar Contraseña</Text>
+                                <TextInput style={validarContrasena ? Estilos.entradaError : Estilos.entrada}
+                                    placeholder='Escriba la contraseña nuevamente'
+                                    secureTextEntry={true}
+                                    value={confirmarContrasena}
+                                    onChangeText={setconfirmarContrasena}
+                                >
+                                </TextInput>
+                                {
+                                    validarConfirmarContrasena ? (
+                                        <>
+                                            <Text style={Estilos.etiquetaError}>La contrasena no son iguales</Text>
+                                        </>
+                                    ) : (<></>)
+                                }
+                            </View>
                             <View style={Estilos.contenedorBotones}>
                                 <View style={Estilos.boton}>
                                     <Button
@@ -122,7 +181,7 @@ const Login = ({ navigation }) => {
                                     <Button
                                         title='Recuperar Contraseña'
                                         color={'#000'}
-                                        onPress={irpin}
+
                                     ></Button>
                                 </View>
                             </View>
@@ -134,4 +193,4 @@ const Login = ({ navigation }) => {
         </View>
     );
 }
-export default Login;
+export default NuevaContrasena;

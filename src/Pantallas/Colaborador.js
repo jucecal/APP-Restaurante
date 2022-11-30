@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   Dimensions,
   Image,
@@ -23,57 +23,14 @@ import foods from '../consts/foods';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import EstilosAdmin from '../Componentes/EstiloAdmin';
+import UsuarioContext from '../contexto/UsuarioContext';
 const { width } = Dimensions.get('screen');
 
 
 const Colaborador = () => {
-  const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
+  const { usuario} = useContext(UsuarioContext);
 
-  const ListCategories = () => {
-    return (
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={EstilosAdmin.categoriesListContainer}>
-        {categories.map((category, index) => (
-          <TouchableOpacity
-            key={index}
-            activeOpacity={0.8}
-            onPress={() => setSelectedCategoryIndex(index)}>
-            <View
-              style={{
-                backgroundColor:
-                  selectedCategoryIndex == index
-                    ? COLORS.grey
-                    : COLORS.secondary,
-                ...EstilosAdmin.categoryBtn,
-              }}>
-              <View style={EstilosAdmin.categoryBtnImgCon}>
-                <ImageBackground
-                  source={category.image}
-                  style={{ height: 40, width: 40, resizeMode: 'cover' }}
-                />
-              </View>
-              <Text
-                style={{
-                  fontSize: 15,
-                  fontWeight: 'bold',
-                  marginLeft: 10,
-                  color:
-                    selectedCategoryIndex == index
-                      ? COLORS.white
-                      : COLORS.primary,
-                }}>
-                {category.name}
-              </Text>
-            </View>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-    );
-  };
-
-
+ 
   const Card = ({ colaborador }) => {
     return (
       <TouchableHighlight
@@ -118,7 +75,7 @@ const Colaborador = () => {
           <View style={{ flexDirection: 'row' }}>
             <Text style={{ fontSize: 28 }}>Hola,</Text>
             <Text style={{ fontSize: 28, fontWeight: 'bold', marginLeft: 10 }}>
-              Jesús
+              {usuario.nombre}
             </Text>
           </View>
           <Text style={{ marginTop: 5, fontSize: 22, color: COLORS.grey }}>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Login from '../Pantallas/Login';
+import LoginTab from './LoginTab';
 import MenuTab from './MenuTab';
 import UsuarioContext from '../contexto/UsuarioContext';
 import Cargando from './Cargando';
@@ -28,7 +28,7 @@ const Pantallas = () => {
                     
                     <>
                         
-                        <Stack.Screen name="Login" component={Login} />
+                        <Stack.Screen name="LoginMenu" component={LoginTab} />
                     </>
                     
                 )
