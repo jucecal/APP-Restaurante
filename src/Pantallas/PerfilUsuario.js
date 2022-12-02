@@ -1,7 +1,7 @@
 import { Text, View, Button, ImageBackground, TextInput, Alert, Image, StyleSheet, TouchableOpacity, Switch } from 'react-native';
 import React, { useState, useEffect, useContext } from 'react';
 import Estilos from '../Componentes/Estilos';
-import misericordia from '../../assets/pizza.jpg';
+import logo01 from '../../assets/logo-01.png';
 import UsuarioContext from '../contexto/UsuarioContext';
 import Cargando from '../Componentes/Cargando';
 import { urlImagenesUsuarios } from '../configuracion/Urls';
@@ -45,19 +45,24 @@ const Login = ({ navigation }) => {
         <View style={Estilos.contenedorPrincipal}>
             <View style={Estilos.contenedorTitulo}>
                 <ImageBackground
-                    source={misericordia}
+                    source={logo01}
                     resizeMode='stretch'
                     style={Estilos.imagenFondo}
                 >
-                    <Text style={Estilos.textoTitulo}>{titulo}</Text>
                 </ImageBackground>
             </View>
+            <View style={Estilos.contenedorTitulo2}>
+                <Text style={Estilos.textoTitulo}>{titulo}</Text>
+            </View>
+
+            
             <View style={Estilos.contenedorContenido}>
-                {
+                {  
                     espera ? (
                         <Cargando texto="Estableciendo conexion con la API"></Cargando>
                     ) : (
                         <>
+                                    
                             <View style={Estilos.contenedorControles}>
                                 <View style={styles.contenedorImagen}>
                                     <Image
@@ -69,17 +74,18 @@ const Login = ({ navigation }) => {
                                 <TouchableOpacity
                                     style={styles.touch}
                                 >
-                                    <Text style={Estilos.etiquetaBoton}>Editar imagen</Text>
+                                    <Text style={Estilos.etiquetaTexto}>Editar imagen</Text>
                                 </TouchableOpacity>
                             </View>
                             <View style={Estilos.contenedorControles}>
                                 <Text style={Estilos.etiqueta}>{"Nombre: " + nombreCompleto}</Text>
                                 <Text style={Estilos.etiqueta}>{"Correo: " + usuario.correo}</Text>
                                 <Text style={Estilos.etiqueta}>{"Login: " + usuario.login}</Text>
-                                <Text style={Estilos.etiqueta}>{"imagen: " + usuario.imagen}</Text>
+                                <Text style={Estilos.etiqueta}>{"Imagen: " + usuario.imagen}</Text>
                             </View>
 
                             <View style={Estilos.contenedorBotones}>
+                            <Text style={styles.texto}>{modificar ? "Editando" : "Presione para editar"}</Text>
                                 <View style={Estilos.boton}>
                                     <Switch
                                         trackColor={{ false: "red", true: "black" }}
@@ -88,9 +94,9 @@ const Login = ({ navigation }) => {
                                         onValueChange={cambioSwitch}
                                         value={modificar}
                                     />
-                                </View>
-                                <Text style={styles.texto}>{modificar ? "Editando" : "Presione para editar"}</Text>
+                                </View>    
                             </View>
+
                             <View style={Estilos.contenedorBotones}>
                                 <View style={Estilos.boton}>
                                     <Button
@@ -108,6 +114,15 @@ const Login = ({ navigation }) => {
                                     ></Button>
                                 </View>
                             </View>
+
+
+
+
+                            <TouchableOpacity
+                                    style={styles.touch}
+                                >
+                                    <Text style={Estilos.etiquetaTexto}>Editar imagen</Text>
+                                </TouchableOpacity>
                         </>
                     )
                 }
@@ -125,7 +140,7 @@ const styles = StyleSheet.create({
     },
     touch: {
         alignItems: "center",
-        margin: 10,
+        margin: 15,
         backgroundColor: "#000",
         padding: 10,
         borderRadius: 30,
@@ -143,6 +158,16 @@ const styles = StyleSheet.create({
         borderColor: "#ced4da",
         borderRadius: 15,
     },
+    contenedorImagen: {
+        alignItems: 'center',
+        backgroundColor: "#ddd",
+        width: 180,
+        height: 180,
+        borderRadius: 100,
+        marginLeft: 100,
+        marginRight: 100,
+        marginBottom: 10
+    },
     imagen: {
         width: 180,
         height: 180,
@@ -151,16 +176,16 @@ const styles = StyleSheet.create({
         borderColor: "#dedede",
         borderRadius: 90,
     },
-    contenedorImagen: {
-        alignItems: 'center'
-    },
+    
     texto: {
         color: "black",
-        textDecorationColor: "yellow",
+        textDecorationColor: "Red",
         textShadowColor: "red",
         textShadowRadius: 1,
+        marginTop: 22,
         marginLeft: 10,
         marginRight: 10,
+
     }
 });
 export default Login;

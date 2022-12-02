@@ -6,14 +6,25 @@ const Estilos = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        marginBottom: 30,
         
     },
     contenedorTitulo: {
         backgroundColor: '#000',
-        alignItems: 'stretch',
+        alignItems: 'center',
         justifyContent: 'flex-end',
         width: '100%',
         height: 150,
+        alignItems: 'center',
+        
+    },
+    contenedorTitulo2: {
+        backgroundColor: '#000',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        width: '100%',
+        height: 37,
+        alignItems: 'center',
         
     },
     contenedorContenido: {
@@ -34,8 +45,11 @@ const Estilos = StyleSheet.create({
     },
     imagenFondo: {
         flex: 1,
+        width: 300,
+        height: 200,
         justifyContent: 'flex-end',
-        padding:20
+        padding:15,
+        backgroundColor: '#000'
     },
     contenedorControles: {
         flexDirection: 'column',
@@ -47,6 +61,7 @@ const Estilos = StyleSheet.create({
         justifyContent: 'space-evenly',
         marginTop: 10,
         marginBottom: 10,
+        
     },
     entradas: {
         borderColor: '#000',
@@ -66,6 +81,10 @@ const Estilos = StyleSheet.create({
         fontSize: 20,
         marginBottom: 5
     },
+    etiquetaTexto: {
+        fontSize: 16,
+        color:"#fff"
+    },
     etiquetaError: {
         fontSize: 12,
         marginBottom: 5,
@@ -74,9 +93,11 @@ const Estilos = StyleSheet.create({
     },
     boton: {
         flex: 1,
-        alignItems: "stretch",
+        alignItems: 'stretch',
+        margin: 15,
         marginTop: 10,
         marginBottom: 10,
+        borderRadius: 30
     }
 });
 

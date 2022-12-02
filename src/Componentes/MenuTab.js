@@ -8,6 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 
 const Tab = createBottomTabNavigator();
@@ -54,7 +55,7 @@ const MenuTab = ()=>{
                 <Tab.Screen name="Perfil" component={PerfilUsuario}
                      options={{
                         tabBarIcon: ({ color, size }) => (
-                            <AntDesign name="login" color={color} size={size} />
+                            <Entypo name="login" color={color} size={size} />
                         )
                     }}
                 />
