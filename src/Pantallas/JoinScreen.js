@@ -1,6 +1,6 @@
 import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
-import colors from '../consts/colors2';
+import colors from '../consts/colors';
 import AppButton from '../Componentes/AppButton';
 
 
@@ -11,9 +11,9 @@ function JoinScreen({ navigation }) {
             <View style={styles.image}>
                 <Image style={styles.logo} source={require('../../assets/pizza.jpg')} />
                 <View style={styles.content}>
-                    <Text style={styles.title}>Uber Eats: Food Delivery</Text>
-                    <Text style={styles.subTitle}>Get food delivery to your doorstep from thousands of amazing local and national restaurants.</Text>
-                    <AppButton title="Let's go" onPress={() => navigation.navigate("Login")} />
+                    <Text style={styles.title}>Come Rico: ¡Bienvenido!</Text>
+                    <Text style={styles.subTitle}>Las mejores pizzas del país en las principales ciudades y a tu alcance.</Text>
+                    <AppButton title="¡Vámos!" onPress={() => navigation.navigate("Login")} />
                 </View>
             </View>
         </View>

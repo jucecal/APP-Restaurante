@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Alert, Image, StyleSheet, Text, View } from "react-native";
 import AppForm from "../Componentes/forms/AppForm";
 import Screen from "../Componentes/Screen";
-import colors from "../consts/colors2";
+import colors from "../consts/colors";
 import * as yup from "yup";
 import AppFormFeilds from "../Componentes/forms/AppFormFeilds";
 import AppSubmitButton from "../Componentes/forms/AppSubmitButton";
@@ -78,7 +78,7 @@ function Login({ navigation }) {
         </View>
 
         <Text style={styles.join}>
-          Not a member?{" "}
+          No eres miembro?{" "}
           <Text
             onPress={() => navigation.navigate("Signup")}
             style={{ color: colors.primary }}
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   wellcomeTo: {
     fontSize: 23,
     fontWeight: "700",
-    color: colors.secondary,
+    color: colors.dark,
     marginTop: 20,
     textAlign: "center",
   },
