@@ -1,4 +1,4 @@
-import { Text, View, Button, ImageBackground, TextInput, Alert, Image, StyleSheet, TouchableOpacity, Switch } from 'react-native';
+import { Text, ScrollView, View, Button, ImageBackground, TextInput, Alert, Image, StyleSheet, TouchableOpacity, Switch } from 'react-native';
 import React, { useState, useEffect, useContext } from 'react';
 import Estilos from '../Componentes/Estilos';
 import logo01 from '../../assets/logo-01.png';
@@ -55,9 +55,10 @@ const Login = ({ navigation }) => {
                 <Text style={Estilos.textoTitulo}>{titulo}</Text>
             </View>
 
-            
+            <ScrollView showsVerticalScrollIndicator={false}>
+
             <View style={Estilos.contenedorContenido}>
-                {  
+            {  
                     espera ? (
                         <Cargando texto="Estableciendo conexion con la API"></Cargando>
                     ) : (
@@ -109,7 +110,7 @@ const Login = ({ navigation }) => {
                                 <View style={Estilos.boton}>
                                     <Button
                                         title='Cerrar Sesión'
-                                        color={'red'}
+                                        color={'#F9813A'}
                                         onPress={cerrarSesion}
                                     ></Button>
                                 </View>
@@ -128,6 +129,16 @@ const Login = ({ navigation }) => {
                 }
 
             </View>
+
+
+
+
+
+                
+            </ScrollView>
+
+
+            
         </View>
     );
 };

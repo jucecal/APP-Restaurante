@@ -6,7 +6,7 @@ const Estilos = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 30,
+        
         
     },
     contenedorTitulo: {
@@ -61,7 +61,6 @@ const Estilos = StyleSheet.create({
         justifyContent: 'space-evenly',
         marginTop: 10,
         marginBottom: 10,
-        
     },
     entradas: {
         borderColor: '#000',
