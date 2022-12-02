@@ -51,7 +51,7 @@ function Login({ navigation }) {
     <Screen style={styles.container}>
       <View style={styles.wrapper}>
         <View style={tailwind`py-4 rounded-2xl`}>
-          <Image style={styles.logo} source={require("../../assets/pizza.jpg")} />
+          <Image style={styles.logo} source={require("../../assets/logo.png")} />
         </View>
         <Text style={styles.wellcomeTo}>
           Login to Come <Text style={styles.brand}>Rico</Text>
@@ -105,16 +105,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   logo: {
-    height: 160,
+    height: 280,
     resizeMode: "contain",
     alignSelf: "center",
-    marginTop: 30,
+    marginTop: 10,
   },
   wellcomeTo: {
     fontSize: 23,
     fontWeight: "700",
     color: colors.dark,
-    marginTop: 20,
+    marginTop: 10,
     textAlign: "center",
   },
   brand: {

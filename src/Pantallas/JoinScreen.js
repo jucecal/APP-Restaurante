@@ -9,7 +9,7 @@ function JoinScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.image}>
-                <Image style={styles.logo} source={require('../../assets/pizza.jpg')} />
+                <Image style={styles.logo} source={require('../../assets/logo.png')} />
                 <View style={styles.content}>
                     <Text style={styles.title}>Come Rico: ¡Bienvenido!</Text>
                     <Text style={styles.subTitle}>Las mejores pizzas del país en las principales ciudades y a tu alcance.</Text>
@@ -29,8 +29,10 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
         alignSelf: "center",
         position: 'absolute',
-        zIndex: 99999,
-        top: 160
+        zIndex: 99999,        
+        top: 160,
+        
+       
     },
     image: {
         width: '100%',
@@ -38,7 +40,9 @@ const styles = StyleSheet.create({
         flex: 1,
         position: 'relative',
         justifyContent: 'flex-end',
-        backgroundColor: colors.dark
+        backgroundColor: colors.dark,
+        
+        
     },
     content: {
         backgroundColor: colors.white,
