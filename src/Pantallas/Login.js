@@ -1,137 +1,141 @@
-import { Text, View, Button, ImageBackground, TextInput, Alert } from 'react-native';
-import React, { useState, useEffect, useContext } from 'react';
-import Estilos from '../Componentes/Estilos';
-import misericordia from '../../assets/pizza.jpg';
+import React, { useState, useEffect, useContext } from "react";
+import { Alert, Image, StyleSheet, Text, View } from "react-native";
+import AppForm from "../Componentes/forms/AppForm";
+import Screen from "../Componentes/Screen";
+import colors from "../consts/colors2";
+import * as yup from "yup";
+import AppFormFeilds from "../Componentes/forms/AppFormFeilds";
+import AppSubmitButton from "../Componentes/forms/AppSubmitButton";
+import tailwind from 'tailwind-react-native-classnames';
 import UsuarioContext from '../contexto/UsuarioContext';
-import Cargando from '../Componentes/Cargando';
 
-const Login = ({ navigation }) => {
-    const [usuario, setUsuario] = useState(null);
-    const [contrasena, setContrasena] = useState(null);
-    const [validarUsuario, setValidarUsuario] = useState(false);
-    const [validarContrasena, setValidarContrasena] = useState(false);
-    const { setLogin } = useContext(UsuarioContext);
-    const [espera, setEspera] = useState(false);
-    const titulo='Iniciar Sesion';
-    useEffect(() => {
-        if (!usuario) {
-            setValidarUsuario(true);
-        }
-        else if (usuario.length < 3) {
-            setValidarUsuario(true);
-        }
-        else {
-            setValidarUsuario(false);
-        }
-        if (!contrasena) {
-            setValidarContrasena(true);
-        }
-        else if (contrasena.length < 6) {
-            setValidarContrasena(true);
-        }
-        else {
-            setValidarContrasena(false);
-        }
-    }, [usuario, contrasena]);
-    const iniciarSesion = async () => {
-        console.log(usuario);
-        if (!validarUsuario && !validarContrasena) {
-            setEspera(true);
-            await setLogin({ usuario: usuario, contrasena: contrasena });
-            setEspera(false);
-        }
-        else {
-            Alert.alert(titulo, 'Debe enviar los datos correctos');
-        }
-    };
-    const irpin = () =>{
-        console.log("Ir a PIN");
-        navigation.navigate('Pin');
-    }
-    return (
-        <View style={Estilos.contenedorPrincipal}>
-            <View style={Estilos.contenedorTitulo}>
-                <ImageBackground
-                    source={misericordia}
-                    resizeMode='stretch'
-                    style={Estilos.imagenFondo}
-                >
-                    <Text style={Estilos.textoTitulo}>{titulo}</Text>
-                </ImageBackground>
-            </View>
-            <View style={Estilos.contenedorContenido}>
-                {
-                    espera ? (
-                        <Cargando texto="Estableciendo conexion con la API"></Cargando>
-                    ) : (
-                        <>
-                            <View style={Estilos.contenedorControles}>
-                                <Text style={Estilos.etiqueta}>Usuario</Text>
-                                <TextInput style={validarUsuario ? Estilos.entradaError : Estilos.entrada}
-                                    placeholder='Escriba el correo o usuario'
-                                    value={usuario}
-                                    onChangeText={setUsuario}
-                                >
-                                </TextInput>
-                                {
-                                    validarUsuario ? (
-                                        <>
-                                            <Text style={Estilos.etiquetaError}>Dede escribir el usuario</Text>
-                                        </>
+const loginValidationSchema = yup.object().shape({
+  email: yup
+    .string()
+    .email("Please enter valid email")
+    .required("Email Address is Required"),
+  password: yup
+    .string()
+    .min(6, ({ min }) => `Password must be at least ${min} characters`)
+    .required("Password is required"),
+});
 
-                                    ) : (
-                                        <>
-                                        </>
-                                    )
-                                }
-                            </View>
-                            <View style={Estilos.contenedorControles}>
-                                <Text style={Estilos.etiqueta}>Contraseña</Text>
-                                <TextInput style={validarContrasena ? Estilos.entradaError : Estilos.entrada}
-                                    placeholder='Escriba la contraseña'
-                                    secureTextEntry={true}
-                                    value={contrasena}
-                                    onChangeText={setContrasena}
-                                >
-                                </TextInput>
-                                {
-                                    validarContrasena ? (
-                                        <>
-                                            <Text style={Estilos.etiquetaError}>Debe escribir la contrasena</Text>
-                                        </>
-                                    ) : (<></>)
-                                }
-                            </View>
-                            <View style={Estilos.contenedorBotones}>
-                                <View style={Estilos.boton}>
-                                    <Button
-                                        title='Entrar'
-                                        color={'#000'}
-                                        onPress={iniciarSesion}
-                                    ></Button>
-                                </View>
-                                <View style={Estilos.boton}>
-                                    <Button
-                                        title='Salir'
-                                        color={'red'}
-                                    ></Button>
-                                </View>
-                            </View>
-                            <View style={Estilos.contenedorBotones}>
-                                <View style={Estilos.boton}>
-                                    <Button
-                                        title='Recuperar Contraseña'
-                                        color={'#000'}
-                                        onPress={irpin}
-                                    ></Button>
-                                </View>
-                            </View>
-                        </>
-                    )
-                }
+function Login({ navigation }) {
+ 
+  const { setLogin } = useContext(UsuarioContext);  
+  
+  const iniciarSesion = async ({ email, password }) => {    
+      
+      await setLogin({ usuario: email, contrasena: password });      
+    
+  };
+  const LoginUser = ({ email, password }) => {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .catch((error) => {
+        if (error.code === "auth/invalid-password") {
+          Alert.alert("Error", "Invalid password!")
+        }
+        if (error.code === "auth/invalid-email") {
+          Alert.alert("Error", "That email address is invalid!")
+        }
+        Alert.alert('ERROR: ', error.message);
+      });
+  };
 
-            </View>
+  const irpin = () =>{
+    console.log("Ir a PIN");
+    navigation.navigate('Pin');
+  }
+  return (
+    <Screen style={styles.container}>
+      <View style={styles.wrapper}>
+        <View style={tailwind`py-4 rounded-2xl`}>
+          <Image style={styles.logo} source={require("../../assets/pizza.jpg")} />
         </View>
-    );
+        <Text style={styles.wellcomeTo}>
+          Login to Come <Text style={styles.brand}>Rico</Text>
+        </Text>
+        <View style={styles.form}>
+          <AppForm
+            initialValues={{ email: "", password: "" }}
+            validationSchema={loginValidationSchema}
+            onSubmit={(values) => iniciarSesion(values)}
+          >
+            <AppFormFeilds
+              name="email"
+              placeholder="Correo"
+              keyboardType="email-address"
+            />
+            <AppFormFeilds
+              name="password"
+              placeholder="Contraseña"
+              autoCompleteType="off"
+              password={true}
+            />
+            <AppSubmitButton title="Ingresar" />            
+          </AppForm>
+        </View>
+
+        <Text style={styles.join}>
+          Not a member?{" "}
+          <Text
+            onPress={() => navigation.navigate("Signup")}
+            style={{ color: colors.primary }}
+          >
+            Sign Up
+          </Text>
+        </Text>
+        <Text onPress={irpin}
+          style={{ color: colors.dark, textAlign: 'center',marginTop:10 }}
+        >
+          ¿Olvidaste tu contraseña?          
+        </Text>
+      </View>
+    </Screen>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: colors.white,
+    justifyContent: 'center'
+  },
+  wrapper: {
+    paddingHorizontal: 20,
+  },
+  logo: {
+    height: 160,
+    resizeMode: "contain",
+    alignSelf: "center",
+    marginTop: 30,
+  },
+  wellcomeTo: {
+    fontSize: 23,
+    fontWeight: "700",
+    color: colors.secondary,
+    marginTop: 20,
+    textAlign: "center",
+  },
+  brand: {
+    fontSize: 23,
+    color: colors.primary,
+    textAlign: "center",
+    fontWeight: "500",
+  },
+  form: {
+    marginTop: 10,
+  },
+  join: {
+    marginTop: 16,
+    textAlign: "center",
+    color: colors.black,
+  },
+  or: {
+    color: colors.gray,
+    textAlign: "center",
+    marginVertical: 20,
+  },
+});
+
 export default Login;
