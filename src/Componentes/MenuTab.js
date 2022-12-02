@@ -5,6 +5,10 @@ import Colaborador from '../Pantallas/Colaborador';
 import EditarCliente from '../Pantallas/EditarCliente';
 import PerfilUsuario from '../Pantallas/PerfilUsuario';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { AntDesign } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -16,11 +20,44 @@ const MenuTab = ()=>{
             }}
         >
             <>
-                <Tab.Screen name="Proveedores" component={Proveedor} />
-                <Tab.Screen name="Clientes" component={Cliente} />
-                <Tab.Screen name="Colaboradores" component={Colaborador} />
-                <Tab.Screen name="Inventario" component={Inventario} />
-                <Tab.Screen name="Perfil" component={PerfilUsuario} />
+                <Tab.Screen name="Proveedores" component={Proveedor} 
+                    options={{
+                        tabBarIcon: ({ color, size }) => (
+                            <Feather name="truck" color={color} size={size} />
+                        )
+                    }}
+
+                />
+                <Tab.Screen name="Clientes" component={Cliente} 
+                    options={{
+                        tabBarIcon: ({ color, size }) => (
+                            <AntDesign name="user" color={color} size={size} />
+                        )
+                    }}
+                />
+
+                <Tab.Screen name="Colaboradores" component={Colaborador}
+                    options={{
+                        tabBarIcon: ({ color, size }) => (
+                            <AntDesign name="idcard" color={color} size={size} />
+                        )
+                    }}
+                />
+                <Tab.Screen name="Inventario" component={Inventario}
+                    options={{
+                        tabBarIcon: ({ color, size }) => (
+                            <Feather name="list" color={color} size={size} />
+                        )
+                    }}
+                
+                />
+                <Tab.Screen name="Perfil" component={PerfilUsuario}
+                     options={{
+                        tabBarIcon: ({ color, size }) => (
+                            <AntDesign name="login" color={color} size={size} />
+                        )
+                    }}
+                />
                 
             </>
         </Tab.Navigator>
