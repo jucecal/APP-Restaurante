@@ -4,9 +4,17 @@ import Estilos from '../Componentes/Estilos';
 import logo01 from '../../assets/logo-01.png';
 import UsuarioContext from '../contexto/UsuarioContext';
 import Cargando from '../Componentes/Cargando';
-import { urlImagenesUsuarios } from '../configuracion/Urls';
+import tailwind from 'tailwind-react-native-classnames';
+import { AntDesign } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { urlImagenesUsuarios, urlImagenesUsuariosCL } from '../configuracion/Urls';
+import { useNavigation } from '@react-navigation/core';
 
-const Login = ({ navigation }) => {
+import Proveedor from '../Pantallas/Proveedor';
+import Cliente from './Cliente';
+
+const Login = () => {
     const { usuario, setCerrarSesion } = useContext(UsuarioContext);
     const [nombre, setnombre] = useState(usuario.nombre);
     const [apellido, setApellido] = useState(usuario.apellido);
@@ -16,6 +24,7 @@ const Login = ({ navigation }) => {
     const [espera, setEspera] = useState(false);
     const [modificar, setModificar] = useState(false);
     const cambioSwitch = () => setModificar(previousState => !previousState);
+    const navigation = useNavigation()
     const titulo = 'Perfil de Usuario';
     useEffect(() => {
         if (!nombre) {
@@ -41,6 +50,8 @@ const Login = ({ navigation }) => {
         await setCerrarSesion();
     };
 
+
+
     return (
         <View style={Estilos.contenedorPrincipal}>
             <View style={Estilos.contenedorTitulo}>
@@ -51,11 +62,13 @@ const Login = ({ navigation }) => {
                 >
                 </ImageBackground>
             </View>
+
+
+            
+            <ScrollView showsVerticalScrollIndicator={false}>
             <View style={Estilos.contenedorTitulo2}>
                 <Text style={Estilos.textoTitulo}>{titulo}</Text>
             </View>
-
-            <ScrollView showsVerticalScrollIndicator={false}>
 
             <View style={Estilos.contenedorContenido}>
             {  
@@ -68,7 +81,7 @@ const Login = ({ navigation }) => {
                                 <View style={styles.contenedorImagen}>
                                     <Image
                                         style={styles.imagen}
-                                        source={{uri: urlImagenesUsuarios + usuario.imagen}}
+                                        source={{uri: urlImagenesUsuariosCL + usuario.imagen}}
                                     />
                                 </View>
 
@@ -89,8 +102,8 @@ const Login = ({ navigation }) => {
                             <Text style={styles.texto}>{modificar ? "Editando" : "Presione para editar"}</Text>
                                 <View style={Estilos.boton}>
                                     <Switch
-                                        trackColor={{ false: "red", true: "black" }}
-                                        thumbColor={modificar ? "black" : "black"}
+                                        trackColor={{ false: "black", true: "#F9813A" }}
+                                        thumbColor={modificar ? "black" : "#F9813A"}
                                         ios_backgroundColor="#3e3e3e"
                                         onValueChange={cambioSwitch}
                                         value={modificar}
@@ -100,7 +113,8 @@ const Login = ({ navigation }) => {
 
                             <View style={Estilos.contenedorBotones}>
                                 <View style={Estilos.boton}>
-                                    <Button
+                                    <Button 
+                                        
                                         title='Guardar Cambios'
                                         color={'#000'}
                                     ></Button>
@@ -118,26 +132,39 @@ const Login = ({ navigation }) => {
 
 
 
+                            <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
+                                <Text style={tailwind`text-gray-800 mt-2 text-lg mb-2`}>Administrar Opciones</Text>
 
-                            <TouchableOpacity
-                                    style={styles.touch}
-                                >
-                                    <Text style={Estilos.etiquetaTexto}>Editar imagen</Text>
-                                </TouchableOpacity>
+
+                                <SavedPlaces
+                                    title="Clientes"
+                                    text="Agregar, Editar o Eliminar clientes."
+                                    Icon={() => <AntDesign name="user" size={28} color="black" />}
+                                />
+                                
+                                <SavedPlaces
+                                    title="Colaborador"
+                                    text="Agregar, Editar o Eliminar colaboradores."
+                                    Icon={() => <AntDesign name="idcard" size={24} color="black" />}
+                                />
+
+                                <SavedPlaces
+                                    title="Proveedores"
+                                    text="Agregar, Editar o Eliminar proveedores."
+                                    Icon={() => <Feather name="truck" color="black" size={24} />}
+                                />
+
+                                <SavedPlaces
+                                    title="Inventario"
+                                    text="Ver Inventario."
+                                    Icon={() => <Feather name="list" color="black" size={24} />}
+                                />
+                            </View>
                         </>
                     )
                 }
-
             </View>
-
-
-
-
-
-                
             </ScrollView>
-
-
             
         </View>
     );
@@ -190,8 +217,8 @@ const styles = StyleSheet.create({
     
     texto: {
         color: "black",
-        textDecorationColor: "Red",
-        textShadowColor: "red",
+        textDecorationColor: "black",
+        textShadowColor: "#F9813A",
         textShadowRadius: 1,
         marginTop: 22,
         marginLeft: 10,
@@ -200,3 +227,15 @@ const styles = StyleSheet.create({
     }
 });
 export default Login;
+
+const SavedPlaces = ({ title, text, Icon }) => (
+    <TouchableOpacity style={tailwind`flex-row items-center my-3`}>
+        <Icon />
+        <View style={tailwind`ml-5`}>
+            <Text style={tailwind`text-gray-800`}>{title}</Text>
+            <Text style={tailwind`text-gray-600 text-xs mt-1`}>{text}</Text>
+        </View>
+    </TouchableOpacity>
+)
+
+

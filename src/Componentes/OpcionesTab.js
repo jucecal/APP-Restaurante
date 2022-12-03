@@ -1,9 +1,8 @@
 import Proveedor from '../Pantallas/Proveedor';
 import Inventario from '../Pantallas/Inventario';
-import Carrito from '../Pantallas/Carrito';
-import Menu from '../Pantallas/Menu';
-import EditarCliente from '../Pantallas/EditarCliente';
-import PerfilUsuario from '../Pantallas/PerfilUsuario';
+import Cliente from '../Pantallas/Cliente';
+import Colaborador from '../Pantallas/Colaborador';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
@@ -13,7 +12,7 @@ import { Entypo } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
-const MenuTab = ()=>{
+const OpcionesTab = ()=>{
     return (
         <Tab.Navigator
             screenOptions={{
@@ -21,41 +20,32 @@ const MenuTab = ()=>{
             }}
         >
             <>
-                <Tab.Screen name="Inicio" component={Proveedor} 
+                <Tab.Screen name="Clientes" component={Cliente} 
                     options={{
-                        tabBarIcon: ({ color, size }) => (
-                            <AntDesign name="home" color={color} size={size} />
-                        )
-                    }}
-
-                />
-                <Tab.Screen name="Menú" component={Menu} 
-                    options={{
-                        tabBarIcon: ({ color, size }) => (
-                            <AntDesign name="appstore-o" color={color} size={size} />
-                        )
-                    }}
-                />
-
-                <Tab.Screen name="Comprar" component={Carrito}
-                    options={{
-                        tabBarIcon: ({ color, size }) => (
-                            <Entypo name="shopping-bag" color={color} size={size} />
-                        )
-                    }}
-                />
-                <Tab.Screen name="Reservaciones" component={Inventario}
-                    options={{
-                        tabBarIcon: ({ color, size }) => (
-                            <AntDesign name="calendar" color={color} size={size} />
-                        )
-                    }}
-                
-                />
-                <Tab.Screen name="Perfil" component={PerfilUsuario}
-                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <AntDesign name="user" color={color} size={size} />
+                        )
+                    }}
+                />
+                <Tab.Screen name="Colaboradores" component={Colaborador} 
+                    options={{
+                        tabBarIcon: ({ color, size }) => (
+                            <AntDesign name="idcard" color={color} size={size} />
+                        )
+                    }}
+                />
+
+                <Tab.Screen name="Proveedores" component={Proveedor}
+                    options={{
+                        tabBarIcon: ({ color, size }) => (
+                            <Feather name="truck" color={color} size={size} />
+                        )
+                    }}
+                />
+                <Tab.Screen name="Inventario" component={Inventario}
+                    options={{
+                        tabBarIcon: ({ color, size }) => (
+                            <Feather name="list" color={color} size={size} />
                         )
                     }}
                 />
@@ -65,4 +55,4 @@ const MenuTab = ()=>{
     );
 };
 
-export default MenuTab;
+export default OpcionesTab;

@@ -27,7 +27,7 @@ import UsuarioContext from '../contexto/UsuarioContext';
 const { width } = Dimensions.get('screen');
 
 
-const Cliente = () => {
+const Cliente = ({ navigation }) => {
   const { usuario} = useContext(UsuarioContext);  
 
   const Card = ({ cliente }) => {

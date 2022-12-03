@@ -36,8 +36,8 @@ const Carrito = () => {
     return (
         <View style={{ backgroundColor: COLORS.white, flex: 1 }}>
             <View style={style.header}>
-                <AntDesign name="doubleleft" size={28} />
-                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Cart</Text>
+                <AntDesign name="left" size={28} />
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}></Text>
             </View>
             <FlatList
                 showsVerticalScrollIndicator={false}

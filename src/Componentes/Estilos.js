@@ -10,7 +10,7 @@ const Estilos = StyleSheet.create({
         
     },
     contenedorTitulo: {
-        backgroundColor: '#000',
+        backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'flex-end',
         width: '100%',
@@ -19,7 +19,7 @@ const Estilos = StyleSheet.create({
         
     },
     contenedorTitulo2: {
-        backgroundColor: '#000',
+        backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'flex-end',
         width: '100%',
@@ -38,7 +38,7 @@ const Estilos = StyleSheet.create({
 
     },
     textoTitulo: {
-        color: '#fff',
+        color: '#000',
         fontSize: 26,
         fontWeight: '900',
         textAlign: 'center'
@@ -49,7 +49,7 @@ const Estilos = StyleSheet.create({
         height: 200,
         justifyContent: 'flex-end',
         padding:15,
-        backgroundColor: '#000'
+        backgroundColor: '#fff'
     },
     contenedorControles: {
         flexDirection: 'column',
