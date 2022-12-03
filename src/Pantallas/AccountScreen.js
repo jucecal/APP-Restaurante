@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { selectUser } from '../redux/slices/authSlice'
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 
 const AccountScreen = () => {
@@ -23,22 +24,33 @@ const AccountScreen = () => {
                 <Text style={tailwind`text-lg text-indigo-900`}>Lewa@gmail.com</Text>
             </View>
             <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
-                <Text style={tailwind`text-gray-800 mt-2 text-lg mb-2`}>Saved places</Text>
+                <Text style={tailwind`text-gray-800 mt-2 text-lg mb-2`}>Administrar Opciones</Text>
                 <SavedPlaces
-                    title="Home"
-                    text="Add home"
-                    Icon={() => <AntDesign name="home" size={24} color="black" />}
+                    title="Clientes"
+                    text="Agregar, editar y eliminar clientes."
+                    Icon={() => <AntDesign name="user" size={24} color="black" />}
                 />
                 <SavedPlaces
-                    title="Word"
-                    text="Add work"
-                    Icon={() => <Ionicons name="md-briefcase-outline" size={24} color="black" />}
+                    title="Colaboradores"
+                    text="Agregar, editar y eliminar colaborador."
+                    Icon={() => <AntDesign name="idcard" size={24} color="black" />}
+                />
+
+                <SavedPlaces
+                    title="Proveedores"
+                    text="Agregar, editar y eliminar clientes."
+                    Icon={() => <Feather name="truck" size={24} color="black" />}
+                />
+                <SavedPlaces
+                    title="Inventario"
+                    text="Agregar, editar y eliminar colaborador."
+                    Icon={() => <Feather name="list" size={24} color="black" />}
                 />
             </View>
             <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
-                <Text style={tailwind`text-gray-800 mt-2 text-lg`}>Other options</Text>
-                <TouchableOpacity >
-                    <Text style={tailwind`text-green-900 mt-2`}>Sign out</Text>
+                <Text style={tailwind`text-gray-800 mt-2 text-lg`}>Otras Opciones</Text>
+                <TouchableOpacity>
+                    <Text style={tailwind`text-green-900 mt-2`}>Cerrar Sesión</Text>
                 </TouchableOpacity>
             </View>
         </Screen>
