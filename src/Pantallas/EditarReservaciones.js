@@ -6,6 +6,7 @@ import COLORS from '../consts/colors';
 import imagen from '../../assets/cheesePizza.png';
 import EstilosEditar from '../Componentes/EstilosEditar';
 import DatePicker from 'react-DatePicker';
+import React, { useState, useEffect, useContext } from "react";
 
 const EditarReservacion = () => {
 
@@ -19,17 +20,9 @@ const EditarReservacion = () => {
                 <View>
                     <View style={EstilosEditar.contenedorContenido}>
                         <Text style={EstilosEditar.etiqueta}>Fecha</Text>
-                        /**const [selectedDate,setSelectedDate] = useState(null)
-                        return(
-                            <div className='dtp'>
-                                <DatePicker>
-                                    selected={selectedDate}
-                                    onChange={date => setSelectedDate(date)}
-                                    dateFormat='dd/MM/yyyy'
-                                    minDate={new Date()}
-                                </DatePicker>
-                            </div>
-                        ) */
+                        <Text>selected: {date.toLocaleString()}</Text>
+                        {show && (  <DateTimePicker testID="dateTimePicker" value={date}
+                        mode={mode}is24Hour={true}onChange={onChange}/> )}
                     </View>
 
                     <View style={EstilosEditar.contenedorContenido}>
