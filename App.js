@@ -13,6 +13,9 @@ import EditarColaborador from './src/Pantallas/EditarColaborador';
 import GuardarColaborador from './src/Pantallas/GuardarColaborador';
 import GuardarCliente from './src/Pantallas/GuardarCliente';  */
 import Navegacion from './src/Componentes/Navegacion';
+import { store } from "./src/redux/store";
+import { Provider } from "react-redux";
+
 
 export default function App() {
   return (
@@ -30,9 +33,10 @@ export default function App() {
     //<Inventario></Inventario>
     //<GuardarColaborador></GuardarColaborador>
     //<GuardarCliente></GuardarCliente>
+    <Provider store={store}>
     <Navegacion>
       
     </Navegacion>
-    
+    </Provider>
   );
 }
