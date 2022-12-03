@@ -23,11 +23,38 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import EstilosAdmin from '../Componentes/EstiloAdmin';
 import UsuarioContext from '../contexto/UsuarioContext';
+import Axios from '../Componentes/Axios';
 const { width } = Dimensions.get('screen');
 
 
 const Proveedor = () => {
   const { usuario} = useContext(UsuarioContext);
+  const [lista,setlista] = useState([]);
+  const [espera, setEspera] = useState(false);
+  useEffect(()=>{
+    buscar();
+    console.log(lista);   
+    
+  },[]);
+  
+  const buscar = async () =>{
+    
+    var mensaje = "";
+    setEspera(true);
+    await Axios.get('proveedor/listar')
+      .then(async (data) =>{       
+        setlista(data.data);
+        
+      })
+      .catch((er)=>{
+        console.log(er);
+      });
+      setEspera(false);
+      if(mensaje != ''){
+          Alert.alert('Error en la lista', mensaje);
+
+      }
+  }
   
   const Card = ({ proveedor }) => {
     return (
@@ -42,15 +69,15 @@ const Proveedor = () => {
             <Feather name='truck' size={28} color={COLORS.dark} />
           </View>
           <View style={EstilosAdmin.textoCarta} >
-            <Text style={EstilosAdmin.tituloCarta}>{proveedor.proveedor}</Text>
+            <Text style={EstilosAdmin.tituloCarta}>{proveedor.Proveedor}</Text>
             <Text style={EstilosAdmin.detallesCarta}>
-              id: {proveedor.id}
+              id: {proveedor.Id}
             </Text>
             <Text style={EstilosAdmin.detallesCarta}>
-              Nombre de Contacto: {proveedor.nombreContacto}
+              Nombre de Contacto: {proveedor.Contacto}
             </Text>
             <Text style={EstilosAdmin.detallesCarta}>
-              Telefono: {proveedor.telefono}
+              Telefono: {proveedor.Telefono}
             </Text>
           </View>  
           <View style={EstilosAdmin.iconoEditar}>
@@ -60,7 +87,7 @@ const Proveedor = () => {
       </TouchableHighlight>
     );
   };
-  return (
+  return (    
     <View style={{ flex: 1, backgroundColor: COLORS.white }}>
       <View style={EstilosAdmin.header}>
         <View>
@@ -114,7 +141,7 @@ const Proveedor = () => {
         key={'_'}
         showsVerticalScrollIndicator={false}
         numColumns={1}
-        data={proveedores}
+        data={lista}
         renderItem={({ item }) => <Card proveedor={item} />}
       />
     </View>
