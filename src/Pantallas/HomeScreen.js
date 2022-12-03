@@ -5,7 +5,7 @@ import Categories from '../Componentes/Categories'
 import RestaurantItem from '../Componentes/RestaurantItem'
 import tailwind from 'tailwind-react-native-classnames';
 import { localRestaurants } from '../data/localRestaurants';
-import colors from '../consts/colors2'
+import colors from '../consts/colors'
 
 const YELP_API_KEY = "";
 
@@ -45,7 +45,7 @@ const HomeScreen = () => {
 
     return (
         <Screen style={tailwind`bg-white flex-1`}>
-            <Text>Inicio</Text>
+            <Text style={tailwind`mt-4 text-3xl text-center`}>Inicio</Text>
             <Categories />
             <ScrollView style={tailwind`flex-1`} showsVerticalScrollIndicator={false}>
                 {loading && <ActivityIndicator size="large" color={colors.primary} style={tailwind`mt-2 mb-6`} />}

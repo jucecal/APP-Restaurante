@@ -62,7 +62,7 @@ const DetailsScreen = ({ route, navigation }) => {
                         ))}
                     </View>
                     {/* MenuItems */}
-                    <MenuItems resName="{name}" resImage={image_url} />
+                    <MenuItems resName="Pedido" resImage={image_url} />
                 </View>
             </ScrollView>
             <ViewCart total={totalPrice} count={getAllItems.length} />
