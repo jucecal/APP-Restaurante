@@ -51,7 +51,7 @@ const DetailsScreen = ({ route, navigation }) => {
                             </View>
                             <View style={styles.infoItem}>
                                 <Foundation name="dollar" size={16} color={colors.primary} />
-                                <Text style={styles.infoText}>• {price}</Text>
+                                <Text style={styles.infoText}>• Lempira</Text>
                             </View>
                         </View>
                     </View>
@@ -61,6 +61,7 @@ const DetailsScreen = ({ route, navigation }) => {
                             <Text key={index} style={tailwind`text-xs text-gray-700`}><Text style={{ color: colors.primary }}>•</Text> {title}</Text>
                         ))}
                     </View>
+                    
                     {/* MenuItems */}
                     <MenuItems resName="Pedido" resImage={image_url} />
                 </View>

@@ -38,12 +38,12 @@ const AccountScreen = () => {
 
                 <SavedPlaces
                     title="Proveedores"
-                    text="Agregar, editar y eliminar clientes."
+                    text="Agregar, editar y eliminar proveedores."
                     Icon={() => <Feather name="truck" size={24} color="black" />}
                 />
                 <SavedPlaces
                     title="Inventario"
-                    text="Agregar, editar y eliminar colaborador."
+                    text="Ver Inventario."
                     Icon={() => <Feather name="list" size={24} color="black" />}
                 />
             </View>

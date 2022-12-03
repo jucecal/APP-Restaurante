@@ -25,7 +25,7 @@ const CartScreen = () => {
                 <View style={tailwind`flex-row items-center px-5 pb-5`}>
                     <View style={styles.left}>
                         <Text style={styles.total}>Total</Text>
-                        <Text style={styles.totalAmount}>${totalPrice}</Text>
+                        <Text style={styles.totalAmount}>L.{totalPrice}</Text>
                     </View>
                     <View style={styles.right}>
                         <AppButton title="Checkout" onPress={() => setModalVisible(true)} color="black" />
