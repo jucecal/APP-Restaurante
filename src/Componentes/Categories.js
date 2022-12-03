@@ -5,6 +5,7 @@ import { categoriesData } from '../data/categoriesData'
 
 const Categories = () => {
     return (
+
         <View style={tailwind`mx-3`}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {categoriesData.map(({ image, text }, index) => (
@@ -24,3 +25,5 @@ const Categories = () => {
 const styles = StyleSheet.create({})
 
 export default Categories;
+
+

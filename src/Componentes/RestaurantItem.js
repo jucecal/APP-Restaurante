@@ -41,7 +41,7 @@ const RestaurantItemCard = ({ item, onPress }) => {
                 <View style={tailwind`flex-grow`}>
                     <Text style={tailwind`font-bold text-lg`} numberOfLines={1}>{item.name}</Text>
                     <View style={tailwind`flex-row items-center`}>
-                        <MaterialCommunityIcons name="clock-time-four" size={13} color="#06C167" />
+                        <MaterialCommunityIcons name="clock-time-four" size={13} color="#F9813A" />
                         <Text style={tailwind`text-xs text-gray-700`}> 20-30 • min • {item.price}</Text>
                     </View>
                 </View>

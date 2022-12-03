@@ -10,7 +10,7 @@ function AppHead({ title, icon = null }) {
     return (
         <View style={styles.topBar}>
             <TouchableOpacity style={styles.topBar_icon} onPress={() => navigation.goBack()}>
-                <Ionicons name="arrow-back" size={26} color={colors.black} />
+                <Ionicons name="arrow-back" size={26} color='#F9813A' />
             </TouchableOpacity>
             <View style={styles.topBar_center}>
                 {icon && <Ionicons style={styles.icon} name={icon} size={27} color="black" />}
