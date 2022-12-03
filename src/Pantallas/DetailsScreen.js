@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons'
 import tailwind from 'tailwind-react-native-classnames';
 import { Foundation } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
+import RestaurantMap from '../Componentes/RestaurantMap'
 import MenuItems from '../Componentes/MenuItems'
 import ViewCart from '../Componentes/ViewCart';
 import { selectTotalItems, selectTotalPrice } from '../redux/slices/basketSlice';
@@ -13,6 +14,7 @@ import { useSelector } from 'react-redux';
 
 const DetailsScreen = ({ route, navigation }) => {
     const [mapActive, setMapActive] = useState(false)
+    const { categories, coordinates, image_url, name, price, rating, review_count } = route?.params?.item
     const totalPrice = useSelector(selectTotalPrice)
     const getAllItems = useSelector(selectTotalItems)
 
@@ -21,9 +23,12 @@ const DetailsScreen = ({ route, navigation }) => {
             <TouchableOpacity style={tailwind`absolute top-9 left-4 z-30 w-9 h-9 rounded-full bg-white justify-center items-center shadow`} onPress={() => navigation.goBack()}>
                 <Ionicons name="arrow-back" size={18} color={colors.black} />
             </TouchableOpacity>
-            <View style={styles.mapImageWrpper}>                
-                <Image source={require('../../assets/logo.png')} style={styles.image} />
-                
+            <View style={styles.mapImageWrpper}>
+                {mapActive ? (
+                    <RestaurantMap coordinates={coordinates} title={name} />
+                ) : (
+                    <Image source={{ uri: image_url }} style={styles.image} />
+                )}            
             </View>
 
             <ScrollView showsVerticalScrollIndicator={false} style={tailwind`z-20`}>
