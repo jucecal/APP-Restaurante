@@ -28,17 +28,17 @@ const MainTabNavigator = () => {
                 },
             }}
         >
-            <Tab.Screen name="Inicio" component={HomeScreen}
+            <Tab.Screen name="Inicio" component={BrowseScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
                         <AntDesign name="home" color={color} size={size} />
                     )
                 }}
             />
-            <Tab.Screen name="Buscar" component={BrowseScreen}
+            <Tab.Screen name="Menú" component={HomeScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <Ionicons name="md-search-sharp" color={color} size={size} />
+                        <AntDesign name="appstore-o" color={color} size={size} />
                     )
                 }}
             />
@@ -51,7 +51,7 @@ const MainTabNavigator = () => {
             <Tab.Screen name="Reservaciones" component={GroceryScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
-                        <Feather name="clipboard" color={color} size={size} />
+                        <AntDesign name="calendar" color={color} size={size} />
                     )
                 }}
             />

@@ -6,7 +6,8 @@ import AppHead from '../Componentes/AppHead';
 import AppButton from '../Componentes/AppButton';
 import { selectTotalItems, selectTotalPrice } from '../redux/slices/basketSlice';
 import { useSelector } from 'react-redux';
-import colors from '../consts/colors2';
+import colors from '../consts/colors';
+//import colors from '../consts/colors2';
 import CartItems from '../Componentes/CartItems';
 import CheckoutModal from '../Componentes/CheckoutModal';
 

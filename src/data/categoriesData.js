@@ -1,22 +1,22 @@
 export const categoriesData = [
     {
         image: require("../../assets/soft-drink.png"),
-        text: "Soft Drinks",
+        text: "Bebidas",
     },
     {
         image: require("../../assets/fast-food.png"),
-        text: "Fast Foods",
+        text: "Comida Rápida",
     },
     {
         image: require("../../assets/deals.png"),
-        text: "Deals",
+        text: "Ofertas",
     },
     {
         image: require("../../assets/coffee.png"),
-        text: "Coffee & Tea",
+        text: "Café y Té",
     },
     {
         image: require("../../assets/desserts.png"),
-        text: "Desserts",
+        text: "Postres",
     },
 ];

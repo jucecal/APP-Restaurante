@@ -34,10 +34,8 @@ const DetailsScreen = ({ route, navigation }) => {
             <ScrollView showsVerticalScrollIndicator={false} style={tailwind`z-20`}>
                 <View style={styles.content}>
                     <View style={styles.header}>
-                        <Text style={styles.title}>Ubicacion</Text>
-                        <TouchableOpacity onPress={() => setMapActive(e => !e)}>
-                            <Entypo name="location" size={24} color={`${mapActive ? colors.primary : '#000'}`} />
-                        </TouchableOpacity>
+                        <Text style={styles.title}>Platos</Text>
+
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                         <View style={styles.info}>
@@ -56,9 +54,9 @@ const DetailsScreen = ({ route, navigation }) => {
                         </View>
                     </View>
                     <View style={tailwind`mt-3`}>
-                        <Text style={[tailwind`text-gray-800 font-bold border-b w-1/3 mb-2 pb-1`, { borderBottomColor: colors.primary, fontSize: 17 }]}>Categories</Text>
+                        <Text style={[tailwind`text-gray-800 font-bold border-b`, { borderBottomColor: colors.primary, fontSize: 17 }]}></Text>
                         {categories.map(({ title }, index) => (
-                            <Text key={index} style={tailwind`text-xs text-gray-700`}><Text style={{ color: colors.primary }}>•</Text> {title}</Text>
+                            <Text key={index} style={tailwind`text-xs text-gray-700`}><Text style={{ color: colors.primary }}></Text> {title}</Text>
                         ))}
                     </View>
                     
