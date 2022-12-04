@@ -8,7 +8,7 @@ import tailwind from 'tailwind-react-native-classnames';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { urlImagenesUsuarios, urlImagenesUsuariosCL } from '../configuracion/Urls';
+import { urlImagenesUsuariosEM, urlImagenesUsuariosCL } from '../configuracion/Urls';
 import { useNavigation } from '@react-navigation/core';
 
 import Proveedor from '../Pantallas/Proveedor';
@@ -81,7 +81,7 @@ const Login = () => {
                                 <View style={styles.contenedorImagen}>
                                     <Image
                                         style={styles.imagen}
-                                        source={{uri: urlImagenesUsuariosCL + usuario.imagen}}
+                                        source={{uri: urlImagenesUsuariosEM + usuario.imagen}}
                                     />
                                 </View>
 

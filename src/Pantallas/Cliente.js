@@ -16,6 +16,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import EstilosAdmin from '../Componentes/EstiloAdmin';
 import UsuarioContext from '../contexto/UsuarioContext';
+import { urlImagenesUsuariosCL } from '../configuracion/Urls';
 const { width } = Dimensions.get('screen');
 
 
@@ -52,9 +53,10 @@ const Cliente = ({ navigation }) => {
         onPress={() => Alert.alert('Información de Cliente!', 'Datos de Cliente')}
       >
         <View style={EstilosAdmin.card}>
-
           <View style={EstilosAdmin.iconoTipoCarta}>
-            <Feather name='user' size={28} color={COLORS.dark} />
+            <Image
+              source={{uri: urlImagenesUsuariosCL + cliente.Foto}}
+            />
           </View>
           <View style={EstilosAdmin.textoCarta} >
             <Text style={EstilosAdmin.tituloCarta}>{cliente.Nombre + ' ' + cliente.Apellido}</Text>

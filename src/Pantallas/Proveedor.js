@@ -1,17 +1,23 @@
-
 import React, { useState, useEffect, useContext } from 'react';
 import {
   Dimensions,
   Image,
+  SafeAreaView,
+  StyleSheet,
   Text,
   FlatList,
+  ScrollView,
   TextInput,
   TouchableHighlight,
+  TouchableOpacity,
   Alert,
   View,
+  ImageBackground,
 } from 'react-native';
 
 import COLORS from '../consts/colors';
+import categories from '../consts/categories';
+import proveedores from '../consts/proveedores';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import EstilosAdmin from '../Componentes/EstiloAdmin';
@@ -21,13 +27,31 @@ const { width } = Dimensions.get('screen');
 
 const Proveedor = () => {
   const { usuario } = useContext(UsuarioContext);
+  const [filtro, setFiltro] = useState(null);
   const [lista, setlista] = useState([]);
   const [espera, setEspera] = useState(false);
+  const [validarFiltro, setValidarFiltro] = useState(false);
+  
   useEffect(() => {
-    buscar();
-    console.log(lista);
-  }, []);
+    if (!filtro) {
+      setValidarFiltro(true);
+    }
+    else {
+      setValidarFiltro(false);
+    }
+  }, [filtro]);
 
+  useEffect(() => {
+    if (!validarFiltro) {
+      buscarUno();
+    }
+  }, [validarFiltro]);
+ useEffect(() => {
+    if(!filtro){
+      buscar();
+    }
+
+  }, [filtro]);
   const buscar = async () => {
 
     var mensaje = "";
@@ -43,7 +67,26 @@ const Proveedor = () => {
     setEspera(false);
     if (mensaje != '') {
       Alert.alert('Error en la lista', mensaje);
+    }
+  }  
 
+  const buscarUno = async () => {
+    if (!validarFiltro) {
+      var mensaje = "";
+      setEspera(true);
+      await Axios.get('proveedor/buscarNombre?proveedor=' + filtro + '%')
+        .then(async (data) => {
+          setlista(data.data);
+
+        })
+        .catch((er) => {
+          console.log(er);
+        });
+    }
+
+    setEspera(false);
+    if (mensaje != '') {
+      Alert.alert('Error en la lista', mensaje);
     }
   }
 
@@ -78,7 +121,6 @@ const Proveedor = () => {
       </TouchableHighlight>
     );
   };
-  
   return (
     <View style={{ flex: 1, backgroundColor: COLORS.white }}>
       <View style={EstilosAdmin.header}>
@@ -106,10 +148,11 @@ const Proveedor = () => {
           paddingHorizontal: 20,
         }}>
         <View style={EstilosAdmin.inputContainer}>
-
           <TextInput
             style={{ flex: 1, fontSize: 18 }}
             placeholder="Buscar por nombre"
+            value={filtro}
+            onChangeText={setFiltro}
           />
         </View>
         <View style={EstilosAdmin.sortBtn}>
@@ -139,6 +182,5 @@ const Proveedor = () => {
     </View>
   );
 };
-
 
 export default Proveedor;
