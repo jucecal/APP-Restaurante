@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
-import { View, Image, Text, TouchableOpacity } from 'react-native';
+import { View, Image, Text, TouchableOpacity, Icon} from 'react-native';
 import Screen from '../Componentes/Screen'
+
 import tailwind from 'tailwind-react-native-classnames';
 import AppHead from '../Componentes/AppHead';
 import { useSelector } from 'react-redux';
@@ -20,7 +21,10 @@ const AccountScreen = () => {
 
     return (
         <Screen style={tailwind`flex-1 bg-white`}>
-            <AppHead title={`Cuenta`} icon="settings-outline" />
+            <AppHead title={`Cuenta`} 
+                icon="settings-outline"
+            />
+
             <View style={tailwind`justify-center items-center`}>
                 <View style={tailwind`rounded-full overflow-hidden w-48 h-48 mt-4`}>
                     <Image source={require('../../assets/avatar.gif')} style={tailwind`w-48 h-48`} />
@@ -28,12 +32,7 @@ const AccountScreen = () => {
                 <Text style={tailwind`mt-4 text-3xl font-bold text-red-500`}>Lewa</Text>
                 <Text style={tailwind`text-lg text-indigo-900`}>Lewa@gmail.com</Text>
             </View>
-            <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
-                <Text style={tailwind`text-gray-800 mt-2 text-lg`}>Otras Opciones</Text>
-                <TouchableOpacity>
-                    <Text style={tailwind`text-red-500 mt-2`} onPress={cerrarSesion}>Cerrar Sesión</Text>
-                </TouchableOpacity>
-            </View>
+            
             <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
                 <Text style={tailwind`text-gray-800 mt-2 text-lg mb-2`}>Administrar Opciones</Text>
                 <SavedPlaces
@@ -57,6 +56,13 @@ const AccountScreen = () => {
                     text="Ver Inventario."
                     Icon={() => <Feather name="list" size={24} color="black" />}
                 />
+            </View>
+
+            <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
+                <Text style={tailwind`text-gray-800 mt-2 text-lg`}>Otras Opciones</Text>
+                <TouchableOpacity>
+                    <Text style={tailwind`text-red-500 mt-3 text-sm`} onPress={cerrarSesion}>Cerrar Sesión</Text>
+                </TouchableOpacity>
             </View>
             
         </Screen>

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import tailwind from 'tailwind-react-native-classnames';
 import { selectCartItems, updateBusket } from '../redux/slices/basketSlice';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
-import colors from '../consts/colors2';
+import colors from '../consts/colors';
 
 const CartItems = () => {
     const allCartItems = useSelector(selectCartItems)
@@ -49,7 +49,7 @@ const CartItems = () => {
                         <View style={tailwind`mb-3 flex-row justify-between items-center pb-3 border-b border-gray-100`} key={food.id} >
                             <View style={tailwind`flex-1 pr-3 flex-row items-center`}>
                                 {match(food.id, item.resName) ? (
-                                    <BouncyCheckbox fillColor={colors.black} isChecked={true} onPress={() => handleRemove(food.id, item.resName, item.resImage)} />
+                                    <BouncyCheckbox fillColor={colors.primary} isChecked={true} onPress={() => handleRemove(food.id, item.resName, item.resImage)} />
                                 ) : (
                                     <BouncyCheckbox fillColor={colors.black} isChecked={false} onPress={() => handleRemove(food.id, item.resName, item.resImage)} />
                                 )}
