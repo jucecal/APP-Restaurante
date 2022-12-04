@@ -21,13 +21,30 @@ const { width } = Dimensions.get('screen');
 
 const Empleado = () => {
   const { usuario, token } = useContext(UsuarioContext);
+  const [filtro, setFiltro] = useState(null);
   const [espera, setEspera] = useState(false);
   const [lista, setlista] = useState([]);
+  const [validarFiltro, setValidarFiltro] = useState(false);
   useEffect(() => {
-    buscar();
-    console.log(lista);
-  }, []);
+    if (!filtro) {
+      setValidarFiltro(true);
+    }
+    else {
+      setValidarFiltro(false);
+    }
+  }, [filtro]);
 
+  useEffect(() => {
+    if (!validarFiltro) {
+      buscarUno();
+    }
+  }, [validarFiltro]);
+ useEffect(() => {
+    if(!filtro){
+      buscar();
+    }
+
+  }, [filtro]);
   const buscar = async () => {
     var mensaje = "";
     setEspera(true);
@@ -39,6 +56,26 @@ const Empleado = () => {
       .catch((er) => {
         console.log(er);
       });
+    setEspera(false);
+    if (mensaje != '') {
+      Alert.alert('Error en la lista', mensaje);
+    }
+  }
+
+  const buscarUno = async () => {
+    if (!validarFiltro) {
+      var mensaje = "";
+      setEspera(true);
+      await Axios.get('empleados/buscarNombre?nombre=' + filtro + '%')
+        .then(async (data) => {
+          setlista(data.data);
+
+        })
+        .catch((er) => {
+          console.log(er);
+        });
+    }
+
     setEspera(false);
     if (mensaje != '') {
       Alert.alert('Error en la lista', mensaje);
@@ -119,6 +156,8 @@ const Empleado = () => {
           <TextInput
             style={{ flex: 1, fontSize: 18 }}
             placeholder="Buscar por nombre"
+            value={filtro}
+            onChangeText={setFiltro}
           />
         </View>
         <View style={EstilosAdmin.sortBtn}>

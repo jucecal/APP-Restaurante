@@ -20,13 +20,30 @@ const { width } = Dimensions.get('screen');
 
 const Inventario = () => {
   const { usuario } = useContext(UsuarioContext);
+  const [filtro, setFiltro] = useState(null);
   const [espera, setEspera] = useState(false);
   const [lista, setlista] = useState([]);
+  const [validarFiltro, setValidarFiltro] = useState(false);
   useEffect(() => {
-    buscar();
-    console.log(lista);
-  }, []);
+    if (!filtro) {
+      setValidarFiltro(true);
+    }
+    else {
+      setValidarFiltro(false);
+    }
+  }, [filtro]);
 
+  useEffect(() => {
+    if (!validarFiltro) {
+      buscarUno();
+    }
+  }, [validarFiltro]);
+  useEffect(() => {
+    if (!filtro) {
+      buscar();
+    }
+
+  }, [filtro]);
   const buscar = async () => {
     var mensaje = "";
     setEspera(true);
@@ -37,6 +54,26 @@ const Inventario = () => {
       .catch((er) => {
         console.log(er);
       });
+    setEspera(false);
+    if (mensaje != '') {
+      Alert.alert('Error en la lista', mensaje);
+    }
+  }
+
+  const buscarUno = async () => {
+    if (!validarFiltro) {
+      var mensaje = "";
+      setEspera(true);
+      await Axios.get('inventario/buscarporsucursal?nombre=' + filtro + '%')
+        .then(async (data) => {
+          setlista(data.data);
+
+        })
+        .catch((er) => {
+          console.log(er);
+        });
+    }
+
     setEspera(false);
     if (mensaje != '') {
       Alert.alert('Error en la lista', mensaje);
@@ -102,6 +139,8 @@ const Inventario = () => {
           <TextInput
             style={{ flex: 1, fontSize: 18 }}
             placeholder="Buscar por sucursal"
+            value={filtro}
+            onChangeText={setFiltro}
           />
         </View>
         <View style={EstilosAdmin.sortBtn}>
