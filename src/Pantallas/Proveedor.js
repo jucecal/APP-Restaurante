@@ -2,22 +2,15 @@ import React, { useState, useEffect, useContext } from 'react';
 import {
   Dimensions,
   Image,
-  SafeAreaView,
-  StyleSheet,
   Text,
   FlatList,
-  ScrollView,
   TextInput,
   TouchableHighlight,
-  TouchableOpacity,
   Alert,
   View,
-  ImageBackground,
 } from 'react-native';
 
 import COLORS from '../consts/colors';
-import categories from '../consts/categories';
-import proveedores from '../consts/proveedores';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import EstilosAdmin from '../Componentes/EstiloAdmin';
@@ -31,7 +24,7 @@ const Proveedor = () => {
   const [lista, setlista] = useState([]);
   const [espera, setEspera] = useState(false);
   const [validarFiltro, setValidarFiltro] = useState(false);
-  
+
   useEffect(() => {
     if (!filtro) {
       setValidarFiltro(true);
@@ -46,8 +39,8 @@ const Proveedor = () => {
       buscarUno();
     }
   }, [validarFiltro]);
- useEffect(() => {
-    if(!filtro){
+  useEffect(() => {
+    if (!filtro) {
       buscar();
     }
 
@@ -68,7 +61,7 @@ const Proveedor = () => {
     if (mensaje != '') {
       Alert.alert('Error en la lista', mensaje);
     }
-  }  
+  }
 
   const buscarUno = async () => {
     if (!validarFiltro) {
