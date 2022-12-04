@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import Screen from '../Componentes/Screen'
 import tailwind from 'tailwind-react-native-classnames';
@@ -8,10 +8,15 @@ import { selectUser } from '../redux/slices/authSlice'
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import UsuarioContext from '../contexto/UsuarioContext';
+
 
 
 const AccountScreen = () => {
-   
+    const { setCerrarSesion } = useContext(UsuarioContext);
+    const cerrarSesion = async () => {
+        await setCerrarSesion();
+    };
 
     return (
         <Screen style={tailwind`flex-1 bg-white`}>
@@ -22,6 +27,12 @@ const AccountScreen = () => {
                 </View>
                 <Text style={tailwind`mt-4 text-3xl font-bold text-red-500`}>Lewa</Text>
                 <Text style={tailwind`text-lg text-indigo-900`}>Lewa@gmail.com</Text>
+            </View>
+            <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
+                <Text style={tailwind`text-gray-800 mt-2 text-lg`}>Otras Opciones</Text>
+                <TouchableOpacity>
+                    <Text style={tailwind`text-red-500 mt-2`} onPress={cerrarSesion}>Cerrar Sesión</Text>
+                </TouchableOpacity>
             </View>
             <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
                 <Text style={tailwind`text-gray-800 mt-2 text-lg mb-2`}>Administrar Opciones</Text>
@@ -47,12 +58,7 @@ const AccountScreen = () => {
                     Icon={() => <Feather name="list" size={24} color="black" />}
                 />
             </View>
-            <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
-                <Text style={tailwind`text-gray-800 mt-2 text-lg`}>Otras Opciones</Text>
-                <TouchableOpacity>
-                    <Text style={tailwind`text-red-500 mt-2`}>Cerrar Sesión</Text>
-                </TouchableOpacity>
-            </View>
+            
         </Screen>
     );
 }

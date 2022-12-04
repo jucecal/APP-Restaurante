@@ -13,8 +13,16 @@ import MainTabNavigator from './MainTabNavigator';
 const Stack = createNativeStackNavigator();
 
 const Pantallas = () => {
-    const { aplicacionIniciada, setDatos, sesionIniciada } = React.useContext(UsuarioContext);
+    const { aplicacionIniciada, setDatos, sesionIniciada, usuario } = React.useContext(UsuarioContext);
     setDatos();
+    const verificarUsuario = ()=>{
+        var tipoCliente = false;
+        if(usuario.tipo == 'CLI'){
+            tipoCliente = true;
+        }
+        return tipoCliente;        
+    }
+
     
     if (aplicacionIniciada) {
         return (
@@ -25,7 +33,17 @@ const Pantallas = () => {
             >
                 {sesionIniciada ? (
                     <>
-                        <Stack.Screen name="TabMenu" component={MenuTab} />
+                        {verificarUsuario() ?(
+                            
+                            <>
+                                <Stack.Screen name="HomeScreen" component={MainTabNavigator} />
+                                <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
+                                <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
+                            </>
+                        ):(
+                            <Stack.Screen name="TabMenu" component={MenuTab} />
+                        )}
+                        
                     </>
                 ) : (
                     
