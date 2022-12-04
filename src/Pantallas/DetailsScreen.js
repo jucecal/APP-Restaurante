@@ -25,7 +25,11 @@ const DetailsScreen = ({ route, navigation }) => {
             </TouchableOpacity>
 
             <View style={styles.mapImageWrpper}>
-                <Image source={{ uri: image_url }} style={styles.image} />           
+                {mapActive ? (
+                        <RestaurantMap coordinates={coordinates} title={name} />
+                    ) : (
+                        <Image source={{ uri: image_url }} style={styles.image} />
+                    )}          
             </View>
 
             <ScrollView showsVerticalScrollIndicator={false} style={tailwind`z-20`}>
