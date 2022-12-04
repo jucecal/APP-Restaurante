@@ -93,6 +93,7 @@ const Cliente = ({ navigation }) => {
         <View style={EstilosAdmin.card}>
           <View style={EstilosAdmin.iconoTipoCarta}>
             <Image
+              style={EstilosAdmin.imagen}
               source={{uri: urlImagenesUsuariosCL + cliente.Foto}}
             />
           </View>

@@ -77,15 +77,24 @@ import {
       },
 
       iconoTipoCarta:{
-        width:'20%',
-        backgroundColor:COLORS.secondary,
+        width:'20%',      
+        backgroundColor:COLORS.secondary,  
         borderRadius:10,
         height:'50%',
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'center',
-        marginRight:10,        
+        marginRight:15         
       },
+      
+      imagen: {
+        width:90,
+        height: 90,
+        resizeMode: "contain",
+        borderWidth: 3,
+        borderRadius:10
+        
+    },
 
       textoCarta:{
         paddingBottom: 10,
