@@ -119,7 +119,7 @@ const Inventario = () => {
             </Text>
           </View>
           <Text style={{ marginTop: 5, fontSize: 22, color: COLORS.grey }}>
-            Administrar Inventario
+            Inventario
           </Text>
         </View>
         <Image

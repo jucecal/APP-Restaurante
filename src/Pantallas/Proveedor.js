@@ -143,7 +143,7 @@ const Proveedor = () => {
         <View style={EstilosAdmin.inputContainer}>
           <TextInput
             style={{ flex: 1, fontSize: 18 }}
-            placeholder="Buscar por nombre"
+            placeholder="Buscar"
             value={filtro}
             onChangeText={setFiltro}
           />

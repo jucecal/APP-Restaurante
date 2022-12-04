@@ -151,7 +151,7 @@ const Cliente = ({ navigation }) => {
 
           <TextInput
             style={{ flex: 1, fontSize: 18 }}
-            placeholder="Buscar por nombre"
+            placeholder="Buscar"
             value={filtro}
             onChangeText={setFiltro}
           />
