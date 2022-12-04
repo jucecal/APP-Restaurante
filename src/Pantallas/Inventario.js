@@ -2,67 +2,70 @@ import React, { useState, useEffect, useContext } from 'react';
 import {
   Dimensions,
   Image,
-  SafeAreaView,
-  StyleSheet,
   Text,
   FlatList,
-  ScrollView,
   TextInput,
   TouchableHighlight,
-  TouchableOpacity,
   Alert,
   View,
-  ImageBackground,
 } from 'react-native';
 
 import COLORS from '../consts/colors';
-import categories from '../consts/categories';
-import inventarios from '../consts/inventarios';
-import sucursales from '../consts/sucursales';
-import foods from '../consts/foods';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Feather from 'react-native-vector-icons/Feather';
 import EstilosAdmin from '../Componentes/EstiloAdmin';
-import ComboBox from 'react-native-combobox';
+import Axios from '../Componentes/Axios';
 import UsuarioContext from '../contexto/UsuarioContext';
 const { width } = Dimensions.get('screen');
 
 
 const Inventario = () => {
-  const { usuario} = useContext(UsuarioContext);
-  const [selectedValue, setSelectedValue] = useState('');
-  
-  const values = [
-   'La Kennedy',
-   'Roble Oeste',
-   'El manatial'
-  ];
+  const { usuario } = useContext(UsuarioContext);
+  const [espera, setEspera] = useState(false);
+  const [lista, setlista] = useState([]);
+  useEffect(() => {
+    buscar();
+    console.log(lista);
+  }, []);
+
+  const buscar = async () => {
+    var mensaje = "";
+    setEspera(true);
+    await Axios.get('inventario/listar')
+      .then(async (data) => {
+        setlista(data.data);
+      })
+      .catch((er) => {
+        console.log(er);
+      });
+    setEspera(false);
+    if (mensaje != '') {
+      Alert.alert('Error en la lista', mensaje);
+    }
+  }
 
   const Card = ({ inventario }) => {
     return (
       <TouchableHighlight
-        
-        
+        underlayColor={COLORS.white}
+        activeOpacity={0.9}
+        onPress={() => Alert.alert('Pressed!', 'info info')}
       >
         <View style={EstilosAdmin.card}>
-          
+
           <View style={EstilosAdmin.iconoTipoCarta}>
             <AntDesign name='barcode' size={28} color={COLORS.dark} />
           </View>
-          <View style={EstilosAdmin.textoCarta} >            
+          <View style={EstilosAdmin.textoCarta} >
             <Text style={EstilosAdmin.detallesCarta2}>
-              Stock: {inventario.stock}
+              Stock: {inventario.Stock}
             </Text>
             <Text style={EstilosAdmin.detallesCarta2}>
-              Producto: {inventario.producto}
+              Producto: {inventario.Insumo.Producto}
             </Text>
             <Text style={EstilosAdmin.detallesCarta2}>
-              Sucursal: {inventario.sucursal}
+              Sucursal: {inventario.Sucursal.Sucursal}
             </Text>
-          </View>  
-          <View style={EstilosAdmin.iconoEditar}>
-            <AntDesign name='eye' size={20} color={COLORS.dark} />
-          </View>        
+          </View>
         </View>
       </TouchableHighlight>
     );
@@ -106,25 +109,14 @@ const Inventario = () => {
         </View>
       </View>
 
-      <View style={{ flex: 1, paddingBottom:90,paddingTop:30, paddingHorizontal: 40, justifyContent: 'space-between' }}>
-        <ComboBox
-            values={values}
-            onValueSelect={setSelectedValue}
-        />
-        <Text>selected value:          {values[selectedValue]}</Text>
-     </View>
-
-    
       <FlatList
         key={'_'}
         showsVerticalScrollIndicator={false}
         numColumns={1}
-        data={inventarios}
+        data={lista}
         renderItem={({ item }) => <Card inventario={item} />}
       />
     </View>
-   
-  
   );
 };
 

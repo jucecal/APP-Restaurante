@@ -1,6 +1,8 @@
 import Proveedor from '../Pantallas/Proveedor';
 import Inventario from '../Pantallas/Inventario';
 import Carrito from '../Pantallas/Carrito';
+import Cliente from '../Pantallas/Cliente';
+import Empleado from '../Pantallas/Empleado';
 import Menu from '../Pantallas/Menu';
 import EditarCliente from '../Pantallas/EditarCliente';
 import PerfilUsuario from '../Pantallas/PerfilUsuario';
@@ -29,7 +31,7 @@ const MenuTab = ()=>{
                     }}
 
                 />
-                <Tab.Screen name="Menú" component={Menu} 
+                <Tab.Screen name="Menú" component={Cliente} 
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <AntDesign name="appstore-o" color={color} size={size} />
@@ -37,7 +39,7 @@ const MenuTab = ()=>{
                     }}
                 />
 
-                <Tab.Screen name="Comprar" component={Carrito}
+                <Tab.Screen name="Comprar" component={Empleado}
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <Entypo name="shopping-bag" color={color} size={size} />

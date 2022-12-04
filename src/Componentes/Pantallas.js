@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginTab from './LoginTab';
-//import MenuTab from './MenuTab';
+import MenuTab from './MenuTab';
 //import OpcionesTab from './OpcionesTab';
 import UsuarioContext from '../contexto/UsuarioContext';
 import Cargando from './Cargando';
@@ -25,9 +25,7 @@ const Pantallas = () => {
             >
                 {sesionIniciada ? (
                     <>
-                        <Stack.Screen name="HomeScreen" component={MainTabNavigator} />
-                        <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
-                        <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
+                        <Stack.Screen name="TabMenu" component={MenuTab} />
                     </>
                 ) : (
                     

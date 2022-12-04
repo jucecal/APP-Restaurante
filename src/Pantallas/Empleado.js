@@ -2,24 +2,16 @@ import React, { useState, useEffect, useContext } from 'react';
 import {
   Dimensions,
   Image,
-  SafeAreaView,
-  StyleSheet,
   Text,
   FlatList,
-  ScrollView,
   TextInput,
   TouchableHighlight,
-  TouchableOpacity,
   Alert,
   View,
-  ImageBackground,
 } from 'react-native';
 
 import COLORS from '../consts/colors';
-import categories from '../consts/categories';
-import user from '../../assets/USER.png';
-import colaboradores from '../consts/colaboradores';
-import foods from '../consts/foods';
+import Axios from '../Componentes/Axios';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import EstilosAdmin from '../Componentes/EstiloAdmin';
@@ -27,16 +19,38 @@ import UsuarioContext from '../contexto/UsuarioContext';
 const { width } = Dimensions.get('screen');
 
 
-const Colaborador = () => {
-  const { usuario} = useContext(UsuarioContext);
+const Empleado = () => {
+  const { usuario, token } = useContext(UsuarioContext);
+  const [espera, setEspera] = useState(false);
+  const [lista, setlista] = useState([]);
+  useEffect(() => {
+    buscar();
+    console.log(lista);
+  }, []);
 
+  const buscar = async () => {
+    var mensaje = "";
+    setEspera(true);
+    Axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
+    await Axios.get('empleados/listar')
+      .then(async (data) => {
+        setlista(data.data);
+      })
+      .catch((er) => {
+        console.log(er);
+      });
+    setEspera(false);
+    if (mensaje != '') {
+      Alert.alert('Error en la lista', mensaje);
+    }
+  }
  
-  const Card = ({ colaborador }) => {
+  const Card = ({ empleado }) => {
     return (
       <TouchableHighlight
         underlayColor={COLORS.white}
         activeOpacity={0.9}
-        onPress={() => Alert.alert('Información de colaborador!', 'Datos de Colaborador')}
+        onPress={() => Alert.alert('Información de empleado!', 'Datos de empleado')}
       >
         <View style={EstilosAdmin.card}>
           
@@ -44,18 +58,24 @@ const Colaborador = () => {
             <Feather name='user' size={28} color={COLORS.dark} />
           </View>
           <View style={EstilosAdmin.textoCarta} >
-            <Text style={EstilosAdmin.tituloCarta}>{colaborador.nombre + ' ' + colaborador.apellido}</Text>
+            <Text style={EstilosAdmin.tituloCarta}>{empleado.Nombre + ' ' + empleado.Apellido}</Text>
             <Text style={EstilosAdmin.detallesCarta}>
-              Código de Cliente: {colaborador.id}
+              ID: {empleado.Id}
             </Text>
             <Text style={EstilosAdmin.detallesCarta}>
-              Telefono: {colaborador.telefono}
+              Telefono: {empleado.Telefono}
             </Text>
             <Text style={EstilosAdmin.detallesCarta}>
-              Fecha de Nacimiento: {colaborador.fechaNacimiento}
+              Dirección: {empleado.Direccion}
             </Text>
             <Text style={EstilosAdmin.detallesCarta}>
-              Dirección: {colaborador.direccion}
+              Nombre de Usuario: {empleado.Usuario.Nombre}
+            </Text>
+            <Text style={EstilosAdmin.detallesCarta}>
+              Sucursal: {empleado.Sucursal.Sucursal}
+            </Text>
+            <Text style={EstilosAdmin.detallesCarta}>
+              Cargo: {empleado.Cargo.Cargo}
             </Text>
           </View>
           
@@ -79,7 +99,7 @@ const Colaborador = () => {
             </Text>
           </View>
           <Text style={{ marginTop: 5, fontSize: 22, color: COLORS.grey }}>
-            Administrar Colaboradores
+            Administrar empleados
           </Text>
         </View>
         <Image
@@ -122,12 +142,12 @@ const Colaborador = () => {
         key={'_'}
         showsVerticalScrollIndicator={false}
         numColumns={1}
-        data={colaboradores}
-        renderItem={({ item }) => <Card colaborador={item} />}
+        data={lista}
+        renderItem={({ item }) => <Card empleado={item} />}
       />
     </View>
   );
 
 
 };
-export default Colaborador;
+export default Empleado;

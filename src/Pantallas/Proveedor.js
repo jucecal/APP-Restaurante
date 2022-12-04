@@ -3,22 +3,15 @@ import React, { useState, useEffect, useContext } from 'react';
 import {
   Dimensions,
   Image,
-  SafeAreaView,
-  StyleSheet,
   Text,
   FlatList,
-  ScrollView,
   TextInput,
   TouchableHighlight,
-  TouchableOpacity,
   Alert,
   View,
-  ImageBackground,
 } from 'react-native';
 
 import COLORS from '../consts/colors';
-import categories from '../consts/categories';
-import proveedores from '../consts/proveedores';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import EstilosAdmin from '../Componentes/EstiloAdmin';
@@ -26,36 +19,34 @@ import UsuarioContext from '../contexto/UsuarioContext';
 import Axios from '../Componentes/Axios';
 const { width } = Dimensions.get('screen');
 
-
 const Proveedor = () => {
-  const { usuario} = useContext(UsuarioContext);
-  const [lista,setlista] = useState([]);
+  const { usuario } = useContext(UsuarioContext);
+  const [lista, setlista] = useState([]);
   const [espera, setEspera] = useState(false);
-  useEffect(()=>{
+  useEffect(() => {
     buscar();
-    console.log(lista);   
-    
-  },[]);
-  
-  const buscar = async () =>{
-    
+    console.log(lista);
+  }, []);
+
+  const buscar = async () => {
+
     var mensaje = "";
     setEspera(true);
     await Axios.get('proveedor/listar')
-      .then(async (data) =>{       
+      .then(async (data) => {
         setlista(data.data);
-        
+
       })
-      .catch((er)=>{
+      .catch((er) => {
         console.log(er);
       });
-      setEspera(false);
-      if(mensaje != ''){
-          Alert.alert('Error en la lista', mensaje);
+    setEspera(false);
+    if (mensaje != '') {
+      Alert.alert('Error en la lista', mensaje);
 
-      }
+    }
   }
-  
+
   const Card = ({ proveedor }) => {
     return (
       <TouchableHighlight
@@ -64,7 +55,7 @@ const Proveedor = () => {
         onPress={() => Alert.alert('Pressed!', 'info info')}
       >
         <View style={EstilosAdmin.card}>
-          
+
           <View style={EstilosAdmin.iconoTipoCarta}>
             <Feather name='truck' size={28} color={COLORS.dark} />
           </View>
@@ -79,15 +70,16 @@ const Proveedor = () => {
             <Text style={EstilosAdmin.detallesCarta}>
               Telefono: {proveedor.Telefono}
             </Text>
-          </View>  
+          </View>
           <View style={EstilosAdmin.iconoEditar}>
             <Feather name='edit' size={20} color={COLORS.dark} />
-          </View>        
+          </View>
         </View>
       </TouchableHighlight>
     );
   };
-  return (    
+  
+  return (
     <View style={{ flex: 1, backgroundColor: COLORS.white }}>
       <View style={EstilosAdmin.header}>
         <View>

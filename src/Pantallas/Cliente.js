@@ -2,24 +2,16 @@ import React, { useState, useEffect, useContext } from 'react';
 import {
   Dimensions,
   Image,
-  SafeAreaView,
-  StyleSheet,
   Text,
   FlatList,
-  ScrollView,
   TextInput,
   TouchableHighlight,
-  TouchableOpacity,
   Alert,
   View,
-  ImageBackground,
 } from 'react-native';
 
 import COLORS from '../consts/colors';
-import categories from '../consts/categories';
-import user from '../../assets/USER.png';
-import clientes from '../consts/clientes';
-import foods from '../consts/foods';
+import Axios from '../Componentes/Axios';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import EstilosAdmin from '../Componentes/EstiloAdmin';
@@ -28,8 +20,30 @@ const { width } = Dimensions.get('screen');
 
 
 const Cliente = ({ navigation }) => {
-  const { usuario} = useContext(UsuarioContext);  
+  const { usuario, token } = useContext(UsuarioContext);
+  const [espera, setEspera] = useState(false);
+  const [lista, setlista] = useState([]);
+  useEffect(() => {
+    buscar();
+    console.log(lista);
+  }, []);
 
+  const buscar = async () => {
+    var mensaje = "";
+    setEspera(true);
+    Axios.defaults.headers.common['Authorization'] = 'Bearer ' + token
+    await Axios.get('clientes/listar')
+      .then(async (data) => {
+        setlista(data.data);
+      })
+      .catch((er) => {
+        console.log(er);
+      });
+    setEspera(false);
+    if (mensaje != '') {
+      Alert.alert('Error en la lista', mensaje);
+    }
+  }
   const Card = ({ cliente }) => {
     return (
       <TouchableHighlight
@@ -38,29 +52,28 @@ const Cliente = ({ navigation }) => {
         onPress={() => Alert.alert('Información de Cliente!', 'Datos de Cliente')}
       >
         <View style={EstilosAdmin.card}>
-          
+
           <View style={EstilosAdmin.iconoTipoCarta}>
             <Feather name='user' size={28} color={COLORS.dark} />
           </View>
           <View style={EstilosAdmin.textoCarta} >
-            <Text style={EstilosAdmin.tituloCarta}>{cliente.nombre + ' ' + cliente.apellido}</Text>
+            <Text style={EstilosAdmin.tituloCarta}>{cliente.Nombre + ' ' + cliente.Apellido}</Text>
             <Text style={EstilosAdmin.detallesCarta}>
-              Código de Cliente: {cliente.id}
+              ID: {cliente.Id}
             </Text>
             <Text style={EstilosAdmin.detallesCarta}>
-              Telefono: {cliente.telefono}
+              Telefono: {cliente.Telefono}
             </Text>
             <Text style={EstilosAdmin.detallesCarta}>
-              Fecha de Nacimiento: {cliente.fechaNacimiento}
+              Dirección: {cliente.Direccion}
             </Text>
             <Text style={EstilosAdmin.detallesCarta}>
-              Dirección: {cliente.direccion}
+              Nombre de Usuario: {cliente.Usuario.Nombre}
             </Text>
           </View>
-          
           <View style={EstilosAdmin.iconoEditar}>
             <Feather name='edit' size={25} color={COLORS.dark} />
-          </View>        
+          </View>
         </View>
       </TouchableHighlight>
     );
@@ -121,7 +134,7 @@ const Cliente = ({ navigation }) => {
         key={'_'}
         showsVerticalScrollIndicator={false}
         numColumns={1}
-        data={clientes}
+        data={lista}
         renderItem={({ item }) => <Card cliente={item} />}
       />
     </View>
