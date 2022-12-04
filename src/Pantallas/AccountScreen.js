@@ -15,12 +15,12 @@ const AccountScreen = () => {
 
     return (
         <Screen style={tailwind`flex-1 bg-white`}>
-            <AppHead title={`Account`} icon="settings-outline" />
+            <AppHead title={`Cuenta`} icon="settings-outline" />
             <View style={tailwind`justify-center items-center`}>
                 <View style={tailwind`rounded-full overflow-hidden w-48 h-48 mt-4`}>
                     <Image source={require('../../assets/avatar.gif')} style={tailwind`w-48 h-48`} />
                 </View>
-                <Text style={tailwind`mt-4 text-3xl font-bold`}>Lewa</Text>
+                <Text style={tailwind`mt-4 text-3xl font-bold text-red-500`}>Lewa</Text>
                 <Text style={tailwind`text-lg text-indigo-900`}>Lewa@gmail.com</Text>
             </View>
             <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
@@ -50,7 +50,7 @@ const AccountScreen = () => {
             <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
                 <Text style={tailwind`text-gray-800 mt-2 text-lg`}>Otras Opciones</Text>
                 <TouchableOpacity>
-                    <Text style={tailwind`text-green-900 mt-2`}>Cerrar Sesión</Text>
+                    <Text style={tailwind`text-red-500 mt-2`}>Cerrar Sesión</Text>
                 </TouchableOpacity>
             </View>
         </Screen>
