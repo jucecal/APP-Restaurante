@@ -35,7 +35,7 @@ const RestaurantItemCard = ({ item, onPress }) => {
                 style={tailwind`w-full h-48 rounded-lg`}
             />
             <TouchableOpacity style={tailwind`absolute top-2 right-2`} onPress={() => setLoved(e => !e)}>
-                <Entypo name={`${loved ? 'heart' : 'heart-outlined'}`} size={28} color="#fff" />
+                <Entypo name={`${loved ? 'heart' : 'heart-outlined'}`} size={28} color="white" />
             </TouchableOpacity>
             <View style={tailwind`flex-row items-center mt-1`}>
                 <View style={tailwind`flex-grow`}>

@@ -21,7 +21,7 @@ const CheckoutModal = ({ setModalVisible }) => {
 
             </TouchableOpacity>
             <View style={tailwind`pb-5  w-full px-4 bg-white pt-4`}>
-                <Text style={tailwind`text-black text-center text-xl font-bold mb-5`}>Checkout details</Text>
+                <Text style={tailwind`text-black text-center text-xl font-bold mb-5`}>Ver Detalles</Text>
                 <View style={tailwind`mb-5`}>
                     {allCartItems?.map(item => (
                         <OrderItem key={item.resName} name={item.resName} value={`$${item?.foods.reduce((total, item) => total + item.price, 0).toFixed(1)} • (${item?.foods?.length})`} />

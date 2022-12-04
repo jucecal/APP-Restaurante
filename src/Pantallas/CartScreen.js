@@ -10,6 +10,7 @@ import colors from '../consts/colors';
 //import colors from '../consts/colors2';
 import CartItems from '../Componentes/CartItems';
 import CheckoutModal from '../Componentes/CheckoutModal';
+import { Feather } from '@expo/vector-icons';
 
 const CartScreen = () => {
     const totalPrice = useSelector(selectTotalPrice)
@@ -18,9 +19,9 @@ const CartScreen = () => {
 
     return (
         <Screen style={tailwind`flex-1 bg-white`}>
-            <AppHead title={`Your cart (${getAllItems.length})`} icon="basket-outline" />
+            <AppHead title={`Carrito (${getAllItems.length})`}icon="basket" />
             <View style={tailwind`flex-1`}>
-                <CartItems />
+                <CartItems/>
             </View>
             {!!getAllItems.length && (
                 <View style={tailwind`flex-row items-center px-5 pb-5`}>

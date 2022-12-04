@@ -26,7 +26,7 @@ const estilo = StyleSheet.create({
     texto_:{
         textAlign: 'center',
         fontSize: 16,
-        color: '#000'
+        color: '#F9813A'
     }
 });
 export default Cargando;
