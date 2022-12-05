@@ -28,7 +28,7 @@ const CheckoutModal = ({ setModalVisible }) => {
                     ))}
                     <OrderItem name="Total" value={`$${totalPrice}`} total />
                 </View>
-                <TouchableOpacity style={tailwind`py-3 px-10 self-center bg-black rounded-full`} onPress={addOrder}>
+                <TouchableOpacity style={tailwind`py-3 px-10 self-center bg-black rounded-full`} onPress={() => navigation.navigate('SuccessScreen')}>
                     <Text style={tailwind`text-white`}>Ver</Text>
                 </TouchableOpacity>
             </View>
