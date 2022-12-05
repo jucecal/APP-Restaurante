@@ -19,7 +19,7 @@ import UsuarioContext from '../contexto/UsuarioContext';
 const { width } = Dimensions.get('screen');
 
 
-const Empleado = () => {
+const Empleado = ({navigation}) => {
   const { usuario, token } = useContext(UsuarioContext);
   const [filtro, setFiltro] = useState(null);
   const [espera, setEspera] = useState(false);
@@ -82,6 +82,15 @@ const Empleado = () => {
     }
   }
 
+  const irGuardar = () => {
+    console.log("Ir a Guardar empleado");
+    navigation.navigate('GuardarEmpleado');
+  }
+
+  const irEditar = () => {
+    console.log("Ir a editar empleado");
+    navigation.navigate('EditarEmpleado');
+  }
   const Card = ({ empleado }) => {
     return (
       <TouchableHighlight
@@ -168,7 +177,7 @@ const Empleado = () => {
         style={{ paddingHorizontal: 20 }}
         underlayColor={COLORS.white}
         activeOpacity={0.9}
-        onPress={() => Alert.alert('Agregar Cliente!', 'Escriba la información del cliente.')}
+        onPress={irGuardar}
       >
         <View style={{ flexDirection: 'row', padding: 10, backgroundColor: COLORS.primary, width: '40%', borderRadius: 15, elevation: 13, marginVertical: 15 }}>
           <AntDesign name='pluscircle' size={28} color={COLORS.white} />

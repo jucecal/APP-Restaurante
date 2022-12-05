@@ -25,7 +25,7 @@ import UsuarioContext from '../contexto/UsuarioContext';
 const { width } = Dimensions.get('screen');
 
 
-const Proveedor = () => {
+const Reservaciones = () => {
   const { usuario } = useContext(UsuarioContext);
 
   const Card = ({ reservacion }) => {
@@ -130,4 +130,4 @@ const Proveedor = () => {
 };
 
 
-export default Proveedor;
+export default Reservaciones;

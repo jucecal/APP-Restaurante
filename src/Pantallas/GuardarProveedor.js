@@ -4,13 +4,13 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import COLORS from '../consts/colors';
 import EstilosEditar from '../Componentes/EstilosEditar';
 
-const GuardarProveedor = () => {
+const GuardarProveedor = ({navigation}) => {
 
     return (
         <View style={{ backgroundColor: COLORS.white }}>
             <View style={EstilosEditar.header}>
                 <AntDesign name='doubleleft' size={28} />
-                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Guardar Empleado</Text>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Guardar Proveedor</Text>
             </View>
             <ScrollView style={{ marginTop: 0 }}>
                 <View>

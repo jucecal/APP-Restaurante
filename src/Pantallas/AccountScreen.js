@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { View, Image, Text, TouchableOpacity, Icon } from 'react-native';
+import React, { useContext, useState } from 'react';
+import { View, Image, Text, TouchableOpacity, Icon, StyleSheet } from 'react-native';
 import Screen from '../Componentes/Screen'
 
 import tailwind from 'tailwind-react-native-classnames';
@@ -7,7 +7,7 @@ import UsuarioContext from '../contexto/UsuarioContext';
 import AppHead from '../Componentes/AppHead';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
-import UsuarioContext from '../contexto/UsuarioContext';
+
 import { urlImagenesUsuariosEM, urlImagenesUsuariosCL } from '../configuracion/Urls';
 
 const AccountScreen = () => {
@@ -78,6 +78,64 @@ const AccountScreen = () => {
         </Screen>
     );
 }
+
+const styles = StyleSheet.create({
+    sombraControles: {
+        shadowColor: "#000",
+        shadowOffset: { width: -2, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 5,
+    },
+    touch: {
+        alignItems: "center",
+        margin: 15,
+        backgroundColor: "#000",
+        padding: 10,
+        borderRadius: 30,
+    },
+    entradas: {
+        alignItems: "center",
+        marginBottom: 20,
+        padding: 10,
+        fontSize: 20,
+        fontWeight: "400",
+        color: "#495057",
+        backgroundColor: "#fff",
+        borderWidth: 1,
+        borderStyle: "solid",
+        borderColor: "#ced4da",
+        borderRadius: 15,
+    },
+    contenedorImagen: {
+        alignItems: 'center',
+        backgroundColor: "#ddd",
+        width: 180,
+        height: 180,
+        borderRadius: 100,
+        marginLeft: 100,
+        marginRight: 100,
+        marginBottom: 10
+    },
+    imagen: {
+        width: 180,
+        height: 180,
+        resizeMode: "contain",
+        borderWidth: 3,
+        borderColor: "#dedede",
+        borderRadius: 90,
+    },
+
+    texto: {
+        color: "black",
+        textDecorationColor: "black",
+        textShadowColor: "#F9813A",
+        textShadowRadius: 1,
+        marginTop: 22,
+        marginLeft: 10,
+        marginRight: 10,
+
+    }
+});
 
 export default AccountScreen;
 

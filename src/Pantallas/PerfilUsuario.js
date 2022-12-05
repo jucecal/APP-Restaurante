@@ -53,6 +53,18 @@ const Login = () => {
         console.log("Ir a Cliente");
         navigation.navigate('ClientesTab');
     }
+    const irColaborador = () => {
+        console.log("Ir a Colaborador");
+        navigation.navigate('EmpleadosTab');
+    }
+    const irProveedor = () => {
+        console.log("Ir a Proveedor");
+        navigation.navigate('ProveedoresTab');
+    }
+    const irInventario = () => {
+        console.log("Ir a Inventario");
+        navigation.navigate('Inventario');
+    }
 
 
     return (
@@ -120,7 +132,7 @@ const Login = () => {
 
                                             title='Guardar Cambios'
                                             color={'#000'}
-                                            onPress={irCliente}
+                                            
                                         ></Button>
                                     </View>
                                 </View>
@@ -143,25 +155,29 @@ const Login = () => {
                                     <SavedPlaces
                                         title="Clientes"
                                         text="Agregar, Editar o Eliminar clientes."
-                                        Icon={() => <AntDesign name="user" size={28} color="black" />}
+                                        Icon={() => <AntDesign name="user" size={28} color="black"/>}
+                                        func = {irCliente}
                                     />
 
                                     <SavedPlaces
                                         title="Colaborador"
                                         text="Agregar, Editar o Eliminar colaboradores."
                                         Icon={() => <AntDesign name="idcard" size={24} color="black" />}
+                                        func = {irColaborador}
                                     />
 
                                     <SavedPlaces
                                         title="Proveedores"
                                         text="Agregar, Editar o Eliminar proveedores."
                                         Icon={() => <Feather name="truck" color="black" size={24} />}
+                                        func = {irProveedor}
                                     />
 
                                     <SavedPlaces
                                         title="Inventario"
                                         text="Ver Inventario."
                                         Icon={() => <Feather name="list" color="black" size={24} />}
+                                        func = {irInventario}
                                     />
                                 </View>
                             </>
@@ -232,8 +248,8 @@ const styles = StyleSheet.create({
 });
 export default Login;
 
-const SavedPlaces = ({ title, text, Icon }) => (
-    <TouchableOpacity style={tailwind`flex-row items-center my-3`}>
+const SavedPlaces = ({ title, text, Icon, func }) => (
+    <TouchableOpacity style={tailwind`flex-row items-center my-3`} onPress={func}>
         <Icon />
         <View style={tailwind`ml-5`}>
             <Text style={tailwind`text-gray-800`}>{title}</Text>

@@ -18,7 +18,7 @@ import UsuarioContext from '../contexto/UsuarioContext';
 import Axios from '../Componentes/Axios';
 const { width } = Dimensions.get('screen');
 
-const Proveedor = () => {
+const Proveedor = ({navigation}) => {
   const { usuario } = useContext(UsuarioContext);
   const [filtro, setFiltro] = useState(null);
   const [lista, setlista] = useState([]);
@@ -81,6 +81,16 @@ const Proveedor = () => {
     if (mensaje != '') {
       Alert.alert('Error en la lista', mensaje);
     }
+  }
+
+  const irGuardar = () => {
+    console.log("Ir a Guardar Proveedor");
+    navigation.navigate('GuardarProveedor');
+  }
+
+  const irEditar = () => {
+    console.log("Ir a Editar Proveedor");
+    navigation.navigate('EditarProveedor');
   }
 
   const Card = ({ proveedor }) => {
@@ -156,7 +166,7 @@ const Proveedor = () => {
         style={{ paddingHorizontal: 20 }}
         underlayColor={COLORS.white}
         activeOpacity={0.9}
-        onPress={() => Alert.alert('Pressed!', 'info info')}
+        onPress={irGuardar}
       >
         <View style={{ flexDirection: 'row', padding: 10, backgroundColor: COLORS.primary, width: '40%', borderRadius: 15, elevation: 13, marginVertical: 15 }}>
           <AntDesign name='pluscircle' size={28} color={COLORS.white} />

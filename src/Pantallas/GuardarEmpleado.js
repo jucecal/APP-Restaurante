@@ -4,7 +4,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import COLORS from '../consts/colors';
 import EstilosEditar from '../Componentes/EstilosEditar';
 
-const GuardarEmpleado = () => {
+const GuardarEmpleado = ({navigation}) => {
 
     return (
         <View style={{ backgroundColor: COLORS.white }}>

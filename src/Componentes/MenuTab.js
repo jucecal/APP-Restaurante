@@ -11,7 +11,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
-
+import GroceryScreen from '../Pantallas/GroceryScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -31,7 +31,7 @@ const MenuTab = ()=>{
                     }}
 
                 />
-                <Tab.Screen name="Menú" component={Cliente} 
+                <Tab.Screen name="Menú" component={Menu} 
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <AntDesign name="appstore-o" color={color} size={size} />
@@ -39,14 +39,14 @@ const MenuTab = ()=>{
                     }}
                 />
 
-                <Tab.Screen name="Comprar" component={Empleado}
+                <Tab.Screen name="Comprar" component={Carrito}
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <Entypo name="shopping-bag" color={color} size={size} />
                         )
                     }}
                 />
-                <Tab.Screen name="Reservaciones" component={Inventario}
+                <Tab.Screen name="Reservaciones" component={GroceryScreen}
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <AntDesign name="calendar" color={color} size={size} />
