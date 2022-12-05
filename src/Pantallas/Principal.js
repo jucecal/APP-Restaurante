@@ -71,7 +71,7 @@ const Principal = ({ navigation }) => {
                                 {
                                     validarUsuario ? (
                                         <>
-                                            <Text style={Estilos.etiquetaError}>Dede escribir el usuario</Text>
+                                            <Text style={Estilos.etiquetaError}>Debe escribir el usuario o el correo</Text>
                                         </>
 
                                     ) : (

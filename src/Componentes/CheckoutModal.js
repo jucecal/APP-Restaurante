@@ -26,10 +26,10 @@ const CheckoutModal = ({ setModalVisible }) => {
                     {allCartItems?.map(item => (
                         <OrderItem key={item.resName} name={item.resName} value={`$${item?.foods.reduce((total, item) => total + item.price, 0).toFixed(1)} • (${item?.foods?.length})`} />
                     ))}
-                    <OrderItem name="Total price" value={`$${totalPrice}`} total />
+                    <OrderItem name="Total" value={`$${totalPrice}`} total />
                 </View>
                 <TouchableOpacity style={tailwind`py-3 px-10 self-center bg-black rounded-full`} onPress={addOrder}>
-                    <Text style={tailwind`text-white`}>Checkout</Text>
+                    <Text style={tailwind`text-white`}>Ver</Text>
                 </TouchableOpacity>
             </View>
         </View>

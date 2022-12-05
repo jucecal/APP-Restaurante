@@ -3,7 +3,7 @@ import React from 'react';
 const Cargando = ({texto}) => {
     return (
         <View style={estilo.contenedor}>
-            <ActivityIndicator size="large" color="#000"></ActivityIndicator>
+            <ActivityIndicator size="large" color="#F9813A"></ActivityIndicator>
             <View>
                 {
                     texto ? (

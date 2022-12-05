@@ -145,7 +145,7 @@ const CheckoutScreen = () => {
       {loadingOrder ? (
         <View style={tailwind`h-full bg-white items-center justify-center`}>
           <Text style={tailwind`font-bold text-lg w-3/4 text-center`}>{"Congratulations!\nPayment successfully done!"}</Text>
-          <Text style={tailwind`mt-4`}>Creating your order. please wait...</Text>
+          <Text style={tailwind`mt-4`}>Creando su orden. por favor espere...</Text>
           <Image source={require('../assets/images/loaging.gif')} style={tailwind`w-72 h-72`} />
         </View>
       ) : (
@@ -168,7 +168,7 @@ const CheckoutScreen = () => {
                       <Text style={styles.text}>{paymentMethod?.label}</Text>
                     </View>
                   ) : (
-                    'Choose payment method'
+                    'Seleccione su método de pago'
                   )
                 }
                 disabled={!paymentSheetEnabled}

@@ -52,15 +52,15 @@ const HomeScreen = () => {
         <Screen style={tailwind`bg-white flex-1`}>
 
         <View style={styles.contenedorImagen}>
-                <ImageBackground
-                    source={logo01}
-                    style={styles.imagenFondo}
-                >
-                </ImageBackground>
-            </View>
+            <ImageBackground
+                source={logo01}
+                style={styles.imagenFondo}
+            >
+            </ImageBackground>
+        </View>
 
-        <View style={tailwind`mt-2 mx-4 mb-1 relative justify-center`}>            
-            <Ionicons name="search-sharp" size={23} color="#F9813A" style={tailwind`absolute left-4 z-10 self-center`} />
+        <View style={tailwind`mt-2 mx-4 mb-2 relative justify-center`}>            
+            <Ionicons name="search-sharp" size={23} color="#F9813A" style={tailwind`absolute left-4 top-3 z-10 self-center`} />
             <TextInput style={[tailwind`rounded-full py-2 px-5 pl-10 bg-gray-100`, styles.input]} placeholder=" Buscar Sucursal" />
         </View>
                 
