@@ -6,6 +6,8 @@ import { meals } from '../data/mealsData'
 import tailwind from 'tailwind-react-native-classnames';
 import colors from '../consts/colors2';
 import { Ionicons } from '@expo/vector-icons';
+//style={tailwind`rounded-xl overflow-hidden justify-center items-center w-full`} (ESTILO DE LAS CAJAS)
+//style={tailwind`absolute self-center text-white w-3/4 text-center z-20`} (ESTILO DEL TEXTO)
 
 const BrowseScreen = () => {
     return (
@@ -17,21 +19,21 @@ const BrowseScreen = () => {
                 >
                 </ImageBackground>
             </View>
+
+            <View style={tailwind`mt-2 mx-4 mb-1 relative justify-center`}>     
+                <Ionicons name="search-sharp" size={23} color="#F9813A" style={tailwind`absolute left-4 top-3 z-10 self-center`} />
+                <TextInput style={[tailwind`rounded-full py-2 px-5 pl-10 bg-gray-100`, styles.input]} placeholder=" Buscar Promoción" />
+            </View>
             
             <ScrollView style={tailwind`flex-1`} showsVerticalScrollIndicator={false}>
-                <View style={tailwind`mt-2 mx-4 mb-1 relative justify-center`}>
+                <View style={tailwind`flex-row mx-1 flex-wrap justify-between`}>
                     
-                    <Ionicons name="search-sharp" size={23} color="#F9813A" style={tailwind`absolute left-4 z-10 self-center`} />
-                    <TextInput style={[tailwind`rounded-full py-2 px-5 pl-10 bg-gray-100`, styles.input]} placeholder=" Buscar Producto" />
-                </View>
-                
-                <View style={tailwind`flex-row mx-2 flex-wrap justify-between`}>
                     {meals?.map(({ title, image, id }) => (
                         <TouchableOpacity key={id} style={tailwind`w-full my-2 px-5`}>
-                            <View style={tailwind`rounded-lg overflow-hidden justify-center items-center w-full`}>
-                                <Image source={{ uri: image }} style={tailwind`w-full h-40`} />
-                                <View style={[tailwind`absolute top-0 left-0 w-full h-full bg-black rounded-lg z-10`, { opacity: 0.7 }]} />
-                                <Text style={tailwind`absolute self-center text-white w-3/4 text-center z-20`} numberOfLines={2}>Come Rico</Text>
+                            <View style={styles.contenedorPromos}>
+                                <Image source={{ uri: image }} style={tailwind`w-full h-full`} />
+                                <View style={[tailwind`absolute top-0 left-0 w-full h-full bg-black rounded-lg z-10`, { opacity: 0.3 }]} />
+                                <Text style={tailwind`absolute self-center text-white w-3/4 text-center z-20`} numberOfLines={5}>{title}</Text>
                             </View>
                         </TouchableOpacity>
                     ))}
@@ -56,6 +58,19 @@ const styles = StyleSheet.create({
         width: 190,
         height: 120,
         backgroundColor: '#fff',
+    },
+    contenedorPromos: {
+        backgroundColor: '#fff',
+        justifyContent:'center',
+        alignItems: 'center',
+        height: 550,
+    },
+
+    contenedorPromos: {
+        backgroundColor: '#fff',
+        justifyContent:'center',
+        alignItems: 'center',
+        height: 550,
     },
 })
 

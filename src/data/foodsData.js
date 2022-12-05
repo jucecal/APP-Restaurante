@@ -36,7 +36,7 @@ export const foods = [
         id: 'KKD5',
         title: "Pizza",
         description: "Pizza con peperonni, carne, cebolla, chile y mucho quesos",
-        price: 16.5,
+        price: 165,
         image:
             "https://thestayathomechef.com/wp-content/uploads/2018/10/Pizza-Lasagna-3-150x150.jpg",
     },
@@ -44,7 +44,7 @@ export const foods = [
         id: 'KKD6',
         title: "Baleadas",
         description: "Baleadas con queso, huevo, aguacate y frijoles",
-        price: 16.5,
+        price: 20,
         image:
             "https://tropicalcheese.com/wp-content/uploads/2020/09/honduran-balada-1280x640.jpg",
     },

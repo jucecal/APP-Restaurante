@@ -15,7 +15,7 @@ const TabCartButton = ({ onPress }) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.white,
+        backgroundColor: '#eee',
         height: 60,
         width: 60,
         borderRadius: 30,
