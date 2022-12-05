@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
         alignSelf: "center",
         position: 'absolute',
-        zIndex: 99999,        
+        zIndex: 99999,
         top: 160,
-        
-       
+
+
     },
     image: {
         width: '100%',
@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
         position: 'relative',
         justifyContent: 'flex-end',
         backgroundColor: colors.dark,
-        
-        
+
+
     },
     content: {
         backgroundColor: colors.white,

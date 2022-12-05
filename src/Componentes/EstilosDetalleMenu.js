@@ -7,7 +7,7 @@ const EstilosDetalleMenu = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginHorizontal: 20,
-        marginTop:20
+        marginTop: 20
     },
     details: {
         paddingHorizontal: 20,
@@ -31,10 +31,10 @@ const EstilosDetalleMenu = StyleSheet.create({
         fontSize: 16,
         color: COLORS.white,
     },
-    title: { 
-        color: COLORS.white, 
-        fontWeight: 'bold', 
-        fontSize: 18 
+    title: {
+        color: COLORS.white,
+        fontWeight: 'bold',
+        fontSize: 18
     },
     btnContainer: {
         backgroundColor: COLORS.primary,

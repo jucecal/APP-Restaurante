@@ -56,8 +56,8 @@ const Pin = ({ navigation }) => {
             }
             setEspera(false);
             Alert.alert(titulo, textoMensaje);
-            if(textoMensaje=='Correo Enviado'){
-               navigation.navigate('NuevaContrasena',{correo: correo});
+            if (textoMensaje == 'Correo Enviado') {
+                navigation.navigate('NuevaContrasena', { correo: correo });
             }
         }
         else {

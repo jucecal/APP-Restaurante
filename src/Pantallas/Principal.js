@@ -13,7 +13,7 @@ const Principal = ({ navigation }) => {
     const [validarContrasena, setValidarContrasena] = useState(false);
     const { setLogin } = useContext(UsuarioContext);
     const [espera, setEspera] = useState(false);
-    const titulo='Pantalla Principal';
+    const titulo = 'Pantalla Principal';
     useEffect(() => {
         if (!usuario) {
             setValidarUsuario(true);

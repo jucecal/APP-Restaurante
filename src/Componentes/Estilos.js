@@ -6,8 +6,8 @@ const Estilos = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-        
-        
+
+
     },
     contenedorTitulo: {
         backgroundColor: '#fff',
@@ -16,7 +16,7 @@ const Estilos = StyleSheet.create({
         width: '100%',
         height: 150,
         alignItems: 'center',
-        
+
     },
     contenedorTitulo2: {
         backgroundColor: '#fff',
@@ -25,16 +25,16 @@ const Estilos = StyleSheet.create({
         width: '100%',
         height: 37,
         alignItems: 'center',
-        
+
     },
     contenedorContenido: {
         flex: 1,
         flexDirection: 'column',
         backgroundColor: '#fff',
         alignItems: 'stretch',
-        justifyContent: 'flex-start',       
-        width: '100%',        
-        padding: 10 
+        justifyContent: 'flex-start',
+        width: '100%',
+        padding: 10
 
     },
     textoTitulo: {
@@ -48,7 +48,7 @@ const Estilos = StyleSheet.create({
         width: 300,
         height: 200,
         justifyContent: 'flex-end',
-        padding:15,
+        padding: 15,
         backgroundColor: '#fff'
     },
     contenedorControles: {
@@ -82,13 +82,13 @@ const Estilos = StyleSheet.create({
     },
     etiquetaTexto: {
         fontSize: 16,
-        color:"#fff"
+        color: "#fff"
     },
     etiquetaError: {
         fontSize: 12,
         marginBottom: 5,
         marginLeft: 5,
-        color:'red'
+        color: 'red'
     },
     boton: {
         flex: 1,

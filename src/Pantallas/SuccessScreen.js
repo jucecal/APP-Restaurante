@@ -12,7 +12,7 @@ function SuccessScreen() {
     return (
         <Screen style={styles.container}>
             <View style={styles.content}>
-                <Image source={ require('../../assets/blink.gif') } style={tailwind`w-72 h-72`} />
+                <Image source={require('../../assets/blink.gif')} style={tailwind`w-72 h-72`} />
                 <Text style={styles.title}>Felicidades!!!</Text>
                 <Text style={styles.text}>Tu orden ha sido ejecutada exitosamente!</Text>
                 <View style={styles.buttons}>
@@ -33,13 +33,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-    }, 
+    },
     title: {
         fontSize: 26,
         fontWeight: 'bold',
     },
     text: {
-        width: 280, 
+        width: 280,
         textAlign: 'center',
         marginTop: 10,
         color: colors.gray

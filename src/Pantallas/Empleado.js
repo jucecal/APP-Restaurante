@@ -39,8 +39,8 @@ const Empleado = () => {
       buscarUno();
     }
   }, [validarFiltro]);
- useEffect(() => {
-    if(!filtro){
+  useEffect(() => {
+    if (!filtro) {
       buscar();
     }
 
@@ -81,7 +81,7 @@ const Empleado = () => {
       Alert.alert('Error en la lista', mensaje);
     }
   }
- 
+
   const Card = ({ empleado }) => {
     return (
       <TouchableHighlight
@@ -90,7 +90,7 @@ const Empleado = () => {
         onPress={() => Alert.alert('Información de empleado!', 'Datos de empleado')}
       >
         <View style={EstilosAdmin.card}>
-          
+
           <View style={EstilosAdmin.iconoTipoCarta}>
             <Feather name='user' size={28} color={COLORS.dark} />
           </View>
@@ -115,10 +115,10 @@ const Empleado = () => {
               Cargo: {empleado.Cargo.Cargo}
             </Text>
           </View>
-          
+
           <View style={EstilosAdmin.iconoEditar}>
             <Feather name='edit' size={25} color={COLORS.dark} />
-          </View>        
+          </View>
         </View>
       </TouchableHighlight>
     );

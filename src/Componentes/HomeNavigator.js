@@ -15,11 +15,11 @@ export default function HomeNavigator() {
             }}
         >
             <>
-            <Stack.Screen name="HomeScreen" component={MainTabNavigator} />
-            <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
-            <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
+                <Stack.Screen name="HomeScreen" component={MainTabNavigator} />
+                <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
+                <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
             </>
-            
+
         </Stack.Navigator>
     )
 }

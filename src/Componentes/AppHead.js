@@ -34,14 +34,14 @@ const styles = StyleSheet.create({
         paddingBottom: 15
     },
     topBar_icon: {
-        top:  0,
+        top: 0,
         left: 10,
         height: '100%',
         position: 'absolute',
         zIndex: 100,
         alignItems: 'center',
         justifyContent: 'center'
-    }, 
+    },
     topBar_center: {
         flex: 1,
         justifyContent: 'center',

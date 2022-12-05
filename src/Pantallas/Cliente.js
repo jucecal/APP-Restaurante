@@ -97,9 +97,9 @@ const Cliente = ({ navigation }) => {
   const Card = ({ cliente }) => {
     return (
       <TouchableHighlight
-        underlayColor={COLORS.white}        
+        underlayColor={COLORS.white}
         activeOpacity={0.9}
-        onPress={() => Alert.alert('Pressed!','info info')}
+        onPress={() => Alert.alert('Pressed!', 'info info')}
       >
         <View style={EstilosAdmin.card}>
           <View style={EstilosAdmin.iconoTipoCarta}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ImageBackground,StyleSheet, ScrollView, Text, TouchableOpacity, Image, TextInput } from 'react-native';
+import { View, ImageBackground, StyleSheet, ScrollView, Text, TouchableOpacity, Image, TextInput } from 'react-native';
 import Screen from '../Componentes/Screen';
 import tailwind from 'tailwind-react-native-classnames';
 import logo01 from '../../assets/logo-01.png';
@@ -27,7 +27,7 @@ const GroceryScreen = () => {
             </ScrollView>
 
 
-           
+
         </Screen>
     );
 }
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         height: 110,
-        
+
     },
     imagenFondo: {
         width: 190,

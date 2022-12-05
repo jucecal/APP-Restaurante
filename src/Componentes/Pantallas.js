@@ -9,7 +9,9 @@ import DetailsScreen from '../Pantallas/DetailsScreen';
 import SuccessScreen from '../Pantallas/SuccessScreen';
 import MainTabNavigator from './MainTabNavigator';
 import ClientesTab from './ClientesTab';
-
+import EmpleadosTab from './EmpleadosTab';
+import ProveedoresTab from './ProveedoresTab';
+import Inventario from '../Pantallas/Inventario';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,7 +26,6 @@ const Pantallas = () => {
         return tipoCliente;
     }
 
-
     if (aplicacionIniciada) {
         return (
             <Stack.Navigator
@@ -35,7 +36,6 @@ const Pantallas = () => {
                 {sesionIniciada ? (
                     <>
                         {verificarUsuario() ? (
-
                             <>
                                 <Stack.Screen name="HomeScreen" component={MainTabNavigator} />
                                 <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
@@ -45,27 +45,23 @@ const Pantallas = () => {
                             <>
                                 <Stack.Screen name="TabMenu" component={MenuTab} />
                                 <Stack.Screen name="ClientesTab" component={ClientesTab} />
-
+                                <Stack.Screen name="EmpleadosTab" component={EmpleadosTab} />
+                                <Stack.Screen name="ProveedoresTab" component={ProveedoresTab} />
+                                <Stack.Screen name="Inventario" component={Inventario} />
                             </>
-
                         )}
-
                     </>
                 ) : (
-
                     <>
                         <Stack.Screen name="LoginMenu" component={LoginTab} />
                     </>
-
                 )
                 }
             </Stack.Navigator>
         );
-
     }
     else {
         return <Cargando texto="Cargando aplicación" />;
     }
-
 }
 export default Pantallas;

@@ -1,6 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, View, Text, ScrollView, Image, Alert, TextInput } from 'react-native';
-import NumericInput from 'react-native-numeric-input'
+import { TouchableOpacity, View, Text, ScrollView, TextInput } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import COLORS from '../consts/colors';
 import EstilosEditar from '../Componentes/EstilosEditar';
@@ -13,31 +12,31 @@ const GuardarCliente = ({ navigation }) => {
                 <AntDesign name='left' size={28} />
                 <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Guardar Cliente</Text>
             </View>
-            <ScrollView style={{marginTop:0}}>
-            <View>
-                <View style={EstilosEditar.contenedorContenido}>
-                    <Text style={EstilosEditar.etiqueta}>Nombre del Cliente</Text>
-                    <TextInput style={EstilosEditar.inputs}>Jesús</TextInput>
-                </View>
+            <ScrollView style={{ marginTop: 0 }}>
+                <View>
+                    <View style={EstilosEditar.contenedorContenido}>
+                        <Text style={EstilosEditar.etiqueta}>Nombre del Cliente</Text>
+                        <TextInput style={EstilosEditar.inputs}></TextInput>
+                    </View>
 
-                <View style={EstilosEditar.contenedorContenido}>
-                    <Text style={EstilosEditar.etiqueta}>Apellido de Cliente</Text>
-                    <TextInput style={EstilosEditar.inputs}>López</TextInput>
-                </View>
+                    <View style={EstilosEditar.contenedorContenido}>
+                        <Text style={EstilosEditar.etiqueta}>Apellido de Cliente</Text>
+                        <TextInput style={EstilosEditar.inputs}></TextInput>
+                    </View>
 
-                <View style={EstilosEditar.contenedorContenido}>
-                    <Text style={EstilosEditar.etiqueta}>Teléfono</Text>
-                    <TextInput style={EstilosEditar.inputs}>88106527</TextInput>
-                </View>
+                    <View style={EstilosEditar.contenedorContenido}>
+                        <Text style={EstilosEditar.etiqueta}>Teléfono</Text>
+                        <TextInput style={EstilosEditar.inputs}></TextInput>
+                    </View>
 
-                <View style={EstilosEditar.contenedorContenido}>
-                    <Text style={EstilosEditar.etiqueta}>Fecha de Nacimiento</Text>
-                    <TextInput style={EstilosEditar.inputs}>20/08/2000</TextInput>
-                </View>
+                    <View style={EstilosEditar.contenedorContenido}>
+                        <Text style={EstilosEditar.etiqueta}>Fecha de Nacimiento</Text>
+                        <TextInput style={EstilosEditar.inputs}></TextInput>
+                    </View>
 
-                <View style={EstilosEditar.contenedorContenido}>
-                    <Text style={EstilosEditar.etiqueta}>Dirección</Text>
-                        <TextInput style={EstilosEditar.inputs}>La Ceiba</TextInput>
+                    <View style={EstilosEditar.contenedorContenido}>
+                        <Text style={EstilosEditar.etiqueta}>Dirección</Text>
+                        <TextInput style={EstilosEditar.inputs}></TextInput>
                     </View>
                 </View>
 
@@ -50,13 +49,13 @@ const GuardarCliente = ({ navigation }) => {
                 </View>
 
                 <View style={EstilosEditar.contenedorBorrado}>
-                    <Text style={EstilosEditar.etiquetaCreacion}>Creado el 24/11/2022</Text>
+                    <Text style={EstilosEditar.etiquetaCreacion}>Creado el 05/12/2022</Text>
                 </View>
 
             </ScrollView>
-            
+
         </View>
-        
+
     );
 };
 

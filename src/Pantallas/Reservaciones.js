@@ -26,8 +26,8 @@ const { width } = Dimensions.get('screen');
 
 
 const Proveedor = () => {
-  const { usuario} = useContext(UsuarioContext);
-  
+  const { usuario } = useContext(UsuarioContext);
+
   const Card = ({ reservacion }) => {
     return (
       <TouchableHighlight
@@ -36,7 +36,7 @@ const Proveedor = () => {
         onPress={() => Alert.alert('Pressed!', 'info info')}
       >
         <View style={EstilosAdmin.card}>
-          
+
           <View style={EstilosAdmin.iconoTipoCarta}>
             <Feather name='truck' size={28} color={COLORS.dark} />
           </View>
@@ -60,10 +60,10 @@ const Proveedor = () => {
             <Text style={EstilosAdmin.detallesCarta}>
               Cliente: {reservacion.Cliente}
             </Text>
-          </View>  
+          </View>
           <View style={EstilosAdmin.iconoEditar}>
             <Feather name='edit' size={20} color={COLORS.dark} />
-          </View>        
+          </View>
         </View>
       </TouchableHighlight>
     );

@@ -12,7 +12,7 @@ const ListaUsuarios = ({ navigation }) => {
     const [validarContrasena, setValidarContrasena] = useState(false);
     const { setLogin } = useContext(UsuarioContext);
     const [espera, setEspera] = useState(false);
-    const titulo='Lista de usuarios';
+    const titulo = 'Lista de usuarios';
     useEffect(() => {
         if (!usuario) {
             setValidarUsuario(true);

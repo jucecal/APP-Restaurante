@@ -4,27 +4,39 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import COLORS from '../consts/colors';
 import EstilosEditar from '../Componentes/EstilosEditar';
 
-const EditarProveedor = () => {
+const EditarEmpleado = () => {
 
     return (
         <View style={{ backgroundColor: COLORS.white }}>
             <View style={EstilosEditar.header}>
                 <AntDesign name='doubleleft' size={28} />
-                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Editar</Text>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Editar Empleado</Text>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 30 }}>
+            <ScrollView style={{ marginTop: 0 }}>
                 <View>
                     <View style={EstilosEditar.contenedorContenido}>
                         <Text style={EstilosEditar.etiqueta}>Nombre</Text>
-                        <TextInput style={EstilosEditar.inputs}>Sula</TextInput>
+                        <TextInput style={EstilosEditar.inputs}>Jesús</TextInput>
                     </View>
+
                     <View style={EstilosEditar.contenedorContenido}>
-                        <Text style={EstilosEditar.etiqueta}>Nombre de Contacto</Text>
-                        <TextInput style={EstilosEditar.inputs}>El bicho</TextInput>
+                        <Text style={EstilosEditar.etiqueta}>Apellido</Text>
+                        <TextInput style={EstilosEditar.inputs}>López</TextInput>
                     </View>
+
                     <View style={EstilosEditar.contenedorContenido}>
-                        <Text style={EstilosEditar.etiqueta}>Telefono</Text>
-                        <TextInput style={EstilosEditar.inputs}>33445566</TextInput>
+                        <Text style={EstilosEditar.etiqueta}>Teléfono</Text>
+                        <TextInput style={EstilosEditar.inputs}>88106527</TextInput>
+                    </View>
+
+                    <View style={EstilosEditar.contenedorContenido}>
+                        <Text style={EstilosEditar.etiqueta}>Fecha de Nacimiento</Text>
+                        <TextInput style={EstilosEditar.inputs}>20-08-2000</TextInput>
+                    </View>
+
+                    <View style={EstilosEditar.contenedorContenido}>
+                        <Text style={EstilosEditar.etiqueta}>Dirección</Text>
+                        <TextInput style={EstilosEditar.inputs}>La Ceiba</TextInput>
                     </View>
                 </View>
 
@@ -35,6 +47,7 @@ const EditarProveedor = () => {
                         </View>
                     </TouchableOpacity>
                 </View>
+
                 <View style={EstilosEditar.contenedorBorrado}>
                     <Text style={EstilosEditar.etiquetaCreacion}>Creado el 24/11/2022</Text>
                     <TouchableOpacity style={EstilosEditar.botonBorrado}>
@@ -46,6 +59,4 @@ const EditarProveedor = () => {
     );
 };
 
-
-
-export default EditarProveedor;
+export default EditarEmpleado;

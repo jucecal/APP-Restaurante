@@ -37,14 +37,14 @@ const estiloboton = StyleSheet.create({
         backgroundColor: "#F9813A",
         padding: 15,
         borderRadius: 30,
-        width:250,
+        width: 250,
         height: 50,
     },
     contenedorControles: {
         flexDirection: 'column',
-        alignItems:'center',
+        alignItems: 'center',
         marginTop: 2,
         marginBottom: 4,
     },
-});    
+});
 export default ViewCart;

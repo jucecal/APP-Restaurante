@@ -43,8 +43,8 @@ const DetalleMenu = () => {
                         and scrambled it to make a type specimen book. It has survived not
                         only five centuries.
                     </Text>
-                    <View style={{alignItems:"center", marginTop: 10, marginBottom: 10 }}>
-                        <NumericInput type='up-down' textColor={COLORS.white}  minValue={1} maxValue={10} rounded={true}  leftButtonBackgroundColor='#E56B70' onChange={value => console.log(value)} />
+                    <View style={{ alignItems: "center", marginTop: 10, marginBottom: 10 }}>
+                        <NumericInput type='up-down' textColor={COLORS.white} minValue={1} maxValue={10} rounded={true} leftButtonBackgroundColor='#E56B70' onChange={value => console.log(value)} />
                     </View>
                     <View style={{ marginTop: 20, marginBottom: 20 }}>
                         <TouchableOpacity activeOpacity={0.8} onPress={() => Alert.alert('Pressed!', 'info info')}>

@@ -19,9 +19,9 @@ const CartScreen = () => {
 
     return (
         <Screen style={tailwind`flex-1 bg-white`}>
-            <AppHead title={`Carrito (${getAllItems.length})`}icon="basket" />
+            <AppHead title={`Carrito (${getAllItems.length})`} icon="basket" />
             <View style={tailwind`flex-1`}>
-                <CartItems/>
+                <CartItems />
             </View>
             {!!getAllItems.length && (
                 <View style={tailwind`flex-row items-center px-5 pb-5`}>

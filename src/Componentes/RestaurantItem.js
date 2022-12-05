@@ -10,17 +10,17 @@ const RestaurantItem = ({ restaurantData }) => {
 
     const handlePress = (item) => {
         navigation.navigate("DetailsScreen", {
-            item: {...item}
+            item: { ...item }
         })
     }
 
-return (
-    <View>
-        {restaurantData?.map((item, index) => (
-            <RestaurantItemCard key={index} item={item} onPress={() => handlePress(item)} />
-        ))}
-    </View>
-);
+    return (
+        <View>
+            {restaurantData?.map((item, index) => (
+                <RestaurantItemCard key={index} item={item} onPress={() => handlePress(item)} />
+            ))}
+        </View>
+    );
 }
 
 export default RestaurantItem;

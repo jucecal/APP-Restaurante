@@ -21,13 +21,13 @@ const loginValidationSchema = yup.object().shape({
 });
 
 function Login({ navigation }) {
- 
-  const { setLogin } = useContext(UsuarioContext);  
-  
-  const iniciarSesion = async ({ email, password }) => {    
-      
-      await setLogin({ usuario: email, contrasena: password });      
-    
+
+  const { setLogin } = useContext(UsuarioContext);
+
+  const iniciarSesion = async ({ email, password }) => {
+
+    await setLogin({ usuario: email, contrasena: password });
+
   };
   const LoginUser = ({ email, password }) => {
     auth
@@ -43,7 +43,7 @@ function Login({ navigation }) {
       });
   };
 
-  const irpin = () =>{
+  const irpin = () => {
     console.log("Ir a PIN");
     navigation.navigate('Pin');
   }
@@ -73,7 +73,7 @@ function Login({ navigation }) {
               autoCompleteType="off"
               password={true}
             />
-            <AppSubmitButton title="Ingresar" />            
+            <AppSubmitButton title="Ingresar" />
           </AppForm>
         </View>
 
@@ -87,9 +87,9 @@ function Login({ navigation }) {
           </Text>
         </Text>
         <Text onPress={irpin}
-          style={{ color: colors.dark, textAlign: 'center',marginTop:10 }}
+          style={{ color: colors.dark, textAlign: 'center', marginTop: 10 }}
         >
-          ¿Olvidaste tu contraseña?          
+          ¿Olvidaste tu contraseña?
         </Text>
       </View>
     </Screen>

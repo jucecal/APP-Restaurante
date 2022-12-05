@@ -26,10 +26,10 @@ const DetailsScreen = ({ route, navigation }) => {
 
             <View style={styles.mapImageWrpper}>
                 {mapActive ? (
-                        <RestaurantMap coordinates={coordinates} title={name} />
-                    ) : (
-                        <Image source={{ uri: image_url }} style={styles.image} />
-                    )}          
+                    <RestaurantMap coordinates={coordinates} title={name} />
+                ) : (
+                    <Image source={{ uri: image_url }} style={styles.image} />
+                )}
             </View>
 
             <ScrollView showsVerticalScrollIndicator={false} style={tailwind`z-20`}>
@@ -62,7 +62,7 @@ const DetailsScreen = ({ route, navigation }) => {
                             <Text key={index} style={tailwind`text-xs text-gray-700`}><Text style={{ color: colors.primary }}></Text> {title}</Text>
                         ))}
                     </View>
-                    
+
                     {/* MenuItems */}
                     <MenuItems resName="Pedido" resImage={image_url} />
                 </View>

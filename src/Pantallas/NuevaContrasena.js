@@ -53,7 +53,7 @@ const NuevaContrasena = ({ navigation, route }) => {
         console.log(correo);
         if (!validarContrasena && !validarConfirmarContrasena && !validarPin) {
             setEspera(true);
-            var textoMensaje='';
+            var textoMensaje = '';
             try {
                 await Axios.put('/autenticacion/recuperarcontrasena?usuario=' + correo, {
                     pin: pin,
@@ -81,8 +81,8 @@ const NuevaContrasena = ({ navigation, route }) => {
             }
             setEspera(false);
             Alert.alert(titulo, textoMensaje);
-            if(textoMensaje=='Contrasena Actualizada'){
-               navigation.navigate('Login');
+            if (textoMensaje == 'Contrasena Actualizada') {
+                navigation.navigate('Login');
             }
         }
         else {

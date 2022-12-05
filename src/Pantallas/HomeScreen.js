@@ -1,5 +1,5 @@
-import React, {useEffect, useState,} from 'react';
-import { Text, ScrollView, Alert, ActivityIndicator, View, StyleSheet, TextInput, ImageBackground} from 'react-native';
+import React, { useEffect, useState, } from 'react';
+import { Text, ScrollView, Alert, ActivityIndicator, View, StyleSheet, TextInput, ImageBackground } from 'react-native';
 import logo01 from '../../assets/logo-01.png';
 import Screen from '../Componentes/Screen'
 import Categories from '../Componentes/Categories'
@@ -44,32 +44,32 @@ const HomeScreen = () => {
     };
 
     useEffect(() => {
-        return 
+        return
         getRestaurantsFromYelp();
     }, [city, activeTab]);
 
     return (
         <Screen style={tailwind`bg-white flex-1`}>
 
-        <View style={styles.contenedorImagen}>
-            <ImageBackground
-                source={logo01}
-                style={styles.imagenFondo}
-            >
-            </ImageBackground>
-        </View>
+            <View style={styles.contenedorImagen}>
+                <ImageBackground
+                    source={logo01}
+                    style={styles.imagenFondo}
+                >
+                </ImageBackground>
+            </View>
 
-        <View style={tailwind`mt-2 mx-4 mb-2 relative justify-center`}>            
-            <Ionicons name="search-sharp" size={23} color="#F9813A" style={tailwind`absolute left-4 top-3 z-10 self-center`} />
-            <TextInput style={[tailwind`rounded-full py-2 px-5 pl-10 bg-gray-100`, styles.input]} placeholder=" Buscar Sucursal" />
-        </View>
-                
+            <View style={tailwind`mt-2 mx-4 mb-2 relative justify-center`}>
+                <Ionicons name="search-sharp" size={23} color="#F9813A" style={tailwind`absolute left-4 top-3 z-10 self-center`} />
+                <TextInput style={[tailwind`rounded-full py-2 px-5 pl-10 bg-gray-100`, styles.input]} placeholder=" Buscar Sucursal" />
+            </View>
 
-        <ScrollView style={tailwind`flex-1`} showsVerticalScrollIndicator={false}>
-            {loading && <ActivityIndicator size="large" color='#F9813A' style={tailwind`mt-2 mb-6`} />}
-            <RestaurantItem restaurantData={restaurantData} />
-        </ScrollView>
-    </Screen>
+
+            <ScrollView style={tailwind`flex-1`} showsVerticalScrollIndicator={false}>
+                {loading && <ActivityIndicator size="large" color='#F9813A' style={tailwind`mt-2 mb-6`} />}
+                <RestaurantItem restaurantData={restaurantData} />
+            </ScrollView>
+        </Screen>
 
     );
 }
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         height: 110,
-        
+
     },
     imagenFondo: {
         width: 190,
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
 
 
 
-    
+
 
 export default HomeScreen;
 

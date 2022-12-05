@@ -1,11 +1,12 @@
-import { createNativeStackNavigator  } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../Pantallas/Login';
 import Pin from '../Pantallas/Pin';
 import NuevaContrasena from '../Pantallas/NuevaContrasena';
-const Stack  = createNativeStackNavigator ();
 import JoinScreen from '../Pantallas/JoinScreen';
 
-const LoginTab = ()=>{
+const Stack = createNativeStackNavigator();
+
+const LoginTab = () => {
     return (
         <Stack.Navigator
             screenOptions={{

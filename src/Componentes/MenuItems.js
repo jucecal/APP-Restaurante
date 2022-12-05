@@ -10,7 +10,7 @@ import colors from '../consts/colors';
 const MenuItems = ({ resName, resImage }) => {
     const cartItems = useSelector(selectCartItems)
     const dispatch = useDispatch()
-    
+
     const match = id => {
         const resIndex = cartItems.findIndex(item => item.resName === resName)
         if (resIndex >= 0) {

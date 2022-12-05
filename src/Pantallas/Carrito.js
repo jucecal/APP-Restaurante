@@ -4,7 +4,6 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import COLORS from '../consts/colors';
 import foods from '../consts/foods';
 
-
 const Carrito = () => {
     const CartCard = ({ item }) => {
         return (
@@ -33,6 +32,7 @@ const Carrito = () => {
             </View>
         );
     };
+
     return (
         <View style={{ backgroundColor: COLORS.white, flex: 1 }}>
             <View style={style.header}>
@@ -71,13 +71,14 @@ const Carrito = () => {
         </View>
     );
 };
+
 const style = StyleSheet.create({
     header: {
         paddingVertical: 20,
         flexDirection: 'row',
         alignItems: 'center',
         marginHorizontal: 20,
-        marginTop:40
+        marginTop: 40
     },
     cartCard: {
         height: 100,
@@ -96,15 +97,15 @@ const style = StyleSheet.create({
         backgroundColor: COLORS.primary,
         borderRadius: 30,
         paddingHorizontal: 5,
-        paddingVertical:2,
+        paddingVertical: 2,
         flexDirection: 'row',
         justifyContent: 'center',
         alignContent: 'center',
     },
-    title: { 
-        color: COLORS.white, 
-        fontWeight: 'bold', 
-        fontSize: 18 
+    title: {
+        color: COLORS.white,
+        fontWeight: 'bold',
+        fontSize: 18
     },
     btnContainer: {
         backgroundColor: COLORS.primary,

@@ -1,12 +1,12 @@
-import { createNativeStackNavigator  } from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Cliente from '../Pantallas/Cliente';
 import EditarCliente from '../Pantallas/EditarCliente';
 import GuardarCliente from '../Pantallas/GuardarCliente';
-const Stack  = createNativeStackNavigator ();
 
+const Stack = createNativeStackNavigator();
 
-const LoginTab = ()=>{
+const LoginTab = () => {
     return (
         <Stack.Navigator
             screenOptions={{
@@ -17,7 +17,7 @@ const LoginTab = ()=>{
                 <Stack.Screen name="Cliente" component={Cliente} />
                 <Stack.Screen name="EditarCliente" component={EditarCliente} />
                 <Stack.Screen name="GuardarCliente" component={GuardarCliente} />
-                
+
             </>
         </Stack.Navigator>
     );

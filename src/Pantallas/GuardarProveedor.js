@@ -4,30 +4,29 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import COLORS from '../consts/colors';
 import EstilosEditar from '../Componentes/EstilosEditar';
 
-const EditarProveedor = () => {
+const GuardarProveedor = () => {
 
     return (
         <View style={{ backgroundColor: COLORS.white }}>
             <View style={EstilosEditar.header}>
                 <AntDesign name='doubleleft' size={28} />
-                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Editar</Text>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Guardar Empleado</Text>
             </View>
-            <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 30 }}>
+            <ScrollView style={{ marginTop: 0 }}>
                 <View>
                     <View style={EstilosEditar.contenedorContenido}>
                         <Text style={EstilosEditar.etiqueta}>Nombre</Text>
-                        <TextInput style={EstilosEditar.inputs}>Sula</TextInput>
+                        <TextInput style={EstilosEditar.inputs}></TextInput>
                     </View>
                     <View style={EstilosEditar.contenedorContenido}>
                         <Text style={EstilosEditar.etiqueta}>Nombre de Contacto</Text>
-                        <TextInput style={EstilosEditar.inputs}>El bicho</TextInput>
+                        <TextInput style={EstilosEditar.inputs}></TextInput>
                     </View>
                     <View style={EstilosEditar.contenedorContenido}>
                         <Text style={EstilosEditar.etiqueta}>Telefono</Text>
-                        <TextInput style={EstilosEditar.inputs}>33445566</TextInput>
+                        <TextInput style={EstilosEditar.inputs}></TextInput>
                     </View>
                 </View>
-
                 <View style={{ marginHorizontal: 30 }}>
                     <TouchableOpacity activeOpacity={0.8} >
                         <View style={EstilosEditar.btnContainer}>
@@ -35,17 +34,16 @@ const EditarProveedor = () => {
                         </View>
                     </TouchableOpacity>
                 </View>
+
                 <View style={EstilosEditar.contenedorBorrado}>
-                    <Text style={EstilosEditar.etiquetaCreacion}>Creado el 24/11/2022</Text>
-                    <TouchableOpacity style={EstilosEditar.botonBorrado}>
-                        <AntDesign name='delete' size={15} color={COLORS.white}></AntDesign>
-                    </TouchableOpacity>
+                    <Text style={EstilosEditar.etiquetaCreacion}>Creado el 05/12/2022</Text>
                 </View>
+
             </ScrollView>
+
         </View>
+
     );
 };
 
-
-
-export default EditarProveedor;
+export default GuardarProveedor;

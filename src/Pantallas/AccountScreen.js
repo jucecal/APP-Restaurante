@@ -1,17 +1,12 @@
-import React, {useContext} from 'react';
-import { View, Image, Text, TouchableOpacity, Icon} from 'react-native';
+import React, { useContext } from 'react';
+import { View, Image, Text, TouchableOpacity, Icon } from 'react-native';
 import Screen from '../Componentes/Screen'
 
 import tailwind from 'tailwind-react-native-classnames';
 import AppHead from '../Componentes/AppHead';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../redux/slices/authSlice'
 import { AntDesign } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import UsuarioContext from '../contexto/UsuarioContext';
-
-
 
 const AccountScreen = () => {
     const { setCerrarSesion } = useContext(UsuarioContext);
@@ -21,7 +16,7 @@ const AccountScreen = () => {
 
     return (
         <Screen style={tailwind`flex-1 bg-white`}>
-            <AppHead title={`Cuenta`} 
+            <AppHead title={`Cuenta`}
                 icon="settings-outline"
             />
 
@@ -32,7 +27,7 @@ const AccountScreen = () => {
                 <Text style={tailwind`mt-4 text-3xl font-bold text-red-500`}>Lewa</Text>
                 <Text style={tailwind`text-lg text-indigo-900`}>Lewa@gmail.com</Text>
             </View>
-            
+
             <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
                 <Text style={tailwind`text-gray-800 mt-2 text-lg mb-2`}>Administrar Opciones</Text>
                 <SavedPlaces
@@ -41,8 +36,8 @@ const AccountScreen = () => {
                     Icon={() => <AntDesign name="user" size={24} color="black" />}
                 />
                 <SavedPlaces
-                    title="Colaboradores"
-                    text="Agregar, editar y eliminar colaborador."
+                    title="Empleados"
+                    text="Agregar, editar y eliminar empleados."
                     Icon={() => <AntDesign name="idcard" size={24} color="black" />}
                 />
 
@@ -64,7 +59,7 @@ const AccountScreen = () => {
                     <Text style={tailwind`text-red-500 mt-3 text-sm`} onPress={cerrarSesion}>Cerrar Sesión</Text>
                 </TouchableOpacity>
             </View>
-            
+
         </Screen>
     );
 }

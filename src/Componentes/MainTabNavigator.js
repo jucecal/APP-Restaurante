@@ -47,7 +47,7 @@ const MainTabNavigator = () => {
                     tabBarButton: () => <TabCartButton onPress={() => navigation.navigate('Carrito')} />
                 })}
             />
-            
+
             <Tab.Screen name="Reservaciones" component={GroceryScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (
@@ -55,7 +55,7 @@ const MainTabNavigator = () => {
                     )
                 }}
             />
-            
+
             <Tab.Screen name="Cuenta" component={AccountScreen}
                 options={{
                     tabBarIcon: ({ color, size }) => (

@@ -21,7 +21,7 @@ import categories from '../consts/categories';
 import foods from '../consts/foods';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import EstilosMenu from '../Componentes/EstilosMenu';
-const {width} = Dimensions.get('screen');
+const { width } = Dimensions.get('screen');
 
 
 const Menu = () => {
@@ -49,7 +49,7 @@ const Menu = () => {
               <View style={EstilosMenu.categoryBtnImgCon}>
                 <ImageBackground
                   source={category.image}
-                  style={{height: 40, width: 40, resizeMode: 'cover'}}                
+                  style={{ height: 40, width: 40, resizeMode: 'cover' }}
                 />
               </View>
               <Text
@@ -70,20 +70,20 @@ const Menu = () => {
       </ScrollView>
     );
   };
-  const Card = ({food}) => {
+  const Card = ({ food }) => {
     return (
       <TouchableHighlight
         underlayColor={COLORS.white}
         activeOpacity={0.9}
-        onPress={() => Alert.alert('Pressed!','info info')}
-        >
+        onPress={() => Alert.alert('Pressed!', 'info info')}
+      >
         <View style={EstilosMenu.card}>
-          <View style={{alignItems: 'center', top: -40}}>
-            <Image source={food.image} style={{height: 120, width: 120}} />
+          <View style={{ alignItems: 'center', top: -40 }}>
+            <Image source={food.image} style={{ height: 120, width: 120 }} />
           </View>
-          <View style={{marginHorizontal: 20}}>
-            <Text style={{fontSize: 18, fontWeight: 'bold'}}>{food.name}</Text>
-            <Text style={{fontSize: 14, color: COLORS.grey, marginTop: 2}}>
+          <View style={{ marginHorizontal: 20 }}>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{food.name}</Text>
+            <Text style={{ fontSize: 14, color: COLORS.grey, marginTop: 2 }}>
               {food.ingredients}
             </Text>
           </View>
@@ -94,11 +94,11 @@ const Menu = () => {
               flexDirection: 'row',
               justifyContent: 'space-between',
             }}>
-            <Text style={{fontSize: 18, fontWeight: 'bold'}}>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
               ${food.price}
             </Text>
             <View style={EstilosMenu.addToCartBtn}>
-              <AntDesign name= 'plus' size={20} color={COLORS.white} />
+              <AntDesign name='plus' size={20} color={COLORS.white} />
             </View>
           </View>
         </View>
@@ -106,22 +106,22 @@ const Menu = () => {
     );
   };
   return (
-    <View style={{flex: 1, backgroundColor: COLORS.white}}>
+    <View style={{ flex: 1, backgroundColor: COLORS.white }}>
       <View style={EstilosMenu.header}>
         <View>
-          <View style={{flexDirection: 'row'}}>
-            <Text style={{fontSize: 28}}>Hola,</Text>
-            <Text style={{fontSize: 28, fontWeight: 'bold', marginLeft: 10}}>
+          <View style={{ flexDirection: 'row' }}>
+            <Text style={{ fontSize: 28 }}>Hola,</Text>
+            <Text style={{ fontSize: 28, fontWeight: 'bold', marginLeft: 10 }}>
               User
             </Text>
           </View>
-          <Text style={{marginTop: 5, fontSize: 22, color: COLORS.grey}}>
+          <Text style={{ marginTop: 5, fontSize: 22, color: COLORS.grey }}>
             ¿Estás listo para ordenar?
           </Text>
         </View>
         <Image
           source={require('../../assets/person.png')}
-          style={{height: 50, width: 50, borderRadius: 25}}
+          style={{ height: 50, width: 50, borderRadius: 25 }}
         />
       </View>
       <View
@@ -131,14 +131,14 @@ const Menu = () => {
           paddingHorizontal: 20,
         }}>
         <View style={EstilosMenu.inputContainer}>
-          
+
           <TextInput
-            style={{flex: 1, fontSize: 18}}
+            style={{ flex: 1, fontSize: 18 }}
             placeholder="Search for food"
           />
         </View>
         <View style={EstilosMenu.sortBtn}>
-          <AntDesign name= 'search1' size={28} color={COLORS.white} />
+          <AntDesign name='search1' size={28} color={COLORS.white} />
         </View>
       </View>
       <View>
@@ -148,7 +148,7 @@ const Menu = () => {
         showsVerticalScrollIndicator={false}
         numColumns={2}
         data={foods}
-        renderItem={({item}) => <Card food={item} />}
+        renderItem={({ item }) => <Card food={item} />}
       />
     </View>
   );
