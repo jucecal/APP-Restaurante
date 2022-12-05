@@ -31,25 +31,19 @@ const AccountScreen = () => {
             <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
                 <Text style={tailwind`text-gray-800 mt-2 text-lg mb-2`}>Administrar Opciones</Text>
                 <SavedPlaces
-                    title="Clientes"
-                    text="Agregar, editar y eliminar clientes."
-                    Icon={() => <AntDesign name="user" size={24} color="black" />}
+                    title="Términos y condiciones"
                 />
-                <SavedPlaces
-                    title="Empleados"
-                    text="Agregar, editar y eliminar empleados."
-                    Icon={() => <AntDesign name="idcard" size={24} color="black" />}
-                />
+            </View>
 
+            <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
                 <SavedPlaces
-                    title="Proveedores"
-                    text="Agregar, editar y eliminar proveedores."
-                    Icon={() => <Feather name="truck" size={24} color="black" />}
+                    title="Privacidad"
                 />
+            </View>
+
+            <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
                 <SavedPlaces
-                    title="Inventario"
-                    text="Ver Inventario."
-                    Icon={() => <Feather name="list" size={24} color="black" />}
+                    title="Ayuda"
                 />
             </View>
 
@@ -66,12 +60,10 @@ const AccountScreen = () => {
 
 export default AccountScreen;
 
-const SavedPlaces = ({ title, text, Icon }) => (
+const SavedPlaces = ({ title}) => (
     <TouchableOpacity style={tailwind`flex-row items-center my-3`}>
-        <Icon />
         <View style={tailwind`ml-5`}>
             <Text style={tailwind`text-gray-800`}>{title}</Text>
-            <Text style={tailwind`text-gray-600 text-xs mt-1`}>{text}</Text>
         </View>
     </TouchableOpacity>
 )

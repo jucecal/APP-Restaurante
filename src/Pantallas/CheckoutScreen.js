@@ -112,8 +112,6 @@ const CheckoutScreen = () => {
   };
 
   useEffect(() => {
-    // In your app’s checkout, make a network request to the backend and initialize PaymentSheet.
-    // To reduce loading time, make this request before the Checkout button is tapped, e.g. when the screen is loaded.
     initialisePaymentSheet();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
