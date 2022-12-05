@@ -26,7 +26,7 @@ const Cliente = ({ navigation }) => {
   const [espera, setEspera] = useState(false);
   const [lista, setlista] = useState([]);
   const [validarFiltro, setValidarFiltro] = useState(false);
-  
+
   useEffect(() => {
     if (!filtro) {
       setValidarFiltro(true);
@@ -41,8 +41,8 @@ const Cliente = ({ navigation }) => {
       buscarUno();
     }
   }, [validarFiltro]);
- useEffect(() => {
-    if(!filtro){
+  useEffect(() => {
+    if (!filtro) {
       buscar();
     }
 
@@ -83,18 +83,29 @@ const Cliente = ({ navigation }) => {
     }
   }
 
+  const irGuardar = () => {
+    console.log("Ir a Guardar cliente");
+    navigation.navigate('GuardarCliente');
+  }
+
+  const irEditar = () => {
+    console.log("Ir a Editar cliente");
+    navigation.navigate('EditarCliente');
+  }
+
+
   const Card = ({ cliente }) => {
     return (
       <TouchableHighlight
-        underlayColor={COLORS.white}
+        underlayColor={COLORS.white}        
         activeOpacity={0.9}
-        onPress={() => Alert.alert('Información de Cliente!', 'Datos de Cliente')}
+        onPress={() => Alert.alert('Pressed!','info info')}
       >
         <View style={EstilosAdmin.card}>
           <View style={EstilosAdmin.iconoTipoCarta}>
             <Image
               style={EstilosAdmin.imagen}
-              source={{uri: urlImagenesUsuariosCL + cliente.Foto}}
+              source={{ uri: urlImagenesUsuariosCL + cliente.Foto }}
             />
           </View>
           <View style={EstilosAdmin.textoCarta} >
@@ -164,7 +175,7 @@ const Cliente = ({ navigation }) => {
         style={{ paddingHorizontal: 20 }}
         underlayColor={COLORS.white}
         activeOpacity={0.9}
-        onPress={() => Alert.alert('Agregar Cliente!', 'Escriba la información del cliente.')}
+        onPress={irGuardar}
       >
         <View style={{ flexDirection: 'row', padding: 10, backgroundColor: COLORS.primary, width: '40%', borderRadius: 15, elevation: 13, marginVertical: 15 }}>
           <AntDesign name='pluscircle' size={28} color={COLORS.white} />

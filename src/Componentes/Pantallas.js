@@ -8,6 +8,7 @@ import Cargando from './Cargando';
 import DetailsScreen from '../Pantallas/DetailsScreen';
 import SuccessScreen from '../Pantallas/SuccessScreen';
 import MainTabNavigator from './MainTabNavigator';
+import ClientesTab from './ClientesTab';
 
 
 const Stack = createNativeStackNavigator();
@@ -15,15 +16,15 @@ const Stack = createNativeStackNavigator();
 const Pantallas = () => {
     const { aplicacionIniciada, setDatos, sesionIniciada, usuario } = React.useContext(UsuarioContext);
     setDatos();
-    const verificarUsuario = ()=>{
+    const verificarUsuario = () => {
         var tipoCliente = false;
-        if(usuario.tipo == 'CLI'){
+        if (usuario.tipo == 'CLI') {
             tipoCliente = true;
         }
-        return tipoCliente;        
+        return tipoCliente;
     }
 
-    
+
     if (aplicacionIniciada) {
         return (
             <Stack.Navigator
@@ -33,24 +34,29 @@ const Pantallas = () => {
             >
                 {sesionIniciada ? (
                     <>
-                        {verificarUsuario() ?(
-                            
+                        {verificarUsuario() ? (
+
                             <>
                                 <Stack.Screen name="HomeScreen" component={MainTabNavigator} />
                                 <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
                                 <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
                             </>
-                        ):(
-                            <Stack.Screen name="TabMenu" component={MenuTab} />
+                        ) : (
+                            <>
+                                <Stack.Screen name="TabMenu" component={MenuTab} />
+                                <Stack.Screen name="ClientesTab" component={ClientesTab} />
+
+                            </>
+
                         )}
-                        
+
                     </>
                 ) : (
-                    
+
                     <>
                         <Stack.Screen name="LoginMenu" component={LoginTab} />
                     </>
-                    
+
                 )
                 }
             </Stack.Navigator>
@@ -58,7 +64,7 @@ const Pantallas = () => {
 
     }
     else {
-        return <Cargando texto="Cargando aplicación"/>;
+        return <Cargando texto="Cargando aplicación" />;
     }
 
 }

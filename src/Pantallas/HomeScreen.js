@@ -44,7 +44,7 @@ const HomeScreen = () => {
     };
 
     useEffect(() => {
-        return // Remove return after adding Yelp API key {colors.primary}
+        return 
         getRestaurantsFromYelp();
     }, [city, activeTab]);
 

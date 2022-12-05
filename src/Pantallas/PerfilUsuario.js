@@ -49,7 +49,10 @@ const Login = () => {
     const cerrarSesion = async () => {
         await setCerrarSesion();
     };
-
+    const irCliente = () => {
+        console.log("Ir a Cliente");
+        navigation.navigate('ClientesTab');
+    }
 
 
     return (
@@ -64,108 +67,109 @@ const Login = () => {
             </View>
 
 
-            
+
             <ScrollView showsVerticalScrollIndicator={false}>
-            <View style={Estilos.contenedorTitulo2}>
-                <Text style={Estilos.textoTitulo}>{titulo}</Text>
-            </View>
+                <View style={Estilos.contenedorTitulo2}>
+                    <Text style={Estilos.textoTitulo}>{titulo}</Text>
+                </View>
 
-            <View style={Estilos.contenedorContenido}>
-            {  
-                    espera ? (
-                        <Cargando texto="Estableciendo conexion con la API"></Cargando>
-                    ) : (
-                        <>
-                                    
-                            <View style={Estilos.contenedorControles}>
-                                <View style={styles.contenedorImagen}>
-                                    <Image
-                                        style={styles.imagen}
-                                        source={{uri: urlImagenesUsuariosEM + usuario.imagen}}
+                <View style={Estilos.contenedorContenido}>
+                    {
+                        espera ? (
+                            <Cargando texto="Estableciendo conexion con la API"></Cargando>
+                        ) : (
+                            <>
+
+                                <View style={Estilos.contenedorControles}>
+                                    <View style={styles.contenedorImagen}>
+                                        <Image
+                                            style={styles.imagen}
+                                            source={{ uri: urlImagenesUsuariosEM + usuario.imagen }}
+                                        />
+                                    </View>
+
+                                    <TouchableOpacity
+                                        style={styles.touch}
+                                    >
+                                        <Text style={Estilos.etiquetaTexto}>Editar imagen</Text>
+                                    </TouchableOpacity>
+                                </View>
+                                <View style={Estilos.contenedorControles}>
+                                    <Text style={Estilos.etiqueta}>{"Nombre: " + nombreCompleto}</Text>
+                                    <Text style={Estilos.etiqueta}>{"Correo: " + usuario.correo}</Text>
+                                    <Text style={Estilos.etiqueta}>{"Login: " + usuario.login}</Text>
+                                    <Text style={Estilos.etiqueta}>{"Imagen: " + usuario.imagen}</Text>
+                                </View>
+
+                                <View style={Estilos.contenedorBotones}>
+                                    <Text style={styles.texto}>{modificar ? "Editando" : "Presione para editar"}</Text>
+                                    <View style={Estilos.boton}>
+                                        <Switch
+                                            trackColor={{ false: "black", true: "#F9813A" }}
+                                            thumbColor={modificar ? "black" : "#F9813A"}
+                                            ios_backgroundColor="#3e3e3e"
+                                            onValueChange={cambioSwitch}
+                                            value={modificar}
+                                        />
+                                    </View>
+                                </View>
+
+                                <View style={Estilos.contenedorBotones}>
+                                    <View style={Estilos.boton}>
+                                        <Button
+
+                                            title='Guardar Cambios'
+                                            color={'#000'}
+                                            onPress={irCliente}
+                                        ></Button>
+                                    </View>
+                                </View>
+                                <View style={Estilos.contenedorBotones}>
+                                    <View style={Estilos.boton}>
+                                        <Button
+                                            title='Cerrar Sesión'
+                                            color={'#F9813A'}
+                                            onPress={cerrarSesion}
+                                        ></Button>
+                                    </View>
+                                </View>
+
+
+
+                                <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
+                                    <Text style={tailwind`text-gray-800 mt-2 text-lg mb-2`}>Administrar Opciones</Text>
+
+
+                                    <SavedPlaces
+                                        title="Clientes"
+                                        text="Agregar, Editar o Eliminar clientes."
+                                        Icon={() => <AntDesign name="user" size={28} color="black" />}
+                                    />
+
+                                    <SavedPlaces
+                                        title="Colaborador"
+                                        text="Agregar, Editar o Eliminar colaboradores."
+                                        Icon={() => <AntDesign name="idcard" size={24} color="black" />}
+                                    />
+
+                                    <SavedPlaces
+                                        title="Proveedores"
+                                        text="Agregar, Editar o Eliminar proveedores."
+                                        Icon={() => <Feather name="truck" color="black" size={24} />}
+                                    />
+
+                                    <SavedPlaces
+                                        title="Inventario"
+                                        text="Ver Inventario."
+                                        Icon={() => <Feather name="list" color="black" size={24} />}
                                     />
                                 </View>
-
-                                <TouchableOpacity
-                                    style={styles.touch}
-                                >
-                                    <Text style={Estilos.etiquetaTexto}>Editar imagen</Text>
-                                </TouchableOpacity>
-                            </View>
-                            <View style={Estilos.contenedorControles}>
-                                <Text style={Estilos.etiqueta}>{"Nombre: " + nombreCompleto}</Text>
-                                <Text style={Estilos.etiqueta}>{"Correo: " + usuario.correo}</Text>
-                                <Text style={Estilos.etiqueta}>{"Login: " + usuario.login}</Text>
-                                <Text style={Estilos.etiqueta}>{"Imagen: " + usuario.imagen}</Text>
-                            </View>
-
-                            <View style={Estilos.contenedorBotones}>
-                            <Text style={styles.texto}>{modificar ? "Editando" : "Presione para editar"}</Text>
-                                <View style={Estilos.boton}>
-                                    <Switch
-                                        trackColor={{ false: "black", true: "#F9813A" }}
-                                        thumbColor={modificar ? "black" : "#F9813A"}
-                                        ios_backgroundColor="#3e3e3e"
-                                        onValueChange={cambioSwitch}
-                                        value={modificar}
-                                    />
-                                </View>    
-                            </View>
-
-                            <View style={Estilos.contenedorBotones}>
-                                <View style={Estilos.boton}>
-                                    <Button 
-                                        
-                                        title='Guardar Cambios'
-                                        color={'#000'}
-                                    ></Button>
-                                </View>
-                            </View>
-                            <View style={Estilos.contenedorBotones}>
-                                <View style={Estilos.boton}>
-                                    <Button
-                                        title='Cerrar Sesión'
-                                        color={'#F9813A'}
-                                        onPress={cerrarSesion}
-                                    ></Button>
-                                </View>
-                            </View>
-
-
-
-                            <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
-                                <Text style={tailwind`text-gray-800 mt-2 text-lg mb-2`}>Administrar Opciones</Text>
-
-
-                                <SavedPlaces
-                                    title="Clientes"
-                                    text="Agregar, Editar o Eliminar clientes."
-                                    Icon={() => <AntDesign name="user" size={28} color="black" />}
-                                />
-                                
-                                <SavedPlaces
-                                    title="Colaborador"
-                                    text="Agregar, Editar o Eliminar colaboradores."
-                                    Icon={() => <AntDesign name="idcard" size={24} color="black" />}
-                                />
-
-                                <SavedPlaces
-                                    title="Proveedores"
-                                    text="Agregar, Editar o Eliminar proveedores."
-                                    Icon={() => <Feather name="truck" color="black" size={24} />}
-                                />
-
-                                <SavedPlaces
-                                    title="Inventario"
-                                    text="Ver Inventario."
-                                    Icon={() => <Feather name="list" color="black" size={24} />}
-                                />
-                            </View>
-                        </>
-                    )
-                }
-            </View>
+                            </>
+                        )
+                    }
+                </View>
             </ScrollView>
-            
+
         </View>
     );
 };
@@ -214,7 +218,7 @@ const styles = StyleSheet.create({
         borderColor: "#dedede",
         borderRadius: 90,
     },
-    
+
     texto: {
         color: "black",
         textDecorationColor: "black",

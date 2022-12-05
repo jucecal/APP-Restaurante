@@ -5,7 +5,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import COLORS from '../consts/colors';
 import EstilosEditar from '../Componentes/EstilosEditar';
 
-const EditarCliente = () => {
+const EditarCliente = ({ navigation }) => {
 
     return (
         <View style={{ backgroundColor: COLORS.white }}>
