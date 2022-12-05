@@ -6,7 +6,7 @@ import tailwind from 'tailwind-react-native-classnames';
 import AppHead from '../Componentes/AppHead';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
-
+import UsuarioContext from './../contexto/UsuarioContext';
 import { urlImagenesUsuariosEM, urlImagenesUsuariosCL } from '../configuracion/Urls';
 
 const AccountScreen = () => {
