@@ -65,31 +65,6 @@ const AccountScreen = () => {
                                 Icon={() => <Feather name="list" size={24} color="black" />}
                             />
                         </View>
-            <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
-                <Text style={tailwind`text-gray-800 mt-2 text-lg mb-2`}>Administrar Opciones</Text>
-                <SavedPlaces
-                    title="Términos y condiciones"
-                />
-            </View>
-
-            <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
-                <SavedPlaces
-                    title="Privacidad"
-                />
-            </View>
-
-            <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
-                <SavedPlaces
-                    title="Ayuda"
-                />
-            </View>
-
-            <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
-                <Text style={tailwind`text-gray-800 mt-2 text-lg`}>Otras Opciones</Text>
-                <TouchableOpacity>
-                    <Text style={tailwind`text-red-500 mt-3 text-sm`} onPress={cerrarSesion}>Cerrar Sesión</Text>
-                </TouchableOpacity>
-            </View>
 
                         <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
                             <Text style={tailwind`text-gray-800 mt-2 text-lg`}>Otras Opciones</Text>
@@ -106,10 +81,12 @@ const AccountScreen = () => {
 
 export default AccountScreen;
 
-const SavedPlaces = ({ title}) => (
+const SavedPlaces = ({ title, text, Icon }) => (
     <TouchableOpacity style={tailwind`flex-row items-center my-3`}>
+        <Icon />
         <View style={tailwind`ml-5`}>
             <Text style={tailwind`text-gray-800`}>{title}</Text>
+            <Text style={tailwind`text-gray-600 text-xs mt-1`}>{text}</Text>
         </View>
     </TouchableOpacity>
 )
