@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import colors from '../consts/colors2'
+import colors from '../consts/colors'
 import { useNavigation } from '@react-navigation/native';
 
 function AppHead({ title, icon = null }) {
@@ -13,7 +13,7 @@ function AppHead({ title, icon = null }) {
                 <Ionicons name="arrow-back" size={26} color='#F9813A' />
             </TouchableOpacity>
             <View style={styles.topBar_center}>
-                {icon && <Ionicons style={styles.icon} name={icon} size={27} color="black" />}
+                {icon && <Ionicons style={styles.icon} name={icon} size={27} color="dark"/>}
                 <Text style={styles.text}>{title}</Text>
             </View>
         </View>
