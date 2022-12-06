@@ -8,8 +8,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import BrowseScreen from '../Pantallas/BrowseScreen';
 import CartScreen from '../Pantallas/CartScreen';
-import GroceryScreen from '../Pantallas/GroceryScreen';
 import AccountScreen from '../Pantallas/AccountScreen';
+import GuardarReservacion from '../Pantallas/GuardaReservaciones';
 
 const Tab = createBottomTabNavigator()
 
@@ -48,7 +48,7 @@ const MainTabNavigator = () => {
                 })}
             />
 
-            <Tab.Screen name="Reservaciones" component={GroceryScreen}
+            <Tab.Screen name="Reservaciones" component={GuardarReservacion}
                 options={{
                     tabBarIcon: ({ color, size }) => (
                         <AntDesign name="calendar" color={color} size={size} />

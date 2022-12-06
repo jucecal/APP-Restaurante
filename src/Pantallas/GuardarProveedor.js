@@ -1,4 +1,3 @@
-
 import { TouchableOpacity, View, Text, ScrollView, Image, Alert, TextInput, StyleSheet } from 'react-native';
 import NumericInput from 'react-native-numeric-input'
 import AppForm from "../Componentes/forms/AppForm";
@@ -70,11 +69,11 @@ const GuardarProveedor = ({navigation}) => {
 
     return (
         <View style={{ backgroundColor: COLORS.white }}>
-            <View style={EstilosEditar.header}>
-                <AntDesign name='doubleleft' size={28} />
-                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Guardar Proveedor</Text>
-            </View>
             <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 30 }}>
+            <View style={EstilosEditar.header}>
+                <AntDesign name='left' size={28} />
+            </View>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20, alignSelf: 'center' }}>Formulario de Proveedores</Text>
                 <View style={styles.form}>
                     <AppForm
                         initialValues={{ proveedor: "", nombreContacto: "", telefono: 0 }}

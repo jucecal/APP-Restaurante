@@ -94,7 +94,7 @@ const GuardarEmpleado = ({ navigation }) => {
                 <View style={EstilosEditar.header}>
                     <AntDesign name='left' size={28} />
                 </View>
-                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20, alignSelf: 'center' }}>Formulario</Text>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20, alignSelf: 'center' }}>Formulario de empleados</Text>
                 <View style={styles.form}>
                     <AppForm
                         initialValues={{ nombre: "", apellido: "", telefono: 0, direccion: "", usuarioID: 0, cargoID: 0, sucursalID: 0 }}

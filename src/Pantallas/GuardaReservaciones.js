@@ -77,15 +77,12 @@ const GuardarReservacion = () => {
 
     return (
         <View style={{ backgroundColor: COLORS.white }}>
-            <View style={EstilosEditar.header}>
-                <AntDesign name='doubleleft' size={28} />
-                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Reservaciones</Text>
-            </View>
             <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 30 }}>
+            <View style={EstilosEditar.header}>
+                <AntDesign name='left' size={28} />
+            </View>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20, alignSelf: 'center' }}>Formulario de Reservaciones</Text>
                 <View style={styles.form}>
-                    <Text style={{ color: COLORS.dark, textAlign: 'center', marginTop: 10 }}>
-                        Formulario
-                    </Text>
                     <AppForm
                         initialValues={{ fecha: "", hora: 0, usuarioID: 0, mesaID: 0, sucursalID: 0 }}
                         validationSchema={PostValidationSchema}
