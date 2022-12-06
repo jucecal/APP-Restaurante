@@ -22,6 +22,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import EstilosAdmin from '../Componentes/EstiloAdmin';
 import UsuarioContext from '../contexto/UsuarioContext';
+import { urlImagenesUsuariosEM } from '../configuracion/Urls';
 const { width } = Dimensions.get('screen');
 
 
@@ -83,7 +84,7 @@ const Reservaciones = () => {
           </Text>
         </View>
         <Image
-          source={{ uri: urlImagenesUsuariosCL + usuario.imagen }}
+          source={{ uri: urlImagenesUsuariosEM + usuario.imagen }}
           style={{ height: 50, width: 50, borderRadius: 25 }}
         />
       </View>
