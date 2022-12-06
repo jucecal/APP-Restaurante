@@ -5,6 +5,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import COLORS from '../consts/colors';
 import EstilosEditar from '../Componentes/EstilosEditar';
 import DatePicker from 'react-DatePicker';
+import ComboBox from 'react-native-combobox';
 import React, { useState, useEffect, useContext } from "react";
 
 const EditarReservacion = () => {
@@ -25,20 +26,51 @@ const EditarReservacion = () => {
                     </View>
 
                     <View style={EstilosEditar.contenedorContenido}>
-                        <Text style={EstilosEditar.etiqueta}>Hora</Text>
+                        <Text style={EstilosEditar.etiqueta}>fecha</Text>
                         <TextInput style={EstilosEditar.inputs}>El bicho</TextInput>
+                        <Text>selected: {date.toLocaleString()}</Text>
+                             {show && (
+                            <DatePicker
+                            testID="dateTimePicker"
+                            value={date}
+                            mode={mode}
+                            is24Hour={true}
+                         onChange={onChange}
+                            />
+                            )}
                     </View>
+
+                    <View style={EstilosEditar.contenedorContenido}>
+                        <Text style={EstilosEditar.etiqueta}>hora</Text>
+                        <TextInput style={EstilosEditar.inputs}>2PM</TextInput>
+                    </View>
+
                     <View style={EstilosEditar.contenedorContenido}>
                         <Text style={EstilosEditar.etiqueta}>Cliente </Text>
-                        <TextInput style={EstilosEditar.inputs}>Juan</TextInput>
+                        <View style={{ flex: 1, paddingVertical: 80, paddingHorizontal: 40, justifyContent: 'space-between' }}>
+                         <ComboBox
+                        values={values}
+                     onValueSelect={setSelectedValue}
+                     />
+                     <Text>selected value:          {values[selectedValue]}</Text>
+                     </View>
                     </View>
+
                     <View style={EstilosEditar.contenedorContenido}>
                         <Text style={EstilosEditar.etiqueta}>Mesa</Text>
-                        <TextInput style={EstilosEditar.inputs}>1</TextInput>
+                        <View style={{ flex: 1, paddingVertical: 80, paddingHorizontal: 40, justifyContent: 'space-between' }}><ComboBox values={values}
+                        onValueSelect={setSelectedValue}
+                         />
+                           <Text>selected value:          {values[selectedValue]}</Text>
+                      </View>
                     </View>
                     <View style={EstilosEditar.contenedorContenido}>
                         <Text style={EstilosEditar.etiqueta}>Sucursal</Text>
-                        <TextInput style={EstilosEditar.inputs}>kennedy</TextInput>
+                        <View style={{ flex: 1, paddingVertical: 80, paddingHorizontal: 40, justifyContent: 'space-between' }}> <ComboBox values={values}
+                         onValueSelect={setSelectedValue}
+                         />
+                <Text>selected value:          {values[selectedValue]}</Text>
+                    </View>
                     </View>
                 </View>
 
