@@ -2,12 +2,79 @@ import React from 'react';
 import { TouchableOpacity, View, Text, ScrollView, Image, Alert, TextInput } from 'react-native';
 import NumericInput from 'react-native-numeric-input'
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import moment from 'moment';
+import AppForm from "../Componentes/forms/AppForm";
 import COLORS from '../consts/colors';
+import * as yup from "yup";
+import AppFormFeilds from "../Componentes/forms/AppFormFeilds";
 import EstilosEditar from '../Componentes/EstilosEditar';
-//import DatePicker from 'react-DatePicker';
-import React, { useState, useEffect, useContext } from "react";
+import Axios from '../Componentes/Axios';
+import AppSubmitButton from '../Componentes/forms/AppSubmitButton';
 
-const EditarReservacion = () => {
+const PostValidationSchema = yup.object().shape({
+    fecha: yup
+        .required("La fecha de la reservación es requerida")
+        .date()
+        .min(dateToday, ({ min }) => `Fecha minima valida ${min}`)
+        .typeError(t('El formato de la fecha debe de ser (YYYY-MM-DD)')),
+    hora: yup
+        .number()
+        .required("La hora de la es requerida"),
+    usuarioID: yup
+        .number()
+        .integer()
+        .positive()
+        .required("El Id del usuario es requerido"),
+    mesaID: yup
+        .number()
+        .integer()
+        .positive()
+        .required("El Id de la mesa es requerido"),
+    sucursalID: yup
+        .number()
+        .integer()
+        .positive()
+        .required("El Id de la sucursal es requerido"),
+});
+
+const GuardarReservacion = () => {
+
+    const guardar = async ({ fecha, hora, usuarioID, mesaID, sucursalID }) => {
+        try {
+            var textoMensaje = "";
+
+            await Axios.post('/reservaciones/guardar', {
+                fecha: fecha,
+                hora: hora,
+                UsuarioId: usuarioID,
+                MesaId: mesaID,
+                SucursalId: sucursalID
+            })
+                .then(async (data) => {
+                    const json = data.data;
+                    if (json.errores.length == 0) {
+                        console.log(data.data);
+                    }
+                    else {
+                        textoMensaje = '';
+                        json.errores.forEach(element => {
+                            textoMensaje += element.mensaje + '. ';
+                        });
+                    }
+                })
+                .catch((error) => {
+                    textoMensaje = error;
+                });
+        } catch (error) {
+            textoMensaje = error;
+            console.log(error);
+        }
+        console.log(fecha);
+        console.log(hora);
+        console.log(usuarioID);
+        console.log(mesaID);
+        console.log(sucursalID);
+    }
 
     return (
         <View style={{ backgroundColor: COLORS.white }}>
@@ -16,61 +83,88 @@ const EditarReservacion = () => {
                 <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Reservaciones</Text>
             </View>
             <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 30 }}>
-                <View>
-                    <View style={EstilosEditar.contenedorContenido}>
-                        <Text style={EstilosEditar.etiqueta}>Fecha</Text>
-                        <Text>selected: {date.toLocaleString()}</Text>
-                        {show && (<DateTimePicker testID="dateTimePicker" value={date}
-                            mode={mode} is24Hour={true} onChange={onChange} />)}
-                    </View>
+                <View style={styles.form}>
+                    <Text style={{ color: colors.dark, textAlign: 'center', marginTop: 10 }}>
+                        Formulario
+                    </Text>
+                    <AppForm
+                        initialValues={{ fecha: "", hora: 0, usuarioID: 0, mesaID: 0, sucursalID: 0 }}
+                        validationSchema={PostValidationSchema}
+                        onSubmit={(values) => guardar(values)}
+                    >
+                        <AppFormFeilds
+                            name="fecha"
+                            placeholder="YYYY-MM-DD"
+                        />
 
-                    <View style={EstilosEditar.contenedorContenido}>
-                        <Text style={EstilosEditar.etiqueta}>fecha</Text>
-                        <TextInput style={EstilosEditar.inputs}>El bicho</TextInput>
-                        <Text>selected: {date.toLocaleString()}</Text>
-                             {show && (
-                            <DateTimePicker
-                            testID="dateTimePicker"
-                            value={date}
-                            mode={mode}
-                            is24Hour={true}
-                         onChange={onChange}
-                            />
-                            )}
-                    </View>
+                        <AppFormFeilds
+                            name="hora"
+                            placeholder="Hora"
+                        />
 
-                    <View style={EstilosEditar.contenedorContenido}>
-                        <Text style={EstilosEditar.etiqueta}>hora</Text>
-                        <TextInput style={EstilosEditar.inputs}>2PM</TextInput>
-                    </View>
+                        <AppFormFeilds
+                            name="usuarioID"
+                            placeholder="ID Usuario"
+                        />
 
-                    <View style={EstilosEditar.contenedorContenido}>
-                        <Text style={EstilosEditar.etiqueta}>Cliente </Text>
-                        <TextInput style={EstilosEditar.inputs}>Juan</TextInput>
-                    </View>
-                    <View style={EstilosEditar.contenedorContenido}>
-                        <Text style={EstilosEditar.etiqueta}>Mesa</Text>
-                        <TextInput style={EstilosEditar.inputs}>1</TextInput>
-                    </View>
-                    <View style={EstilosEditar.contenedorContenido}>
-                        <Text style={EstilosEditar.etiqueta}>Sucursal</Text>
-                        <TextInput style={EstilosEditar.inputs}>kennedy</TextInput>
-                    </View>
+                        <AppFormFeilds
+                            name="sucursalID"
+                            placeholder="ID Sucursal"
+                        />
+
+                        <AppFormFeilds
+                            name="mesaID"
+                            placeholder="ID Mesa"
+                        />
+                        <AppSubmitButton title="Ingresar" />
+                    </AppForm>
                 </View>
-
-                <View style={{ marginHorizontal: 30 }}>
-                    <TouchableOpacity activeOpacity={0.8} >
-                        <View style={EstilosEditar.btnContainer}>
-                            <Text style={EstilosEditar.title}>GUARDAR</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-              
             </ScrollView>
         </View>
     );
 };
 
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: COLORS.white,
+        justifyContent: 'center'
+    },
+    wrapper: {
+        paddingHorizontal: 20,
+    },
+    logo: {
+        height: 280,
+        resizeMode: "contain",
+        alignSelf: "center",
+        marginTop: 10,
+    },
+    wellcomeTo: {
+        fontSize: 23,
+        fontWeight: "700",
+        color: COLORS.dark,
+        marginTop: 10,
+        textAlign: "center",
+    },
+    brand: {
+        fontSize: 23,
+        color: COLORS.primary,
+        textAlign: "center",
+        fontWeight: "500",
+    },
+    form: {
+        marginTop: 10,
+    },
+    join: {
+        marginTop: 16,
+        textAlign: "center",
+        color: COLORS.dark,
+    },
+    or: {
+        color: COLORS.grey,
+        textAlign: "center",
+        marginVertical: 20,
+    },
+});
 
 
-export default EditarReservacion;
+export default GuardarReservacion;

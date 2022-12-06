@@ -97,6 +97,9 @@ const GuardarEmpleado = ({ navigation }) => {
             </View>
             <ScrollView style={{ marginTop: 0 }}>
                 <View style={styles.form}>
+                    <Text style={{ color: colors.dark, textAlign: 'center', marginTop: 10 }}>
+                        Formulario
+                    </Text>
                     <AppForm
                         initialValues={{ nombre: "", apellido: "", telefono: 0, direccion: "", usuarioID: 0, cargoID: 0, sucursalID: 0 }}
                         validationSchema={PostValidationSchema}

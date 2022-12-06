@@ -63,7 +63,6 @@ const GuardarProveedor = () => {
         console.log(proveedor);
         console.log(nombreContacto);
         console.log(telefono);
-
     }
 
     return (
@@ -74,6 +73,9 @@ const GuardarProveedor = () => {
             </View>
             <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 30 }}>
                 <View style={styles.form}>
+                    <Text style={{ color: colors.dark, textAlign: 'center', marginTop: 10 }}>
+                        Formulario
+                    </Text>
                     <AppForm
                         initialValues={{ proveedor: "", nombreContacto: "", telefono: 0 }}
                         validationSchema={PostValidationSchema}
