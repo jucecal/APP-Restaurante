@@ -15,6 +15,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import EstilosAdmin from '../Componentes/EstiloAdmin';
 import UsuarioContext from '../contexto/UsuarioContext';
+import { urlImagenesUsuariosEM } from '../configuracion/Urls';
 import Axios from '../Componentes/Axios';
 const { width } = Dimensions.get('screen');
 
@@ -139,7 +140,7 @@ const Proveedor = ({navigation}) => {
           </Text>
         </View>
         <Image
-          source={require('../../assets/person.png')}
+          source={{ uri: urlImagenesUsuariosEM + usuario.imagen }}
           style={{ height: 50, width: 50, borderRadius: 25 }}
         />
       </View>

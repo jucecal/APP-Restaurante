@@ -18,8 +18,8 @@ const PostValidationSchema = yup.object().shape({
         .min(4, ({ min }) => `El apellido debe de tener un minimo de ${min} caracteres`)
         .required("El apellido es requerido"),
     telefono: yup
-        .number()        
-        .min(8, ({ min }) => `El telefono debe de tener un minimo de ${min} caracteres`)        
+        .number()
+        .min(8, ({ min }) => `El telefono debe de tener un minimo de ${min} caracteres`)
         .integer()
         .positive()
         .required("El telefono es requerido"),
@@ -33,9 +33,9 @@ const PostValidationSchema = yup.object().shape({
 });
 
 const GuardarCliente = ({ navigation }) => {
-    
+
     const guardar = async ({ nombre, apellido, telefono, direccion, usuarioID }) => {
-        /*try {
+        try {
             var textoMensaje = "";
 
             await Axios.post('/clientes/guardar', {
@@ -64,28 +64,27 @@ const GuardarCliente = ({ navigation }) => {
         } catch (error) {
             textoMensaje = error;
             console.log(error);
-        }*/
+        }
 
         console.log(nombre);
         console.log(apellido);
         console.log(telefono);
         console.log(direccion);
         console.log(usuarioID);
-        
     }
 
     return (
         <View style={{ backgroundColor: COLORS.white }}>
-            <View style={EstilosEditar.header}>
-                <AntDesign name='left' size={28} />
-                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Guardar Cliente</Text>
-            </View>
             <ScrollView style={{ marginTop: 0 }}>
+                <View style={EstilosEditar.header}>
+                    <AntDesign name='left' size={28} />
+                </View>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20, alignSelf: 'center' }}>Formulario</Text>
                 <View style={styles.form}>
                     <AppForm
                         initialValues={{ nombre: "", apellido: "", telefono: 0, direccion: "", usuarioID: 0 }}
                         validationSchema={PostValidationSchema}
-                        onSubmit={(values, {resetForm}) => {
+                        onSubmit={(values, { resetForm }) => {
                             guardar(values);
                             resetForm();
                         }}
@@ -98,7 +97,7 @@ const GuardarCliente = ({ navigation }) => {
                         <AppFormFeilds
                             name="apellido"
                             placeholder="Apellido"
-                        /> 
+                        />
 
                         <AppFormFeilds
                             name="telefono"
@@ -122,47 +121,46 @@ const GuardarCliente = ({ navigation }) => {
     );
 };
 
-
 const styles = StyleSheet.create({
     container: {
-      backgroundColor: COLORS.white,
-      justifyContent: 'center'
+        backgroundColor: COLORS.white,
+        justifyContent: 'center'
     },
     wrapper: {
-      paddingHorizontal: 20,
+        paddingHorizontal: 20,
     },
     logo: {
-      height: 280,
-      resizeMode: "contain",
-      alignSelf: "center",
-      marginTop: 10,
+        height: 280,
+        resizeMode: "contain",
+        alignSelf: "center",
+        marginTop: 10,
     },
     wellcomeTo: {
-      fontSize: 23,
-      fontWeight: "700",
-      color: COLORS.dark,
-      marginTop: 10,
-      textAlign: "center",
+        fontSize: 23,
+        fontWeight: "700",
+        color: COLORS.dark,
+        marginTop: 10,
+        textAlign: "center",
     },
     brand: {
-      fontSize: 23,
-      color: COLORS.primary,
-      textAlign: "center",
-      fontWeight: "500",
+        fontSize: 23,
+        color: COLORS.primary,
+        textAlign: "center",
+        fontWeight: "500",
     },
     form: {
-      marginTop: 10,
+        marginTop: 10,
     },
     join: {
-      marginTop: 16,
-      textAlign: "center",
-      color: COLORS.dark,
+        marginTop: 16,
+        textAlign: "center",
+        color: COLORS.dark,
     },
     or: {
-      color: COLORS.grey,
-      textAlign: "center",
-      marginVertical: 20,
+        color: COLORS.grey,
+        textAlign: "center",
+        marginVertical: 20,
     },
-  });
+});
 
 export default GuardarCliente;

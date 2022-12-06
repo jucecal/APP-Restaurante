@@ -9,4 +9,3 @@ export default function AppSubmitButton({title, ...rest}) {
         <AppButton title={title} onPress={handleSubmit} {...rest}/>
     )
 }
-

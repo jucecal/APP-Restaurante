@@ -1,18 +1,15 @@
 import { Text, ScrollView, View, Button, ImageBackground, TextInput, Alert, Image, StyleSheet, TouchableOpacity, Switch } from 'react-native';
 import React, { useState, useEffect, useContext } from 'react';
 import Estilos from '../Componentes/Estilos';
-import logo01 from '../../assets/logo-01.png';
 import UsuarioContext from '../contexto/UsuarioContext';
+import Screen from '../Componentes/Screen'
 import Cargando from '../Componentes/Cargando';
 import tailwind from 'tailwind-react-native-classnames';
+import AppHead from '../Componentes/AppHead';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { urlImagenesUsuariosEM, urlImagenesUsuariosCL } from '../configuracion/Urls';
+import { urlImagenesUsuariosCL } from '../configuracion/Urls';
 import { useNavigation } from '@react-navigation/core';
-
-import Proveedor from '../Pantallas/Proveedor';
-import Cliente from './Cliente';
 
 const Login = () => {
     const { usuario, setCerrarSesion } = useContext(UsuarioContext);
@@ -25,7 +22,6 @@ const Login = () => {
     const [modificar, setModificar] = useState(false);
     const cambioSwitch = () => setModificar(previousState => !previousState);
     const navigation = useNavigation()
-    const titulo = 'Perfil de Usuario';
     useEffect(() => {
         if (!nombre) {
             setValidarUsuario(true);
@@ -54,7 +50,7 @@ const Login = () => {
         navigation.navigate('ClientesTab');
     }
     const irColaborador = () => {
-        console.log("Ir a Colaborador");
+        console.log("Ir a Empleados");
         navigation.navigate('EmpleadosTab');
     }
     const irProveedor = () => {
@@ -68,125 +64,85 @@ const Login = () => {
 
 
     return (
-        <View style={Estilos.contenedorPrincipal}>
-            <View style={Estilos.contenedorTitulo}>
-                <ImageBackground
-                    source={logo01}
-                    resizeMode='stretch'
-                    style={Estilos.imagenFondo}
-                >
-                </ImageBackground>
-            </View>
-
-
+        <Screen style={tailwind`flex-1 bg-white`}>
 
             <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={Estilos.contenedorTitulo2}>
-                    <Text style={Estilos.textoTitulo}>{titulo}</Text>
-                </View>
-
                 <View style={Estilos.contenedorContenido}>
                     {
                         espera ? (
                             <Cargando texto="Estableciendo conexion con la API"></Cargando>
                         ) : (
                             <>
+                                <AppHead title={`Cuenta`}
+                                    icon="settings-outline"
+                                />
 
-                                <View style={Estilos.contenedorControles}>
+                                <View style={tailwind`justify-center items-center`}>
                                     <View style={styles.contenedorImagen}>
                                         <Image
                                             style={styles.imagen}
-                                            source={{ uri: urlImagenesUsuariosEM + usuario.imagen }}
+                                            source={{ uri: urlImagenesUsuariosCL + usuario.imagen }}
                                         />
                                     </View>
-
-                                    <TouchableOpacity
-                                        style={styles.touch}
-                                    >
-                                        <Text style={Estilos.etiquetaTexto}>Editar imagen</Text>
-                                    </TouchableOpacity>
-                                </View>
-                                <View style={Estilos.contenedorControles}>
-                                    <Text style={Estilos.etiqueta}>{"Nombre: " + nombreCompleto}</Text>
-                                    <Text style={Estilos.etiqueta}>{"Correo: " + usuario.correo}</Text>
-                                    <Text style={Estilos.etiqueta}>{"Login: " + usuario.login}</Text>
-                                    <Text style={Estilos.etiqueta}>{"Imagen: " + usuario.imagen}</Text>
+                                    <Text style={tailwind`mt-4 text-3xl font-bold text-red-500`}>{usuario.nombre}</Text>
+                                    <Text style={tailwind`text-lg text-indigo-900`}>{usuario.correo}</Text>
                                 </View>
 
-                                <View style={Estilos.contenedorBotones}>
-                                    <Text style={styles.texto}>{modificar ? "Editando" : "Presione para editar"}</Text>
-                                    <View style={Estilos.boton}>
-                                        <Switch
-                                            trackColor={{ false: "black", true: "#F9813A" }}
-                                            thumbColor={modificar ? "black" : "#F9813A"}
-                                            ios_backgroundColor="#3e3e3e"
-                                            onValueChange={cambioSwitch}
-                                            value={modificar}
-                                        />
-                                    </View>
-                                </View>
+                                <TouchableOpacity
+                                    style={styles.touch}
+                                >
+                                    <Text style={tailwind`text-gray-100 text-sm`}>Editar imagen</Text>
+                                </TouchableOpacity>
 
-                                <View style={Estilos.contenedorBotones}>
-                                    <View style={Estilos.boton}>
-                                        <Button
-
-                                            title='Guardar Cambios'
-                                            color={'#000'}
-                                            
-                                        ></Button>
-                                    </View>
-                                </View>
-                                <View style={Estilos.contenedorBotones}>
-                                    <View style={Estilos.boton}>
-                                        <Button
-                                            title='Cerrar Sesión'
-                                            color={'#F9813A'}
-                                            onPress={cerrarSesion}
-                                        ></Button>
-                                    </View>
-                                </View>
-
-
-
+                                <TouchableOpacity
+                                    style={styles.touch}
+                                >
+                                    <Text style={tailwind`text-gray-50 text-sm`}>Guardar cambios</Text>
+                                </TouchableOpacity>
                                 <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
                                     <Text style={tailwind`text-gray-800 mt-2 text-lg mb-2`}>Administrar Opciones</Text>
-
 
                                     <SavedPlaces
                                         title="Clientes"
                                         text="Agregar, Editar o Eliminar clientes."
-                                        Icon={() => <AntDesign name="user" size={28} color="black"/>}
-                                        func = {irCliente}
+                                        Icon={() => <AntDesign name="user" size={28} color="black" />}
+                                        func={irCliente}
                                     />
 
                                     <SavedPlaces
-                                        title="Colaborador"
-                                        text="Agregar, Editar o Eliminar colaboradores."
+                                        title="Empleados"
+                                        text="Agregar, Editar o Eliminar empleados."
                                         Icon={() => <AntDesign name="idcard" size={24} color="black" />}
-                                        func = {irColaborador}
+                                        func={irColaborador}
                                     />
 
                                     <SavedPlaces
                                         title="Proveedores"
                                         text="Agregar, Editar o Eliminar proveedores."
                                         Icon={() => <Feather name="truck" color="black" size={24} />}
-                                        func = {irProveedor}
+                                        func={irProveedor}
                                     />
 
                                     <SavedPlaces
                                         title="Inventario"
                                         text="Ver Inventario."
                                         Icon={() => <Feather name="list" color="black" size={24} />}
-                                        func = {irInventario}
+                                        func={irInventario}
                                     />
                                 </View>
                             </>
                         )
                     }
                 </View>
+                <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
+                    <Text style={tailwind`text-gray-800 mt-2 text-lg`}>Otras Opciones</Text>
+                    <TouchableOpacity>
+                        <Text style={tailwind`text-red-500 my-8 mt-3 text-sm`} onPress={cerrarSesion}>Cerrar Sesión</Text>
+                    </TouchableOpacity>
+                </View>
             </ScrollView>
 
-        </View>
+        </Screen>
     );
 };
 const styles = StyleSheet.create({
@@ -198,10 +154,10 @@ const styles = StyleSheet.create({
     },
     touch: {
         alignItems: "center",
+        backgroundColor: "#A7C957",
         margin: 15,
-        backgroundColor: "#000",
         padding: 10,
-        borderRadius: 30,
+        borderRadius: 8,
     },
     entradas: {
         alignItems: "center",
@@ -224,7 +180,8 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         marginLeft: 100,
         marginRight: 100,
-        marginBottom: 10
+        marginBottom: 10,
+        marginTop: 30
     },
     imagen: {
         width: 180,

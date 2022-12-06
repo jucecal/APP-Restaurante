@@ -86,21 +86,23 @@ const GuardarEmpleado = ({ navigation }) => {
         console.log(usuarioID);
         console.log(sucursalID);
         console.log(cargoID);
-
     }
 
     return (
         <View style={{ backgroundColor: COLORS.white }}>
-            <View style={EstilosEditar.header}>
-                <AntDesign name='doubleleft' size={28} />
-                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Guardar Empleado</Text>
-            </View>
             <ScrollView style={{ marginTop: 0 }}>
+                <View style={EstilosEditar.header}>
+                    <AntDesign name='left' size={28} />
+                </View>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20, alignSelf: 'center' }}>Formulario</Text>
                 <View style={styles.form}>
                     <AppForm
                         initialValues={{ nombre: "", apellido: "", telefono: 0, direccion: "", usuarioID: 0, cargoID: 0, sucursalID: 0 }}
                         validationSchema={PostValidationSchema}
-                        onSubmit={(values) => guardar(values)}
+                        onSubmit={(values, {resetForm}) => {
+                            guardar(values);
+                            resetForm();
+                        }}
                     >
                         <AppFormFeilds
                             name="nombre"

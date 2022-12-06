@@ -24,7 +24,7 @@ const MenuTab = ()=>{
             }}
         >
             <>
-                <Tab.Screen name="Inicio" component={Proveedor} 
+                <Tab.Screen name="Inicio" component={GroceryScreen} 
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <AntDesign name="home" color={color} size={size} />
@@ -40,10 +40,10 @@ const MenuTab = ()=>{
                     }}
                 />
 
-                <Tab.Screen name="Comprar" component={Carrito}
+                <Tab.Screen name="Empleados" component={Empleado}
                     options={{
                         tabBarIcon: ({ color, size }) => (
-                            <Entypo name="shopping-bag" color={color} size={size} />
+                            <AntDesign name="idcard" color={color} size={size} />
                         )
                     }}
                 />

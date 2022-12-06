@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingVertical: 15,
         borderRadius: 10,
-        marginTop: 15
+        margin: 10
     },
     inputError: {
         borderColor: colors.denger

@@ -82,7 +82,7 @@ const Estilos = StyleSheet.create({
     },
     etiquetaTexto: {
         fontSize: 16,
-        color: "#fff"
+        color: "#000"
     },
     etiquetaError: {
         fontSize: 12,
@@ -96,7 +96,7 @@ const Estilos = StyleSheet.create({
         margin: 15,
         marginTop: 10,
         marginBottom: 10,
-        borderRadius: 30
+        borderRadius: 10
     }
 });
 

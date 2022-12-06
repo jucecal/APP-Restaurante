@@ -13,12 +13,9 @@ export default function ({ title, onPress, color = "primary", disabled = false }
 const styles = StyleSheet.create({
     button: {
         borderRadius: 10,
-        justifyContent: 'center',
         alignItems: 'center',
-        width: '100%',
         padding: 15,
-        marginVertical: 5,
-        marginTop: 15
+        margin: 10
     },
     text: {
         color: colors.white,
