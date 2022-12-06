@@ -4,10 +4,19 @@ import Screen from '../Componentes/Screen';
 import logo01 from '../../assets/logo-01.png';
 import { meals } from '../data/mealsData'
 import tailwind from 'tailwind-react-native-classnames';
-import colors from '../consts/colors2';
+import colors from '../consts/colors';
 import { Ionicons } from '@expo/vector-icons';
 //style={tailwind`rounded-xl overflow-hidden justify-center items-center w-full`} (ESTILO DE LAS CAJAS)
 //style={tailwind`absolute self-center text-white w-3/4 text-center z-20`} (ESTILO DEL TEXTO)
+
+/*
+
+<View style={tailwind`mt-2 mx-4 mb-1 relative justify-center`}>
+                <Ionicons name="search-sharp" size={23} color="#F9813A" style={tailwind`absolute left-4 top-3 z-10 self-center`} />
+                <TextInput style={[tailwind`rounded-full py-2 px-5 pl-10 bg-gray-100`, styles.input]} placeholder=" Buscar Promoción" />
+            </View>
+
+*/
 
 const BrowseScreen = () => {
     return (
@@ -20,10 +29,15 @@ const BrowseScreen = () => {
                 </ImageBackground>
             </View>
 
-            <View style={tailwind`mt-2 mx-4 mb-1 relative justify-center`}>
-                <Ionicons name="search-sharp" size={23} color="#F9813A" style={tailwind`absolute left-4 top-3 z-10 self-center`} />
-                <TextInput style={[tailwind`rounded-full py-2 px-5 pl-10 bg-gray-100`, styles.input]} placeholder=" Buscar Promoción" />
+            <View style={styles.contenedorTexto}>
+                <Text
+                    style={styles.texto}
+                >
+                    PROMOCIONES
+                </Text>
             </View>
+
+            
 
             <ScrollView style={tailwind`flex-1`} showsVerticalScrollIndicator={false}>
                 <View style={tailwind`flex-row mx-1 flex-wrap justify-between`}>
@@ -65,12 +79,24 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: 550,
     },
-
     contenedorPromos: {
         backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center',
         height: 550,
+    },
+    contenedorTexto: {
+        backgroundColor: '#fff',
+        marginTop: 10,
+        marginBottom: -10,
+        alignItems: 'center',
+        height: 50,
+
+    },
+    texto:{
+        color:'#F9813A',
+        fontSize: 30,
+        
     },
 })
 
