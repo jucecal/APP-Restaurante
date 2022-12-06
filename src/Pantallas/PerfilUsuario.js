@@ -1,19 +1,24 @@
 import { Text, ScrollView, View, Button, ImageBackground, TextInput, Alert, Image, StyleSheet, TouchableOpacity, Switch } from 'react-native';
 import React, { useState, useEffect, useContext } from 'react';
 import Estilos from '../Componentes/Estilos';
+import logo01 from '../../assets/logo-01.png';
 import UsuarioContext from '../contexto/UsuarioContext';
-import Screen from '../Componentes/Screen'
 import Cargando from '../Componentes/Cargando';
 import tailwind from 'tailwind-react-native-classnames';
-import AppHead from '../Componentes/AppHead';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
-import { urlImagenesUsuariosCL } from '../configuracion/Urls';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { urlImagenesUsuariosEM, urlImagenesUsuariosCL } from '../configuracion/Urls';
 import { useNavigation } from '@react-navigation/core';
+import * as ImagePicker from 'expo-image-picker';
+import AxiosImagen from '../Componentes/AxiosImagen';
+import Proveedor from '../Pantallas/Proveedor';
+import Cliente from './Cliente';
 
 const Login = () => {
-    const { usuario, setCerrarSesion } = useContext(UsuarioContext);
+    const { usuario, setCerrarSesion, setUsuario } = useContext(UsuarioContext);
     const [nombre, setnombre] = useState(usuario.nombre);
+    const [imagen,setImagen] = useState("");
     const [apellido, setApellido] = useState(usuario.apellido);
     const [validarUsuario, setValidarUsuario] = useState(false);
     const [validarContrasena, setValidarContrasena] = useState(false);
@@ -22,6 +27,8 @@ const Login = () => {
     const [modificar, setModificar] = useState(false);
     const cambioSwitch = () => setModificar(previousState => !previousState);
     const navigation = useNavigation()
+    
+    const titulo = 'Perfil de Usuario';
     useEffect(() => {
         if (!nombre) {
             setValidarUsuario(true);
@@ -50,7 +57,7 @@ const Login = () => {
         navigation.navigate('ClientesTab');
     }
     const irColaborador = () => {
-        console.log("Ir a Empleados");
+        console.log("Ir a Colaborador");
         navigation.navigate('EmpleadosTab');
     }
     const irProveedor = () => {
@@ -62,87 +69,162 @@ const Login = () => {
         navigation.navigate('Inventario');
     }
 
+    const pickImage = async () => {
+        // No permissions request is necessary for launching the image library
+        let result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.All,
+          allowsEditing: true,
+          aspect: [4, 3],
+          quality: 1,
+        });
+    
+    
+        console.log(result);
+        const resultado = result;
+    
+        if (!result.canceled) {
+          setImagen(result.assets[0].uri);
+        }
+        
+        const archivo = new FormData();
+        let uriParts = result.assets[0].uri.split('.');
+        let tipo = result.assets[0].uri.type + '/' + uriParts[uriParts.length-1];
+        uriParts = result.assets[0].uri.split('/');
+        let nombre = uriParts[uriParts.length -1];
+        uriParts = result.assets[0].uri;
+        archivo.append('id', 1);
+        archivo.append('img',{
+            name: nombre,
+            type: tipo,
+            uri: uriParts
+        });
+        
+        try {
+            var textoMensaje = "";
+            
+            await AxiosImagen.post('/empleados/imagen', archivo)
+                .then(async (data) => {
+                    const json = data.data;
+                    console.log(data.data);
+                    console.log("se pudo-----------------------------")
+                    if (json.errores.length == 0) {
+                        console.log(data.data);
+                        await setUsuario({ usuario: usuario.correo});
+                        Alert.alert("LISTO", "la imagen se ha guardado");
+                    }
+                    else {
+                        textoMensaje = '';
+                        json.errores.forEach(element => {
+                            textoMensaje += element.mensaje + '. ';
+                        });
+                    }
+                })
+                .catch((error) => {
+                    textoMensaje = error;
+                });
+        } catch (error) {
+            textoMensaje = error;
+            console.log(error);
+        }
+      };
 
     return (
-        <Screen style={tailwind`flex-1 bg-white`}>
+        <View style={Estilos.contenedorPrincipal}>
+            <View style={Estilos.contenedorTitulo}>
+                <ImageBackground
+                    source={logo01}
+                    resizeMode='stretch'
+                    style={Estilos.imagenFondo}
+                >
+                </ImageBackground>
+            </View>
+
+
 
             <ScrollView showsVerticalScrollIndicator={false}>
+                <View style={Estilos.contenedorTitulo2}>
+                    <Text style={Estilos.textoTitulo}>{titulo}</Text>
+                </View>
+
                 <View style={Estilos.contenedorContenido}>
                     {
                         espera ? (
                             <Cargando texto="Estableciendo conexion con la API"></Cargando>
                         ) : (
                             <>
-                                <AppHead title={`Cuenta`}
-                                    icon="settings-outline"
-                                />
 
-                                <View style={tailwind`justify-center items-center`}>
+                                <View style={Estilos.contenedorControles}>
                                     <View style={styles.contenedorImagen}>
                                         <Image
                                             style={styles.imagen}
-                                            source={{ uri: urlImagenesUsuariosCL + usuario.imagen }}
+                                            source={{ uri: urlImagenesUsuariosEM + usuario.imagen }}
                                         />
                                     </View>
-                                    <Text style={tailwind`mt-4 text-3xl font-bold text-red-500`}>{usuario.nombre}</Text>
-                                    <Text style={tailwind`text-lg text-indigo-900`}>{usuario.correo}</Text>
+
+                                    
+                                </View>
+                                <View style={Estilos.contenedorControles}>
+                                    <Text style={Estilos.etiqueta}>{"Nombre: " + nombreCompleto}</Text>
+                                    <Text style={Estilos.etiqueta}>{"Correo: " + usuario.correo}</Text>
                                 </View>
 
-                                <TouchableOpacity
-                                    style={styles.touch}
-                                >
-                                    <Text style={tailwind`text-gray-100 text-sm`}>Editar imagen</Text>
-                                </TouchableOpacity>
+                                
 
-                                <TouchableOpacity
-                                    style={styles.touch}
-                                >
-                                    <Text style={tailwind`text-gray-50 text-sm`}>Guardar cambios</Text>
-                                </TouchableOpacity>
+                                <View style={Estilos.contenedorBotones}>
+                                    <View style={Estilos.boton}>
+                                        <Button
+
+                                            title='Cambiar Imagen'
+                                            color={'#000'}
+                                            onPress={ pickImage}
+                                        ></Button>
+                                    </View>
+                                </View>
+                                <View style={Estilos.contenedorBotones}>
+                                    <View style={Estilos.boton}>
+                                        <Button
+                                            title='Cerrar Sesión'
+                                            color={'#F9813A'}
+                                            onPress={cerrarSesion}
+                                        ></Button>
+                                    </View>
+                                </View>
+
+
+
                                 <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
                                     <Text style={tailwind`text-gray-800 mt-2 text-lg mb-2`}>Administrar Opciones</Text>
+
 
                                     <SavedPlaces
                                         title="Clientes"
                                         text="Agregar, Editar o Eliminar clientes."
-                                        Icon={() => <AntDesign name="user" size={28} color="black" />}
-                                        func={irCliente}
+                                        Icon={() => <AntDesign name="user" size={28} color="black"/>}
+                                        func = {irCliente}
                                     />
 
-                                    <SavedPlaces
-                                        title="Empleados"
-                                        text="Agregar, Editar o Eliminar empleados."
-                                        Icon={() => <AntDesign name="idcard" size={24} color="black" />}
-                                        func={irColaborador}
-                                    />
 
                                     <SavedPlaces
                                         title="Proveedores"
                                         text="Agregar, Editar o Eliminar proveedores."
                                         Icon={() => <Feather name="truck" color="black" size={24} />}
-                                        func={irProveedor}
+                                        func = {irProveedor}
                                     />
 
                                     <SavedPlaces
                                         title="Inventario"
                                         text="Ver Inventario."
                                         Icon={() => <Feather name="list" color="black" size={24} />}
-                                        func={irInventario}
+                                        func = {irInventario}
                                     />
                                 </View>
                             </>
                         )
                     }
                 </View>
-                <View style={tailwind`mx-4 border-t border-t-2 mt-5 border-gray-100`}>
-                    <Text style={tailwind`text-gray-800 mt-2 text-lg`}>Otras Opciones</Text>
-                    <TouchableOpacity>
-                        <Text style={tailwind`text-red-500 my-8 mt-3 text-sm`} onPress={cerrarSesion}>Cerrar Sesión</Text>
-                    </TouchableOpacity>
-                </View>
             </ScrollView>
 
-        </Screen>
+        </View>
     );
 };
 const styles = StyleSheet.create({
@@ -154,10 +236,10 @@ const styles = StyleSheet.create({
     },
     touch: {
         alignItems: "center",
-        backgroundColor: "#A7C957",
         margin: 15,
+        backgroundColor: "#000",
         padding: 10,
-        borderRadius: 8,
+        borderRadius: 30,
     },
     entradas: {
         alignItems: "center",
@@ -180,8 +262,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         marginLeft: 100,
         marginRight: 100,
-        marginBottom: 10,
-        marginTop: 30
+        marginBottom: 10
     },
     imagen: {
         width: 180,

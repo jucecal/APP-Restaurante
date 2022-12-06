@@ -11,6 +11,7 @@ const UsuarioState = (props) => {
         token: null,
         errores: [],
         msj: "",
+        pass: "",
         sesionIniciada: false,
         tokenValidado: false,
         aplicacionIniciada: false
@@ -90,18 +91,66 @@ const UsuarioState = (props) => {
             acciones: 'SET_LOGIN',
         });
     }
+
+    const setUsuario = async (data) => {
+        try {
+            console.log("------d--d---d--d--d---d---d")
+            var textoMensaje = "";
+            var usuario = null;
+            
+            await Axios.post('/autenticacion/iniciosesion2', {
+                usuario: data.usuario
+                            
+            })
+                .then(async(data) => {
+                    const json = data.data;
+                    if (json.errores.length == 0) {
+                        usuario = json.data.usuario;                                      
+                       
+                        const u = JSON.stringify(usuario);
+                        await AsyncStorage.setItem('usuario_almacenado', u);
+                        
+                    }
+                    else {
+                        textoMensaje = '';
+                        json.errores.forEach(element => {
+                            textoMensaje += element.mensaje + '. ';
+                        });
+                    }
+                })
+                .catch((error) => {
+                    textoMensaje = error;
+                });
+        } catch (error) {
+            textoMensaje = error;
+            console.log(error);
+        }
+        console.log("------------------------------------------------------------------")
+        console.log(usuario);
+        Alert.alert("Inicio de sesión", textoMensaje);
+        dispath({
+            datos: {
+                usuario: usuario                
+            },
+            acciones: 'ACTUALIZAR_USUARIO',
+        });
+        
+        
+    }
     return (
         <UsuarioContext.Provider value={{
             usuario: estado.usuario,
             token: estado.token,
             msj: estado.msj,
             inicio: estado.inicio,
+            pass: estado.pass,
             sesionIniciada: estado.sesionIniciada,
             tokenValidado: estado.tokenValidado,
             aplicacionIniciada: estado.aplicacionIniciada,
             setLogin,
             setDatos,
             setCerrarSesion,
+            setUsuario
         }}>
             {props.children}
         </UsuarioContext.Provider>

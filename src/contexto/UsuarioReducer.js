@@ -16,7 +16,7 @@ export default (estado, accion) => {
         case 'CARGAR_DATOS':
             return {
                 ...estado,
-                ...datos,
+                ...datos,                
             };
         case 'ACTUALIZAR_DATOS':
             return {
@@ -27,6 +27,11 @@ export default (estado, accion) => {
                 tokenValidado: datos.tokenValidado,
                 aplicacionIniciada: true
             };
+        case 'ACTUALIZAR_USUARIO':
+            return{
+                ...estado,
+                usuario: datos.usuario
+            }
         case 'VALIDAR_TOKEN':
             return {
                 ...estado,

@@ -13,6 +13,7 @@ import { Feather } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import GroceryScreen from '../Pantallas/GroceryScreen';
 import GuardarReservacion from '../Pantallas/GuardaReservaciones';
+import EmpleadosTab from '../Componentes/EmpleadosTab';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,7 +41,7 @@ const MenuTab = ()=>{
                     }}
                 />
 
-                <Tab.Screen name="Empleados" component={Empleado}
+                <Tab.Screen name="Empleados" component={EmpleadosTab}
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <AntDesign name="idcard" color={color} size={size} />
