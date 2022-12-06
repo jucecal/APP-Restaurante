@@ -22,6 +22,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import EstilosMenu from '../Componentes/EstilosMenu';
 import UsuarioContext from '../contexto/UsuarioContext';
 import { urlImagenesMenu } from '../configuracion/Urls';
+import { urlImagenesUsuariosEM, urlImagenesUsuariosCL } from '../configuracion/Urls';
 import Axios from '../Componentes/Axios';
 const { width } = Dimensions.get('screen');
 
@@ -138,7 +139,7 @@ const Menu = () => {
           <View style={{ flexDirection: 'row' }}>
             <Text style={{ fontSize: 28 }}>Hola,</Text>
             <Text style={{ fontSize: 28, fontWeight: 'bold', marginLeft: 10 }}>
-              User
+              {usuario.nombre}
             </Text>
           </View>
           <Text style={{ marginTop: 5, fontSize: 22, color: COLORS.grey }}>
@@ -146,7 +147,7 @@ const Menu = () => {
           </Text>
         </View>
         <Image
-          source={require('../../assets/person.png')}
+          source={{ uri: urlImagenesUsuariosEM + usuario.imagen }}
           style={{ height: 50, width: 50, borderRadius: 25 }}
         />
       </View>

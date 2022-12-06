@@ -83,7 +83,7 @@ const Reservaciones = () => {
           </Text>
         </View>
         <Image
-          source={require('../../assets/person.png')}
+          source={{ uri: urlImagenesUsuariosCL + usuario.imagen }}
           style={{ height: 50, width: 50, borderRadius: 25 }}
         />
       </View>
