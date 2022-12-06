@@ -1,7 +1,8 @@
 
-import { TouchableOpacity, View, Text, ScrollView, Image, Alert, TextInput } from 'react-native';
+import { TouchableOpacity, View, Text, ScrollView, Image, Alert, TextInput, StyleSheet } from 'react-native';
 import NumericInput from 'react-native-numeric-input'
 import AppForm from "../Componentes/forms/AppForm";
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import COLORS from '../consts/colors';
 import * as yup from "yup";
 import AppFormFeilds from "../Componentes/forms/AppFormFeilds";
@@ -10,6 +11,7 @@ import AppSubmitButton from '../Componentes/forms/AppSubmitButton';
 //import DatePicker from 'react-DatePicker';
 import ComboBox from 'react-native-combobox';
 import React, { useState, useEffect, useContext } from "react";
+import EstilosEditar from '../Componentes/EstilosEditar';
 
 const PostValidationSchema = yup.object().shape({
     proveedor: yup
@@ -28,7 +30,7 @@ const PostValidationSchema = yup.object().shape({
         .required("El telefono es requerido"),
 });
 
-const GuardarProveedor = () => {
+const GuardarProveedor = ({navigation}) => {
 
     const guardar = async ({ proveedor, nombreContacto, telefono }) => {
         try {
@@ -63,19 +65,17 @@ const GuardarProveedor = () => {
         console.log(proveedor);
         console.log(nombreContacto);
         console.log(telefono);
+
     }
 
     return (
         <View style={{ backgroundColor: COLORS.white }}>
             <View style={EstilosEditar.header}>
                 <AntDesign name='doubleleft' size={28} />
-                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Reservaciones</Text>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20 }}>Guardar Proveedor</Text>
             </View>
             <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 30 }}>
                 <View style={styles.form}>
-                    <Text style={{ color: colors.dark, textAlign: 'center', marginTop: 10 }}>
-                        Formulario
-                    </Text>
                     <AppForm
                         initialValues={{ proveedor: "", nombreContacto: "", telefono: 0 }}
                         validationSchema={PostValidationSchema}

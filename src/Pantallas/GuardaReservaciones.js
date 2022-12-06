@@ -1,8 +1,8 @@
 import React from 'react';
-import { TouchableOpacity, View, Text, ScrollView, Image, Alert, TextInput } from 'react-native';
+import { TouchableOpacity, StyleSheet,View, Text, ScrollView, Image, Alert, TextInput } from 'react-native';
 import NumericInput from 'react-native-numeric-input'
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import moment from 'moment';
+//import moment from 'moment';
 import AppForm from "../Componentes/forms/AppForm";
 import COLORS from '../consts/colors';
 import * as yup from "yup";
@@ -12,13 +12,11 @@ import Axios from '../Componentes/Axios';
 import AppSubmitButton from '../Componentes/forms/AppSubmitButton';
 
 const PostValidationSchema = yup.object().shape({
-    fecha: yup
-        .required("La fecha de la reservación es requerida")
-        .date()
-        .min(dateToday, ({ min }) => `Fecha minima valida ${min}`)
-        .typeError(t('El formato de la fecha debe de ser (YYYY-MM-DD)')),
+    fecha: yup        
+        .string()               
+        .required("La fecha de la reservación es requerida"),
     hora: yup
-        .number()
+        .string() 
         .required("La hora de la es requerida"),
     usuarioID: yup
         .number()
@@ -56,19 +54,20 @@ const GuardarReservacion = () => {
                         console.log(data.data);
                     }
                     else {
-                        textoMensaje = '';
-                        json.errores.forEach(element => {
+                        textoMensaje = 'error1';
+                        /*json.errores.forEach(element => {
                             textoMensaje += element.mensaje + '. ';
-                        });
+                        });*/
                     }
                 })
                 .catch((error) => {
-                    textoMensaje = error;
+                    textoMensaje = 'error2';
                 });
         } catch (error) {
-            textoMensaje = error;
+            textoMensaje = 'error3';
             console.log(error);
         }
+        Alert.alert("Error", textoMensaje);
         console.log(fecha);
         console.log(hora);
         console.log(usuarioID);
@@ -84,7 +83,7 @@ const GuardarReservacion = () => {
             </View>
             <ScrollView showsVerticalScrollIndicator={false} style={{ marginTop: 30 }}>
                 <View style={styles.form}>
-                    <Text style={{ color: colors.dark, textAlign: 'center', marginTop: 10 }}>
+                    <Text style={{ color: COLORS.dark, textAlign: 'center', marginTop: 10 }}>
                         Formulario
                     </Text>
                     <AppForm

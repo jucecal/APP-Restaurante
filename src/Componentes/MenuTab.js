@@ -12,6 +12,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import GroceryScreen from '../Pantallas/GroceryScreen';
+import GuardarReservacion from '../Pantallas/GuardaReservaciones';
 
 const Tab = createBottomTabNavigator();
 
@@ -46,7 +47,7 @@ const MenuTab = ()=>{
                         )
                     }}
                 />
-                <Tab.Screen name="Reservaciones" component={GroceryScreen}
+                <Tab.Screen name="Reservaciones" component={GuardarReservacion}
                     options={{
                         tabBarIcon: ({ color, size }) => (
                             <AntDesign name="calendar" color={color} size={size} />
