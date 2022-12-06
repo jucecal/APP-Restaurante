@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   Dimensions,
   Image,
@@ -21,56 +20,80 @@ import categories from '../consts/categories';
 import foods from '../consts/foods';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import EstilosMenu from '../Componentes/EstilosMenu';
+import UsuarioContext from '../contexto/UsuarioContext';
+import { urlImagenesMenu } from '../configuracion/Urls';
+import Axios from '../Componentes/Axios';
 const { width } = Dimensions.get('screen');
 
 
 const Menu = () => {
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
+  const { usuario } = useContext(UsuarioContext);
+  const [filtro, setFiltro] = useState(null);
+  const [espera, setEspera] = useState(false);
+  const [lista, setlista] = useState([]);
+  const [validarFiltro, setValidarFiltro] = useState(false);
+  
 
-  const ListCategories = () => {
-    return (
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={EstilosMenu.categoriesListContainer}>
-        {categories.map((category, index) => (
-          <TouchableOpacity
-            key={index}
-            activeOpacity={0.8}
-            onPress={() => setSelectedCategoryIndex(index)}>
-            <View
-              style={{
-                backgroundColor:
-                  selectedCategoryIndex == index
-                    ? COLORS.grey
-                    : COLORS.secondary,
-                ...EstilosMenu.categoryBtn,
-              }}>
-              <View style={EstilosMenu.categoryBtnImgCon}>
-                <ImageBackground
-                  source={category.image}
-                  style={{ height: 40, width: 40, resizeMode: 'cover' }}
-                />
-              </View>
-              <Text
-                style={{
-                  fontSize: 15,
-                  fontWeight: 'bold',
-                  marginLeft: 10,
-                  color:
-                    selectedCategoryIndex == index
-                      ? COLORS.white
-                      : COLORS.primary,
-                }}>
-                {category.name}
-              </Text>
-            </View>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-    );
-  };
-  const Card = ({ food }) => {
+  useEffect(() => {
+    if (!filtro) {
+      setValidarFiltro(true);
+    }
+    else {
+      setValidarFiltro(false);
+    }
+  }, [filtro]);
+
+  useEffect(() => {
+    if (!validarFiltro) {
+      buscarUno();
+    }
+  }, [validarFiltro]);
+  useEffect(() => {
+    if (!filtro) {
+      buscar();
+    }
+
+  }, [filtro]);
+  const buscar = async () => {
+    var mensaje = "";
+    setEspera(true);
+    await Axios.get('menu/listar')
+      .then(async (data) => {
+        setlista(data.data);
+        console.log(data.data);
+      })
+      .catch((er) => {
+        console.log(er);
+      });
+    setEspera(false);
+    if (mensaje != '') {
+      Alert.alert('Error en la lista', mensaje);
+    }
+  }
+  const buscarUno = async () => {
+    if (!validarFiltro) {
+      var mensaje = "";
+      setEspera(true);
+      await Axios.get('menu/buscarNombre?nombre=' + filtro + '%')
+        .then(async (data) => {
+          setlista(data.data);
+          console.log(data.data);
+
+        })
+        .catch((er) => {
+          console.log(er);
+        });
+    }
+
+    setEspera(false);
+    if (mensaje != '') {
+      Alert.alert('Error en la lista', mensaje);
+    }
+  }
+
+  
+  const Card = ({ menu }) => {
     return (
       <TouchableHighlight
         underlayColor={COLORS.white}
@@ -79,12 +102,15 @@ const Menu = () => {
       >
         <View style={EstilosMenu.card}>
           <View style={{ alignItems: 'center', top: -40 }}>
-            <Image source={food.image} style={{ height: 120, width: 120 }} />
+            <Image
+              style={{height: 120, width: 120, borderRadius:40}}
+              source={{ uri: urlImagenesMenu + menu.Imagen }}
+            />
           </View>
           <View style={{ marginHorizontal: 20 }}>
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{food.name}</Text>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{menu.Nombre}</Text>
             <Text style={{ fontSize: 14, color: COLORS.grey, marginTop: 2 }}>
-              {food.ingredients}
+              {menu.Descripcion}
             </Text>
           </View>
           <View
@@ -95,7 +121,7 @@ const Menu = () => {
               justifyContent: 'space-between',
             }}>
             <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-              ${food.price}
+              $ {menu.Precio}
             </Text>
             <View style={EstilosMenu.addToCartBtn}>
               <AntDesign name='plus' size={20} color={COLORS.white} />
@@ -134,25 +160,24 @@ const Menu = () => {
 
           <TextInput
             style={{ flex: 1, fontSize: 18 }}
-            placeholder="Search for food"
+            placeholder="Buscar"
+            value={filtro}
+            onChangeText={setFiltro}
           />
         </View>
         <View style={EstilosMenu.sortBtn}>
           <AntDesign name='search1' size={28} color={COLORS.white} />
         </View>
       </View>
-      <View>
-        <ListCategories />
-      </View>
+      
       <FlatList
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        data={foods}
-        renderItem={({ item }) => <Card food={item} />}
+        data={lista}
+        renderItem={({ item }) => <Card menu={item} />}
       />
     </View>
   );
 };
-
 
 export default Menu;
