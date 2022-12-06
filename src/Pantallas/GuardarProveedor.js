@@ -1,10 +1,10 @@
-import React from 'react';
+
 import { TouchableOpacity, View, Text, ScrollView, Image, Alert, TextInput } from 'react-native';
 import NumericInput from 'react-native-numeric-input'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import COLORS from '../consts/colors';
 import EstilosEditar from '../Componentes/EstilosEditar';
-import DatePicker from 'react-DatePicker';
+//import DatePicker from 'react-DatePicker';
 import ComboBox from 'react-native-combobox';
 import React, { useState, useEffect, useContext } from "react";
 
@@ -30,13 +30,13 @@ const EditarReservacion = () => {
                         <TextInput style={EstilosEditar.inputs}>El bicho</TextInput>
                         <Text>selected: {date.toLocaleString()}</Text>
                              {show && (
-                            <DatePicker
+                            {/*<DatePicker
                             testID="dateTimePicker"
                             value={date}
                             mode={mode}
                             is24Hour={true}
                          onChange={onChange}
-                            />
+                             />*/}
                             )}
                     </View>
 

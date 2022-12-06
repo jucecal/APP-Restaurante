@@ -4,7 +4,7 @@ import NumericInput from 'react-native-numeric-input'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import COLORS from '../consts/colors';
 import EstilosEditar from '../Componentes/EstilosEditar';
-import DatePicker from 'react-DatePicker';
+//import DatePicker from 'react-DatePicker';
 import React, { useState, useEffect, useContext } from "react";
 
 const EditarReservacion = () => {
